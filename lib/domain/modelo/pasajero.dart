@@ -4,7 +4,6 @@ class Pasajero {
   var sexo;
   var telefono;
   var correo;
-  
   var usuario;
   var clave;
 

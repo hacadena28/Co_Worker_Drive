@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class RegistrarConductor extends StatefulWidget {
-  const RegistrarConductor({super.key});
+class RegistrarPasajero extends StatefulWidget {
+  const RegistrarPasajero({super.key});
 
 /*   var nombres;
   var apellidos;
@@ -15,16 +15,15 @@ class RegistrarConductor extends StatefulWidget {
 */
 
   @override
-  State<RegistrarConductor> createState() => _RegistrarConductorState();
+  State<RegistrarPasajero> createState() => _RegistrarPasajeroState();
 }
 
-class _RegistrarConductorState extends State<RegistrarConductor> {
+class _RegistrarPasajeroState extends State<RegistrarPasajero> {
   TextEditingController controlnombres = TextEditingController();
   TextEditingController controlapellidos = TextEditingController();
   TextEditingController controlsexo = TextEditingController();
   TextEditingController controltelefono = TextEditingController();
   TextEditingController controlcorreo = TextEditingController();
-  TextEditingController controlplacamoto = TextEditingController();
   TextEditingController controlusuario = TextEditingController();
   TextEditingController controlclave = TextEditingController();
 
@@ -58,7 +57,7 @@ class _RegistrarConductorState extends State<RegistrarConductor> {
                 ),
                 Padding(
                   padding: const EdgeInsets.only(left: 8.0),
-                  child: Text('C o n d u c t o r',
+                  child: Text('P A S A J E R O',
                       style: TextStyle(
                           fontFamily: 'Montserrat',
                           fontWeight: FontWeight.bold,
@@ -175,25 +174,6 @@ class _RegistrarConductorState extends State<RegistrarConductor> {
                         ),
                       ),
                       labelText: 'Correo Electronico',
-                      icon: Icon(
-                        Icons.person,
-                        color: Colors.amber,
-                      ),
-                    ),
-                  ),
-                  SizedBox(
-                    height: 10,
-                  ),
-                  TextField(
-                    controller: controlplacamoto,
-                    keyboardType: TextInputType.text,
-                    decoration: InputDecoration(
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(
-                          30,
-                        ),
-                      ),
-                      labelText: 'placa moto',
                       icon: Icon(
                         Icons.person,
                         color: Colors.amber,

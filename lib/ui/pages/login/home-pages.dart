@@ -70,7 +70,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     minWidth: 200.0,
                     height: 40.0,
                     onPressed: () {
-                      Get.to(() => RegistrarConductor());
+                      Get.offAllNamed('/loginConductor');
                     },
                     color: Colors.indigo[700],
                     child: Text('Conductor',
@@ -88,7 +88,9 @@ class _MyHomePageState extends State<MyHomePage> {
                     child: MaterialButton(
                       minWidth: 200.0,
                       height: 40.0,
-                      onPressed: () {},
+                      onPressed: () {
+                        Get.offAllNamed('/loginPasajero');
+                      },
                       color: Colors.indigo[700],
                       child: Text('Pasajero',
                           style: TextStyle(

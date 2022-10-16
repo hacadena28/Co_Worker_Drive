@@ -4,9 +4,7 @@ class Conductor {
   var sexo;
   var telefono;
   var correo;
-  
   var placaMoto;
-
   var usuario;
   var clave;
 

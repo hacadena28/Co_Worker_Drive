@@ -1,4 +1,5 @@
 import 'package:coworkerdriver/ui/pages/login/registrarConductor.dart';
+import 'package:coworkerdriver/ui/pages/login/registrarPasajero.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -18,6 +19,7 @@ class MyApp extends StatelessWidget {
         '/login': (context) => Login(),
         '/rol': (context) => MyHomePage(),
         '/loginConductor': (context) => RegistrarConductor(),
+        '/loginPasajero': (context) => RegistrarPasajero(),
       },
       home: Login(),
     );
