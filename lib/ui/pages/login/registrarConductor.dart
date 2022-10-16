@@ -57,12 +57,18 @@ class _RegistrarConductorState extends State<RegistrarConductor> {
               borderRadius: BorderRadius.only(
                   topLeft: Radius.circular(105.0),
                   topRight: Radius.circular(100.0)),
+              boxShadow: [
+                new BoxShadow(
+                  color: Colors.indigo.shade900,
+                  spreadRadius: 12,
+                  blurRadius: 15,
+                  offset: Offset(0, 0),
+                ),
+              ],
             ),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                
-              ],
+              children: [],
             ),
           ),
         ],
