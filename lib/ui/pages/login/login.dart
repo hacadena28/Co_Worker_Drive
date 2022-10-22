@@ -98,7 +98,9 @@ class _LoginState extends State<Login> {
                                   size: 20,
                                   color: Colors.white,
                                 ),
-                                onPressed: () {},
+                                onPressed: () {
+                                  Get.offAllNamed('/perfilConductor');
+                                },
                                 style: TextButton.styleFrom(
                                     primary: Colors.white,
                                     backgroundColor: Colors.green[600]),
