@@ -187,54 +187,6 @@ class PerfilConductor extends StatelessWidget {
                               ),
                             ],
                           ),
-                          Row(
-                            children: <Widget>[
-                              Flexible(
-                                child: TextField(
-                                  controller: controlclave,
-                                  enabled: bandera,
-                                  obscureText: true,
-                                  decoration: InputDecoration(
-                                    border: OutlineInputBorder(
-                                      borderRadius: BorderRadius.circular(
-                                        30,
-                                      ),
-                                    ),
-                                    labelText: 'Clave.',
-                                    icon: Icon(
-                                      Icons.person,
-                                      color: Colors.amber,
-                                    ),
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
-                          SizedBox(
-                            height: 15,
-                          ),
-                          Row(
-                            children: <Widget>[
-                              Flexible(
-                                child: TextField(
-                                  controller: controlclave,
-                                  obscureText: true,
-                                  decoration: InputDecoration(
-                                    border: OutlineInputBorder(
-                                      borderRadius: BorderRadius.circular(
-                                        30,
-                                      ),
-                                    ),
-                                    labelText: 'Clave.',
-                                    icon: Icon(
-                                      Icons.person,
-                                      color: Colors.amber,
-                                    ),
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
                         ],
                       ),
                     ),
