@@ -1,33 +1,33 @@
 {
   "project_info": {
-    "project_number": "954913218454",
-    "project_id": "co-worker-driver",
-    "storage_bucket": "co-worker-driver.appspot.com"
+    "project_number": "276206315510",
+    "project_id": "coworkerdrive-f07dc",
+    "storage_bucket": "coworkerdrive-f07dc.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:954913218454:android:7b1ec5cdd35a7d940147b7",
+        "mobilesdk_app_id": "1:276206315510:android:fca4d3bd949918bb3449d7",
         "android_client_info": {
-          "package_name": "com.co_WorkerDrive"
+          "package_name": "com.example.coworkerdriver"
         }
       },
       "oauth_client": [
         {
-          "client_id": "954913218454-3alk38smeob2tgev2jqktun7elfeotbt.apps.googleusercontent.com",
+          "client_id": "276206315510-fks398t4eo864ris0ghheonqh3g3l9oo.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyBcjLzoZgC2xKftW9Ob7JLR7IWqkHR2rsQ"
+          "current_key": "AIzaSyCVm4zH_JmwRl4U3f1sQfd0gtXk3QC8JQo"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "954913218454-3alk38smeob2tgev2jqktun7elfeotbt.apps.googleusercontent.com",
+              "client_id": "276206315510-fks398t4eo864ris0ghheonqh3g3l9oo.apps.googleusercontent.com",
               "client_type": 3
             }
           ]
