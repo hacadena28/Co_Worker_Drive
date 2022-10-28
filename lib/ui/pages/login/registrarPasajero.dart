@@ -1,3 +1,5 @@
+import 'package:coworkerdriver/domain/controller/controladorAuth.dart';
+import 'package:coworkerdriver/domain/modelo/pasajero.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -26,6 +28,7 @@ class _RegistrarPasajeroState extends State<RegistrarPasajero> {
   TextEditingController controlcorreo = TextEditingController();
   TextEditingController controlusuario = TextEditingController();
   TextEditingController controlclave = TextEditingController();
+  Controllerauthf controlf = Get.find();
 
   @override
   Widget build(BuildContext context) {
@@ -233,6 +236,39 @@ class _RegistrarPasajeroState extends State<RegistrarPasajero> {
                               color: Colors.white,
                             ),
                             onPressed: () {
+                              Pasajero pasajero = new Pasajero();
+                              pasajero.nombres = controlnombres.text;
+                              pasajero.apellidos = controlapellidos.text;
+                              pasajero.sexo = controlsexo.text;
+                              pasajero.telefono = controltelefono.text;
+                              pasajero.correo = controlcorreo.text;
+                              pasajero.clave = controlclave.text;
+                              listaPasajeros.add(pasajero);
+
+                              controlf
+                                  .registraEmail(
+                                      controlcorreo.text, controlclave.text)
+                                  .then((Value) {
+                                if (controlf.getEmail != "Sin registro") {
+                                  Get.offAllNamed('/listarArticulos');
+                                } else {
+                                  Get.showSnackbar(const GetSnackBar(
+                                    title: "Validacion de usuarios",
+                                    message: "Usuario ya esta registrado",
+                                    icon: Icon(Icons.warning_amber_sharp),
+                                    backgroundColor:
+                                        Color.fromARGB(255, 213, 136, 130),
+                                  ));
+                                }
+                              }).catchError((onError) {
+                                Get.showSnackbar(const GetSnackBar(
+                                  title: "Validacion de usuarios",
+                                  message: "Usuario ya esta registrado",
+                                  icon: Icon(Icons.warning_amber_sharp),
+                                  backgroundColor:
+                                      Color.fromARGB(255, 213, 136, 130),
+                                ));
+                              });
                               Get.offAllNamed('/login');
                             },
                             style: TextButton.styleFrom(

@@ -1,3 +1,5 @@
+import 'package:coworkerdriver/domain/controller/controladorAuth.dart';
+import 'package:coworkerdriver/domain/modelo/conductor.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -27,6 +29,7 @@ class _RegistrarConductorState extends State<RegistrarConductor> {
   TextEditingController controlplacamoto = TextEditingController();
   TextEditingController controlusuario = TextEditingController();
   TextEditingController controlclave = TextEditingController();
+  Controllerauthf controlf = Get.find();
 
   @override
   Widget build(BuildContext context) {
@@ -253,7 +256,39 @@ class _RegistrarConductorState extends State<RegistrarConductor> {
                               color: Colors.white,
                             ),
                             onPressed: () {
-                              Get.offAllNamed('/login');
+                              Conductor conductor = new Conductor();
+                              conductor.nombres = controlnombres.text;
+                              conductor.apellidos = controlapellidos.text;
+                              conductor.sexo = controlsexo.text;
+                              conductor.telefono = controltelefono.text;
+                              conductor.correo = controlcorreo.text;
+                              conductor.placaMoto = controlplacamoto.text;
+                              conductor.clave = controlclave.text;
+                              listaConductores.add(conductor);
+                              controlf
+                                  .registraEmail(
+                                      controlcorreo.text, controlclave.text)
+                                  .then((Value) {
+                                if (controlf.getEmail != "Sin registro") {
+                                  // Get.offAllNamed('/listarArticulos');
+                                  Get.showSnackbar(const GetSnackBar(
+                                    title: "Validacion de usuarios",
+                                    message: "Usuario Registrado",
+                                    icon: Icon(Icons.warning_amber_sharp),
+                                    backgroundColor:
+                                        Color.fromARGB(255, 213, 136, 130),
+                                  ));
+                                  Get.offAllNamed('/login');
+                                }
+                              }).catchError((onError) {
+                                Get.showSnackbar(const GetSnackBar(
+                                  title: "Validacion de usuarios",
+                                  message: "Usuario ya esta registrado",
+                                  icon: Icon(Icons.warning_amber_sharp),
+                                  backgroundColor:
+                                      Color.fromARGB(255, 213, 136, 130),
+                                ));
+                              });
                             },
                             style: TextButton.styleFrom(
                                 primary: Colors.white,
@@ -264,7 +299,6 @@ class _RegistrarConductorState extends State<RegistrarConductor> {
                   ),
                 ],
               ),
-              
             ),
           ),
         ],

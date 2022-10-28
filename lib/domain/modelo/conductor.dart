@@ -5,8 +5,8 @@ class Conductor {
   var telefono;
   var correo;
   var placaMoto;
-  var usuario;
   var clave;
+  var tipoUsuario;
 
   Conductor(
       {this.nombres,
@@ -15,6 +15,8 @@ class Conductor {
       this.telefono,
       this.correo,
       this.placaMoto,
-      this.usuario,
-      this.clave});
+      this.clave,
+      this.tipoUsuario = "conductor"});
 }
+
+List<Conductor> listaConductores = [];

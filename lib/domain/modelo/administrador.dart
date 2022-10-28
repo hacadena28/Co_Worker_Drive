@@ -1,4 +1,4 @@
-class Pasajero {
+class Administrador {
   var nombres;
   var apellidos;
   var sexo;
@@ -7,14 +7,14 @@ class Pasajero {
   var clave;
   var tipoUsuario;
 
-  Pasajero(
+  Administrador(
       {this.nombres,
       this.apellidos,
       this.sexo,
       this.telefono,
       this.correo,
       this.clave,
-      this.tipoUsuario = "pasajero"});
+      this.tipoUsuario = "administrador"});
 }
 
-List<Pasajero> listaPasajeros = [];
+List<Administrador> listaAdministradores = [];

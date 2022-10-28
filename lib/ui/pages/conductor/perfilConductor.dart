@@ -1,3 +1,4 @@
+import 'package:coworkerdriver/domain/modelo/conductor.dart';
 import 'package:coworkerdriver/ui/pages/navegador/menunav.dart';
 import 'package:flutter/material.dart';
 
@@ -8,9 +9,18 @@ class PerfilConductor extends StatelessWidget {
   TextEditingController controltelefono = TextEditingController();
   TextEditingController controlcorreo = TextEditingController();
   TextEditingController controlplacamoto = TextEditingController();
-  TextEditingController controlusuario = TextEditingController();
   TextEditingController controlclave = TextEditingController();
   var bandera = false;
+/*
+  PerfilConductor(Conductor usuario) {
+    controlnombres.text = usuario.nombres.toString();
+    controlapellidos.text = usuario.apellidos.toString();
+    controlsexo.text = usuario.sexo.toString();
+    controltelefono.text = usuario.telefono.toString();
+    controlcorreo.text = usuario.correo.toString();
+    controlplacamoto.text = usuario.placaMoto.toString();
+  }
+  */
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -152,42 +162,8 @@ class PerfilConductor extends StatelessWidget {
                           SizedBox(
                             height: 10,
                           ),
-                          TextField(
-                            controller: controlusuario,
-                            enabled: false,
-                            keyboardType: TextInputType.text,
-                            decoration: InputDecoration(
-                              border: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(
-                                  30,
-                                ),
-                              ),
-                              labelText: 'Usuario',
-                              icon: Icon(
-                                Icons.person,
-                                color: Colors.amber,
-                              ),
-                            ),
-                          ),
                           SizedBox(
                             height: 10,
-                          ),
-                          TextField(
-                            controller: controlclave,
-                            enabled: false,
-                            obscureText: true,
-                            decoration: InputDecoration(
-                              border: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(
-                                  30,
-                                ),
-                              ),
-                              labelText: 'Clave',
-                              icon: Icon(
-                                Icons.person,
-                                color: Colors.amber,
-                              ),
-                            ),
                           ),
                           SizedBox(
                             height: 10,

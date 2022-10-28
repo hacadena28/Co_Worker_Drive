@@ -1,3 +1,5 @@
+import 'package:coworkerdriver/domain/controller/controladoruser.dart';
+import 'package:coworkerdriver/domain/modelo/conductor.dart';
 import 'package:coworkerdriver/ui/pages/conductor/perfilConductor.dart';
 import 'package:coworkerdriver/ui/pages/login/registrarConductor.dart';
 import 'package:coworkerdriver/ui/pages/login/registrarPasajero.dart';

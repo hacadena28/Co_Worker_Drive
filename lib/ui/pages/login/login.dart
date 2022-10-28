@@ -1,5 +1,9 @@
 import 'package:coworkerdriver/domain/controller/controladorAuth.dart';
 import 'package:coworkerdriver/domain/controller/controladoruser.dart';
+import 'package:coworkerdriver/domain/modelo/administrador.dart';
+import 'package:coworkerdriver/domain/modelo/conductor.dart';
+import 'package:coworkerdriver/domain/modelo/pasajero.dart';
+import 'package:coworkerdriver/ui/pages/conductor/perfilConductor.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
