@@ -1,4 +1,5 @@
-import 'package:flutter/cupertino.dart';
+import 'package:coworkerdriver/domain/controller/controladorAuth.dart';
+import 'package:coworkerdriver/domain/controller/controladoruser.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -10,6 +11,8 @@ class Login extends StatefulWidget {
 class _LoginState extends State<Login> {
   TextEditingController controluser = TextEditingController();
   TextEditingController controlpassw = TextEditingController();
+  ControllerUser controlu = Get.find();
+  Controllerauthf controlf = Get.find();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -17,9 +20,9 @@ class _LoginState extends State<Login> {
       body: ListView(
         children: <Widget>[
           Padding(
-            padding: EdgeInsets.only(top: 15.0, left: 10.0),
+            padding: const EdgeInsets.only(top: 15.0, left: 10.0),
           ),
-          SizedBox(height: 25.0),
+          SizedBox(height: 10.0),
           Padding(
             padding: EdgeInsets.only(left: 30.0),
             child: Row(
@@ -33,12 +36,14 @@ class _LoginState extends State<Login> {
               ],
             ),
           ),
-          SizedBox(height: 40.0),
+          SizedBox(height: 20.0),
           Container(
             height: MediaQuery.of(context).size.height - 185.0,
             decoration: BoxDecoration(
               color: Colors.white,
-              borderRadius: BorderRadius.only(topLeft: Radius.circular(75.0)),
+              borderRadius: BorderRadius.only(
+                  topLeft: Radius.circular(60.0),
+                  topRight: Radius.circular(60.0)),
             ),
             child: Center(
               child: Padding(
@@ -91,54 +96,55 @@ class _LoginState extends State<Login> {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Padding(
-                            padding: const EdgeInsets.all(8.0),
+                            padding: const EdgeInsets.fromLTRB(0, 15, 0, 0),
                             child: ElevatedButton.icon(
                                 icon: Icon(
                                   Icons.login,
-                                  size: 20,
+                                  size: 25,
                                   color: Colors.white,
                                 ),
                                 onPressed: () {
-                                  Get.offAllNamed('/perfilConductor');
+                                  controlf
+                                      .ingresarEmail(
+                                          controluser.text, controlpassw.text)
+                                      .then((Value) {
+                                    if (controlf.getEmail != "Sin registro") {
+                                      Get.offAllNamed('/perfilConductor');
+                                    } else {
+                                      Get.showSnackbar(const GetSnackBar(
+                                        title: "Validacion de usuarios",
+                                        message: "Usuario no existe BD",
+                                        icon: Icon(Icons.warning_amber_sharp),
+                                        backgroundColor: Colors.red,
+                                      ));
+                                    }
+                                  });
                                 },
                                 style: TextButton.styleFrom(
                                     primary: Colors.white,
                                     backgroundColor: Colors.green[600]),
-                                label: Text("Ingresar")),
+                                label: Text("Iniciar Sesion")),
                           ),
                         ],
                       ),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
+                        children: <Widget>[
                           Text('¿No tienes una cuenta?',
                               style: TextStyle(
                                 color: Colors.indigo,
                                 fontFamily: 'Montserrat',
                                 fontWeight: FontWeight.bold,
-                                fontSize: 20.0,
+                                fontSize: 15.0,
                               )),
-                        ],
-                      ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
                           Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: ElevatedButton.icon(
-                                icon: Icon(
-                                  Icons.add_circle_outline_sharp,
-                                  size: 20,
-                                  color: Colors.white,
-                                ),
+                              padding: const EdgeInsets.all(0.0),
+                              child: TextButton(
                                 onPressed: () {
                                   Get.offAllNamed('/rol');
                                 },
-                                style: TextButton.styleFrom(
-                                    primary: Colors.white,
-                                    backgroundColor: Colors.green[600]),
-                                label: Text("Crear Cuenta")),
-                          ),
+                                child: Text("Registrate"),
+                              )),
                         ],
                       ),
                     ],

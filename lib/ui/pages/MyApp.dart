@@ -19,8 +19,8 @@ class MyApp extends StatelessWidget {
       routes: {
         '/login': (context) => Login(),
         '/rol': (context) => MyHomePage(),
-        '/loginConductor': (context) => RegistrarConductor(),
-        '/loginPasajero': (context) => RegistrarPasajero(),
+        '/loginConductor': (context) => const RegistrarConductor(),
+        '/loginPasajero': (context) => const RegistrarPasajero(),
         '/perfilConductor': (context) => PerfilConductor(),
       },
       home: Login(),
