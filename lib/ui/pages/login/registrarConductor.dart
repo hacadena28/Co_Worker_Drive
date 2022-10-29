@@ -269,7 +269,7 @@ class _RegistrarConductorState extends State<RegistrarConductor> {
                                   .registraEmail(
                                       controlcorreo.text, controlclave.text)
                                   .then((Value) {
-                                if (controlf.getEmail != "Sin registro") {
+                                if (controlf.emailf != "Sin registro") {
                                   // Get.offAllNamed('/listarArticulos');
                                   Get.showSnackbar(const GetSnackBar(
                                     title: "Validacion de usuarios",

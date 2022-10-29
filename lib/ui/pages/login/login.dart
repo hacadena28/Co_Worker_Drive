@@ -15,7 +15,7 @@ class Login extends StatefulWidget {
 class _LoginState extends State<Login> {
   TextEditingController controluser = TextEditingController();
   TextEditingController controlpassw = TextEditingController();
-  ControllerUser controlu = Get.find();
+
   Controllerauthf controlf = Get.find();
   @override
   Widget build(BuildContext context) {
@@ -111,17 +111,27 @@ class _LoginState extends State<Login> {
                                   controlf
                                       .ingresarEmail(
                                           controluser.text, controlpassw.text)
-                                      .then((Value) {
-                                    if (controlf.getEmail != "Sin registro") {
+                                      .then((value) {
+                                    if (controlf.emailf != 'Sin Registro') {
                                       Get.offAllNamed('/perfilConductor');
                                     } else {
                                       Get.showSnackbar(const GetSnackBar(
-                                        title: "Validacion de usuarios",
-                                        message: "Usuario no existe BD",
+                                        title: 'Validacion de usarios',
+                                        message:
+                                            'Usuario no existe en la base de datos',
                                         icon: Icon(Icons.warning_amber_sharp),
+                                        duration: Duration(seconds: 4),
                                         backgroundColor: Colors.red,
                                       ));
                                     }
+                                  }).catchError((onError) {
+                                    Get.showSnackbar(const GetSnackBar(
+                                      title: 'Validacion de usarios',
+                                      message: 'Datos Invalidos',
+                                      icon: Icon(Icons.warning_amber_sharp),
+                                      duration: Duration(seconds: 4),
+                                      backgroundColor: Colors.red,
+                                    ));
                                   });
                                 },
                                 style: TextButton.styleFrom(

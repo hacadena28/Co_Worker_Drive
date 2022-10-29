@@ -249,7 +249,7 @@ class _RegistrarPasajeroState extends State<RegistrarPasajero> {
                                   .registraEmail(
                                       controlcorreo.text, controlclave.text)
                                   .then((Value) {
-                                if (controlf.getEmail != "Sin registro") {
+                                if (controlf.emailf != "Sin registro") {
                                   Get.offAllNamed('/listarArticulos');
                                 } else {
                                   Get.showSnackbar(const GetSnackBar(
