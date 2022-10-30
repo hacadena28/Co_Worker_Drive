@@ -1,8 +1,13 @@
+import 'dart:io';
+
 import 'package:coworkerdriver/domain/controller/controladorAuth.dart';
 import 'package:coworkerdriver/domain/modelo/conductor.dart';
 import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:image_picker/image_picker.dart';
+
+import '../../../data/services/peticionFirebaseAuthConductor.dart';
 
 class RegistrarConductor extends StatefulWidget {
   const RegistrarConductor({super.key});
@@ -31,6 +36,19 @@ class _RegistrarConductorState extends State<RegistrarConductor> {
   TextEditingController controlusuario = TextEditingController();
   TextEditingController controlclave = TextEditingController();
   Controllerauthf controlf = Get.find();
+  var _image;
+  ImagePicker picker = ImagePicker();
+  _camGaleria(bool op) async {
+    XFile? image;
+    image = op
+        ? await picker.pickImage(source: ImageSource.camera, imageQuality: 50)
+        : await picker.pickImage(source: ImageSource.gallery, imageQuality: 50);
+
+    setState(() {
+      _image = (image != null) ? File(image.path) : null;
+    });
+  }
+
   final List<String> items = [
     'F',
     'M',
@@ -99,6 +117,42 @@ class _RegistrarConductorState extends State<RegistrarConductor> {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
+                  Center(
+                    child: GestureDetector(
+                      onTap: () async {
+                        _opcioncamara(context);
+                      },
+                      child: CircleAvatar(
+                        radius: 50,
+                        backgroundColor: Colors.blue,
+                        child: _image != null
+                            ? ClipRRect(
+                                borderRadius: BorderRadius.circular(48),
+                                child: Image.file(
+                                  _image,
+                                  width: 100,
+                                  height: 100,
+                                  fit: BoxFit.fitHeight,
+                                ),
+                              )
+                            : Container(
+                                decoration: BoxDecoration(
+                                  color: Colors.blue,
+                                  borderRadius: BorderRadius.circular(48),
+                                ),
+                                width: 100,
+                                height: 100,
+                                child: const Icon(
+                                  Icons.camera_alt_outlined,
+                                  color: Colors.white,
+                                ),
+                              ),
+                      ),
+                    ),
+                  ),
+                  SizedBox(
+                    height: 5,
+                  ),
                   TextField(
                     controller: controlnombres,
                     keyboardType: TextInputType.text,
@@ -152,62 +206,63 @@ class _RegistrarConductorState extends State<RegistrarConductor> {
                       ),
                     ),
                   ),
-                  DropdownButtonHideUnderline(
-                      child: Center(
-                    child: DropdownButton2(
-                      isExpanded: true,
-                      hint: Row(
-                        children: const [
-                          Padding(
-                            padding: const EdgeInsets.only(left: 7, right: 18),
-                            child: Icon(
-                              Icons.list,
-                              size: 28,
-                              color: Colors.amber,
-                            ),
-                          ),
-                          SizedBox(
-                            width: 4,
-                          ),
-                          Center(
-                            child: Expanded(
-                              child: Padding(
-                                padding: EdgeInsets.only(left: 15.0),
-                                child: Text(
-                                  'selecciona el sexo',
-                                  style: TextStyle(
-                                    fontSize: 20,
-                                    //fontWeight: FontWeight.bold,
-                                    color: Colors.black,
-                                  ),
-                                  overflow: TextOverflow.ellipsis,
-                                ),
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-                      items: items
-                          .map(
-                            (item) => DropdownMenuItem<String>(
-                              value: item,
-                              child: Text(
-                                item,
-                                style: const TextStyle(
-                                  fontSize: 14,
-                                ),
-                              ),
-                            ),
-                          )
-                          .toList(),
-                      value: selectedValue,
-                      onChanged: (value) {
-                        setState(() {
-                          selectedValue = value as String;
-                        });
-                      },
-                    ),
-                  )),
+                  // DropdownButtonHideUnderline(
+                  //     child: Center(
+                  //   child: DropdownButton2(
+                  //     isExpanded: true,
+                  //     hint: Row(
+                  //       children: const [
+                  //         Padding(
+                  //           padding: const EdgeInsets.only(left: 7, right: 18),
+                  //           child: Icon(
+                  //             Icons.list,
+                  //             size: 28,
+                  //             color: Colors.amber,
+                  //           ),
+                  //         ),
+                  //         SizedBox(
+                  //           width: 4,
+                  //         ),
+                  //         Center(
+                  //           child: Expanded(
+                  //             child: Padding(
+                  //               padding: EdgeInsets.only(left: 15.0),
+                  //               child: Text(
+                  //                 'selecciona el sexo',
+                  //                 style: TextStyle(
+                  //                   fontSize: 20,
+                  //                   //fontWeight: FontWeight.bold,
+                  //                   color: Colors.black,
+                  //                 ),
+                  //                 overflow: TextOverflow.ellipsis,
+                  //               ),
+                  //             ),
+                  //           ),
+                  //         ),
+                  //       ],
+                  //     ),
+                  //     items: items
+                  //         .map(
+                  //           (item) => DropdownMenuItem<String>(
+                  //             value: item,
+                  //             child: Text(
+                  //               item,
+                  //               style: const TextStyle(
+                  //                 fontSize: 14,
+                  //               ),
+                  //             ),
+                  //           ),
+                  //         )
+                  //         .toList(),
+                  //     value: selectedValue,
+                  //     onChanged: (value) {
+                  //       setState(() {
+                  //         selectedValue = value as String;
+                  //       });
+                  //     },
+                  //   ),
+                  // )),
+
                   SizedBox(
                     height: 10,
                   ),
@@ -268,25 +323,7 @@ class _RegistrarConductorState extends State<RegistrarConductor> {
                   SizedBox(
                     height: 10,
                   ),
-                  TextField(
-                    controller: controlusuario,
-                    keyboardType: TextInputType.text,
-                    decoration: InputDecoration(
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(
-                          30,
-                        ),
-                      ),
-                      labelText: 'Usuario',
-                      icon: Icon(
-                        Icons.person,
-                        color: Colors.amber,
-                      ),
-                    ),
-                  ),
-                  SizedBox(
-                    height: 10,
-                  ),
+
                   TextField(
                     controller: controlclave,
                     obscureText: true,
@@ -318,16 +355,29 @@ class _RegistrarConductorState extends State<RegistrarConductor> {
                               color: Colors.white,
                             ),
                             onPressed: () {
-                              Conductor conductor = new Conductor();
-                              conductor.nombres = controlnombres.text;
-                              conductor.apellidos = controlapellidos.text;
-                              conductor.sexo =
-                                  items; // no se como capturar el dato del select
-                              conductor.telefono = controltelefono.text;
-                              conductor.correo = controlcorreo.text;
-                              conductor.placaMoto = controlplacamoto.text;
-                              conductor.clave = controlclave.text;
-                              listaConductores.add(conductor);
+                              // Conductor conductor = new Conductor();
+                              // conductor.nombres = controlnombres.text;
+                              // conductor.apellidos = controlapellidos.text;
+                              // conductor.sexo =
+                              //     items; // no se como capturar el dato del select
+                              // conductor.telefono = controltelefono.text;
+                              // conductor.correo = controlcorreo.text;
+                              // conductor.placaMoto = controlplacamoto.text;
+                              // conductor.clave = controlclave.text;
+                              // listaConductores.add(conductor);
+                              var catalogo = <String, dynamic>{
+                                'nombres': controlnombres.text,
+                                'apellidos': controlapellidos.text,
+                                'sexo': controlsexo.text,
+                                'telefono': controltelefono.text,
+                                'correo': controlcorreo.text,
+                                'placaMoto': controlplacamoto.text,
+                                'clave': controlclave.text,
+                                'foto': "",
+                              };
+
+                              PeticionesConductor.crearConductor(
+                                  catalogo, _image);
                               controlf
                                   .registraEmail(
                                       controlcorreo.text, controlclave.text)
@@ -338,6 +388,7 @@ class _RegistrarConductorState extends State<RegistrarConductor> {
                                     title: "Felicidades",
                                     message: "Usuario Registrado",
                                     icon: Icon(Icons.warning_amber_sharp),
+                                    duration: Duration(seconds: 4),
                                     backgroundColor:
                                         Color.fromARGB(255, 66, 231, 11),
                                   ));
@@ -348,6 +399,7 @@ class _RegistrarConductorState extends State<RegistrarConductor> {
                                   title: "Validacion de usuarios",
                                   message: "Usuario ya esta registrado",
                                   icon: Icon(Icons.warning_amber_sharp),
+                                  duration: Duration(seconds: 4),
                                   backgroundColor:
                                       Color.fromARGB(255, 213, 136, 130),
                                 ));
@@ -367,5 +419,34 @@ class _RegistrarConductorState extends State<RegistrarConductor> {
         ],
       ),
     );
+  }
+
+  void _opcioncamara(context) {
+    showModalBottomSheet(
+        context: context,
+        builder: (BuildContext bc) {
+          return SafeArea(
+            child: Wrap(
+              children: <Widget>[
+                ListTile(
+                    leading: const Icon(Icons.photo_library),
+                    title: const Text('Imagen de Galeria'),
+                    onTap: () {
+                      _camGaleria(false);
+                      Get.back();
+                      // Navigator.of(context).pop();
+                    }),
+                ListTile(
+                  leading: const Icon(Icons.photo_camera),
+                  title: const Text('Capturar Imagen'),
+                  onTap: () {
+                    _camGaleria(true);
+                    Navigator.of(context).pop();
+                  },
+                ),
+              ],
+            ),
+          );
+        });
   }
 }

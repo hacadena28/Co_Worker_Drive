@@ -7,17 +7,42 @@ class Conductor {
   var placaMoto;
   var clave;
   var tipoUsuario;
+  final String foto;
+
   //hola mundo
 
   Conductor(
-      {this.nombres,
-      this.apellidos,
-      this.sexo,
-      this.telefono,
-      this.correo,
-      this.placaMoto,
-      this.clave,
-      this.tipoUsuario = "conductor"});
-}
+      {required this.nombres,
+      required this.apellidos,
+      required this.sexo,
+      required this.telefono,
+      required this.correo,
+      required this.placaMoto,
+      required this.clave,
+      this.tipoUsuario = "conductor",
+      required this.foto});
 
-List<Conductor> listaConductores = [];
+
+  factory Conductor.desdeDoc(Map<String, dynamic> data) {
+    return Conductor(
+      nombres: data['nombres'] ?? '',
+      apellidos: data['apellidos'] ?? '',
+      sexo: data['sexo'] ?? '',
+      telefono: data['telefono'] ?? '',
+      correo: data['correo'] ?? '',
+      placaMoto: data['placaMoto'] ?? '',
+      clave: data['clave'] ?? '',
+      foto: data['foto'] ?? '',
+    );
+  }
+  Map<String, dynamic> toJson() => {
+        "nombres": nombres,
+        "apellidos": apellidos,
+        "sexo": sexo,
+        "telefono": telefono,
+        "correo": correo,
+        "placaMoto": placaMoto,
+        "clave": clave,
+        "foto": foto
+      };
+}

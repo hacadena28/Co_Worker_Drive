@@ -6,15 +6,36 @@ class Pasajero {
   var correo;
   var clave;
   var tipoUsuario;
+  final String foto;
 
   Pasajero(
-      {this.nombres,
-      this.apellidos,
-      this.sexo,
-      this.telefono,
-      this.correo,
-      this.clave,
-      this.tipoUsuario = "pasajero"});
-}
+      {required this.nombres,
+      required this.apellidos,
+      required this.sexo,
+      required this.telefono,
+      required this.correo,
+      required this.clave,
+      this.tipoUsuario = "pasajero",
+      required this.foto});
 
-List<Pasajero> listaPasajeros = [];
+  factory Pasajero.desdeDoc(Map<String, dynamic> data) {
+    return Pasajero(
+      nombres: data['nombres'] ?? '',
+      apellidos: data['apellidos'] ?? '',
+      sexo: data['sexo'] ?? '',
+      telefono: data['telefono'] ?? '',
+      correo: data['correo'] ?? '',
+      clave: data['clave'] ?? '',
+      foto: data['foto'] ?? '',
+    );
+  }
+  Map<String, dynamic> toJson() => {
+        "nombres": nombres,
+        "apellidos": apellidos,
+        "sexo": sexo,
+        "telefono": telefono,
+        "correo": correo,
+        "clave": clave,
+        "foto": foto
+      };
+}
