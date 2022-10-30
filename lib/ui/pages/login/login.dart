@@ -12,11 +12,12 @@ class Login extends StatefulWidget {
   _LoginState createState() => _LoginState();
 }
 
+Controllerauthf controlf = Get.find();
+
 class _LoginState extends State<Login> {
   TextEditingController controluser = TextEditingController();
   TextEditingController controlpassw = TextEditingController();
 
-  Controllerauthf controlf = Get.find();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -114,6 +115,7 @@ class _LoginState extends State<Login> {
                                       .then((value) {
                                     if (controlf.emailf != 'Sin Registro') {
                                       Get.offAllNamed('/perfilConductor');
+                                      controlf.emailF("Sin Registro");
                                     } else {
                                       Get.showSnackbar(const GetSnackBar(
                                         title: 'Validacion de usarios',
