@@ -1,20 +1,19 @@
 import 'dart:ffi';
 
-import 'package:coworkerdriver/domain/modelo/conductor.dart';
-import 'package:coworkerdriver/ui/pages/navegador/menunavConductor.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:dropdown_button2/dropdown_button2.dart';
 import '../login/login.dart';
+import '../navegador/menunavPasajero.dart';
 
-class PerfilConductor extends StatefulWidget {
-  const PerfilConductor({super.key});
+class PerfilPasajero extends StatefulWidget {
+  const PerfilPasajero({super.key});
 
   @override
-  State<PerfilConductor> createState() => _PerfilConductorState();
+  State<PerfilPasajero> createState() => _PerfilPasajeroState();
 }
 
-class _PerfilConductorState extends State<PerfilConductor> {
+class _PerfilPasajeroState extends State<PerfilPasajero> {
   @override
   TextEditingController controlnombres = TextEditingController();
   TextEditingController controlapellidos = TextEditingController();
@@ -28,7 +27,7 @@ class _PerfilConductorState extends State<PerfilConductor> {
   set controlf(String controlf) {}
 
 /*
-  PerfilConductor(Conductor usuario) {
+  PerfilPasajero(Conductor usuario) {
     controlnombres.text = usuario.nombres.toString();
     controlapellidos.text = usuario.apellidos.toString();
     controlsexo.text = usuario.sexo.toString();
@@ -41,7 +40,7 @@ class _PerfilConductorState extends State<PerfilConductor> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        bottomNavigationBar: DemoBottomAppBar(),
+        bottomNavigationBar: DemoBottomAppBarPasajero(),
         //  drawer: Drawer(),
         appBar: AppBar(
           title: Center(
