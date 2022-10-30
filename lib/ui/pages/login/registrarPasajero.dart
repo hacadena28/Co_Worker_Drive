@@ -70,14 +70,14 @@ class _RegistrarPasajeroState extends State<RegistrarPasajero> {
               ],
             ),
           ),
-          SizedBox(height: 40.0),
+          SizedBox(height: 20.0),
           Container(
             height: MediaQuery.of(context).size.height - 185.0,
             decoration: BoxDecoration(
               color: Colors.white,
               borderRadius: BorderRadius.only(
-                  topLeft: Radius.circular(96.0),
-                  topRight: Radius.circular(96.0)),
+                  topLeft: Radius.circular(60.0),
+                  topRight: Radius.circular(60.0)),
               boxShadow: [
                 new BoxShadow(
                   color: Colors.indigo.shade900,

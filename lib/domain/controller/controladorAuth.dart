@@ -4,11 +4,14 @@ import 'package:get/get.dart';
 
 class Controllerauthf extends GetxController {
   final FirebaseAuth authf = FirebaseAuth.instance;
-    final Rx<dynamic> _uid = "".obs;
+  final Rx<dynamic> _uid = "".obs;
   final Rx<dynamic> _usuarior = "Sin Registro".obs;
 
   String get emailf => _usuarior.value;
   String get uid => _uid.value;
+  emailF(String sin) {
+    _usuarior.value = sin;
+  }
 
   Future<void> registraEmail(String email, String passwd) async {
     try {

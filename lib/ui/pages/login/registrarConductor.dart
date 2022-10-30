@@ -71,14 +71,14 @@ class _RegistrarConductorState extends State<RegistrarConductor> {
               ],
             ),
           ),
-          SizedBox(height: 40.0),
+          SizedBox(height: 20.0),
           Container(
             height: MediaQuery.of(context).size.height - 185.0,
             decoration: BoxDecoration(
               color: Colors.white,
               borderRadius: BorderRadius.only(
-                  topLeft: Radius.circular(96.0),
-                  topRight: Radius.circular(96.0)),
+                  topLeft: Radius.circular(60.0),
+                  topRight: Radius.circular(60.0)),
               boxShadow: [
                 new BoxShadow(
                   color: Colors.indigo.shade900,
@@ -272,11 +272,11 @@ class _RegistrarConductorState extends State<RegistrarConductor> {
                                 if (controlf.emailf != "Sin registro") {
                                   // Get.offAllNamed('/listarArticulos');
                                   Get.showSnackbar(const GetSnackBar(
-                                    title: "Validacion de usuarios",
+                                    title: "Felicidades",
                                     message: "Usuario Registrado",
                                     icon: Icon(Icons.warning_amber_sharp),
                                     backgroundColor:
-                                        Color.fromARGB(255, 213, 136, 130),
+                                        Color.fromARGB(255, 66, 231, 11),
                                   ));
                                   Get.offAllNamed('/login');
                                 }

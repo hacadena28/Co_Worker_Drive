@@ -1,6 +1,9 @@
 import 'package:coworkerdriver/domain/modelo/conductor.dart';
 import 'package:coworkerdriver/ui/pages/navegador/menunav.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+
+import '../login/login.dart';
 
 class PerfilConductor extends StatelessWidget {
   TextEditingController controlnombres = TextEditingController();
@@ -11,6 +14,8 @@ class PerfilConductor extends StatelessWidget {
   TextEditingController controlplacamoto = TextEditingController();
   TextEditingController controlclave = TextEditingController();
   var bandera = false;
+
+  set controlf(String controlf) {}
 /*
   PerfilConductor(Conductor usuario) {
     controlnombres.text = usuario.nombres.toString();
@@ -27,6 +32,24 @@ class PerfilConductor extends StatelessWidget {
       child: Scaffold(
         bottomNavigationBar: menu(),
         drawer: Drawer(),
+        appBar: AppBar(
+          actions: <Widget>[
+            Row(
+              children: [
+                IconButton(
+                  onPressed: () {
+                    Get.to(() => Login());
+                    controlf = "Sin registrar";
+                  },
+                  icon: const Icon(
+                    Icons.arrow_back_ios_rounded,
+                    color: Colors.white,
+                  ),
+                ),
+              ],
+            ),
+          ],
+        ),
         body: CustomScrollView(
           slivers: [
             SliverPersistentHeader(
