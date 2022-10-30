@@ -1,5 +1,6 @@
 import 'package:coworkerdriver/domain/controller/controladorAuth.dart';
 import 'package:coworkerdriver/domain/modelo/conductor.dart';
+import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -30,6 +31,11 @@ class _RegistrarConductorState extends State<RegistrarConductor> {
   TextEditingController controlusuario = TextEditingController();
   TextEditingController controlclave = TextEditingController();
   Controllerauthf controlf = Get.find();
+  final List<String> items = [
+    'F',
+    'M',
+  ];
+  String? selectedValue;
 
   @override
   Widget build(BuildContext context) {
@@ -146,6 +152,62 @@ class _RegistrarConductorState extends State<RegistrarConductor> {
                       ),
                     ),
                   ),
+                  DropdownButtonHideUnderline(
+                      child: Center(
+                    child: DropdownButton2(
+                      isExpanded: true,
+                      hint: Row(
+                        children: const [
+                          Padding(
+                            padding: const EdgeInsets.only(left: 7, right: 18),
+                            child: Icon(
+                              Icons.list,
+                              size: 28,
+                              color: Colors.amber,
+                            ),
+                          ),
+                          SizedBox(
+                            width: 4,
+                          ),
+                          Center(
+                            child: Expanded(
+                              child: Padding(
+                                padding: EdgeInsets.only(left: 15.0),
+                                child: Text(
+                                  'selecciona el sexo',
+                                  style: TextStyle(
+                                    fontSize: 20,
+                                    //fontWeight: FontWeight.bold,
+                                    color: Colors.black,
+                                  ),
+                                  overflow: TextOverflow.ellipsis,
+                                ),
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                      items: items
+                          .map(
+                            (item) => DropdownMenuItem<String>(
+                              value: item,
+                              child: Text(
+                                item,
+                                style: const TextStyle(
+                                  fontSize: 14,
+                                ),
+                              ),
+                            ),
+                          )
+                          .toList(),
+                      value: selectedValue,
+                      onChanged: (value) {
+                        setState(() {
+                          selectedValue = value as String;
+                        });
+                      },
+                    ),
+                  )),
                   SizedBox(
                     height: 10,
                   ),
@@ -259,7 +321,8 @@ class _RegistrarConductorState extends State<RegistrarConductor> {
                               Conductor conductor = new Conductor();
                               conductor.nombres = controlnombres.text;
                               conductor.apellidos = controlapellidos.text;
-                              conductor.sexo = controlsexo.text;
+                              conductor.sexo =
+                                  items; // no se como capturar el dato del select
                               conductor.telefono = controltelefono.text;
                               conductor.correo = controlcorreo.text;
                               conductor.placaMoto = controlplacamoto.text;

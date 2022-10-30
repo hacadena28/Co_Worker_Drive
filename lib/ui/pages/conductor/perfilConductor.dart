@@ -4,10 +4,18 @@ import 'package:coworkerdriver/domain/modelo/conductor.dart';
 import 'package:coworkerdriver/ui/pages/navegador/menunav.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-
+import 'package:dropdown_button2/dropdown_button2.dart';
 import '../login/login.dart';
 
-class PerfilConductor extends StatelessWidget {
+class PerfilConductor extends StatefulWidget {
+  const PerfilConductor({super.key});
+
+  @override
+  State<PerfilConductor> createState() => _PerfilConductorState();
+}
+
+class _PerfilConductorState extends State<PerfilConductor> {
+  @override
   TextEditingController controlnombres = TextEditingController();
   TextEditingController controlapellidos = TextEditingController();
   TextEditingController controlsexo = TextEditingController();
@@ -18,6 +26,7 @@ class PerfilConductor extends StatelessWidget {
   var bandera = false;
 
   set controlf(String controlf) {}
+
 /*
   PerfilConductor(Conductor usuario) {
     controlnombres.text = usuario.nombres.toString();
@@ -212,11 +221,112 @@ class PerfilConductor extends StatelessWidget {
                                       size: 20,
                                       color: Colors.white,
                                     ),
-                                    onPressed: () {},
+                                    onPressed: () {
+                                      showModalBottomSheet<void>(
+                                        context: context,
+                                        builder: (BuildContext context) {
+                                          return Container(
+                                            height: 350,
+                                            color: Colors.indigo[100],
+                                            child: Center(
+                                              child: Padding(
+                                                padding:
+                                                    const EdgeInsets.all(11.0),
+                                                child: Column(
+                                                  mainAxisAlignment:
+                                                      MainAxisAlignment.center,
+                                                  mainAxisSize:
+                                                      MainAxisSize.max,
+                                                  children: <Widget>[
+                                                    const Text(
+                                                        'Actualizacion de Datos',
+                                                        style: TextStyle(
+                                                          color: Colors.indigo,
+                                                          fontFamily:
+                                                              'Montserrat',
+                                                          fontWeight:
+                                                              FontWeight.bold,
+                                                          fontSize: 20.0,
+                                                        )),
+                                                    SizedBox(
+                                                      height: 30,
+                                                    ),
+                                                    TextField(
+                                                      enabled: true,
+                                                      keyboardType:
+                                                          TextInputType.number,
+                                                      decoration:
+                                                          InputDecoration(
+                                                        border:
+                                                            OutlineInputBorder(
+                                                          borderRadius:
+                                                              BorderRadius
+                                                                  .circular(
+                                                            15,
+                                                          ),
+                                                        ),
+                                                        labelText: 'Telefono',
+                                                        icon: Icon(
+                                                          Icons.person,
+                                                          color: Colors.amber,
+                                                        ),
+                                                      ),
+                                                    ),
+                                                    SizedBox(
+                                                      height: 15,
+                                                    ),
+                                                    TextField(
+                                                      controller:
+                                                          controlplacamoto,
+                                                      enabled: true,
+                                                      keyboardType:
+                                                          TextInputType.text,
+                                                      decoration:
+                                                          InputDecoration(
+                                                        border:
+                                                            OutlineInputBorder(
+                                                          borderRadius:
+                                                              BorderRadius
+                                                                  .circular(
+                                                            15,
+                                                          ),
+                                                        ),
+                                                        labelText: 'placa moto',
+                                                        icon: Icon(
+                                                          Icons.person,
+                                                          color: Colors.amber,
+                                                        ),
+                                                      ),
+                                                    ),
+                                                    SizedBox(
+                                                      height: 15,
+                                                    ),
+                                                    ElevatedButton(
+                                                      child: const Text(
+                                                          'Guardar Cambios'),
+                                                      onPressed: () =>
+                                                          Navigator.pop(
+                                                              context),
+                                                      style:
+                                                          TextButton.styleFrom(
+                                                              primary:
+                                                                  Colors.white,
+                                                              backgroundColor:
+                                                                  Colors.green[
+                                                                      600]),
+                                                    ),
+                                                  ],
+                                                ),
+                                              ),
+                                            ),
+                                          );
+                                        },
+                                      );
+                                    },
                                     style: TextButton.styleFrom(
                                         primary: Colors.white,
                                         backgroundColor: Colors.green[600]),
-                                    label: Text("Actualizar Datos")),
+                                    label: Text("Modificar Perfil")),
                               ),
                             ],
                           ),
