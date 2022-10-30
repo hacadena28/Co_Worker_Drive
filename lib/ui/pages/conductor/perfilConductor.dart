@@ -32,8 +32,8 @@ class PerfilConductor extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        bottomNavigationBar: menu(),
-        drawer: Drawer(),
+       // bottomNavigationBar: menu(),
+      //  drawer: Drawer(),
         appBar: AppBar(
           actions: <Widget>[
             Row(
