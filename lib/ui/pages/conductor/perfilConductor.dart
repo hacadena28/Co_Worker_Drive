@@ -32,9 +32,20 @@ class PerfilConductor extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-       // bottomNavigationBar: menu(),
-      //  drawer: Drawer(),
+        bottomNavigationBar: DemoBottomAppBar(),
+        //  drawer: Drawer(),
         appBar: AppBar(
+          title: Center(
+            child: Text(
+              'Datos Personales',
+              style: TextStyle(
+                color: Colors.amber,
+                fontFamily: 'Montserrat',
+                fontSize: 20,
+              ),
+            ),
+          ),
+          backgroundColor: Colors.indigo,
           actions: <Widget>[
             Row(
               children: [
@@ -44,7 +55,7 @@ class PerfilConductor extends StatelessWidget {
                     controlf = "Sin registrar";
                   },
                   icon: const Icon(
-                    Icons.arrow_back_ios_rounded,
+                    Icons.output_rounded,
                     color: Colors.white,
                   ),
                 ),
@@ -63,17 +74,13 @@ class PerfilConductor extends StatelessWidget {
                 <Widget>[
                   Padding(
                     padding:
-                        const EdgeInsets.only(top: 130.0, left: 20, right: 20),
+                        const EdgeInsets.only(top: 40.0, left: 20, right: 20),
                     child: Align(
                       alignment: Alignment.bottomCenter,
                       child: Column(
                         children: [
-                          Text(
-                            'Datos Personales',
-                            textAlign: TextAlign.center,
-                          ),
                           SizedBox(
-                            height: 30,
+                            height: 5,
                           ),
                           TextField(
                             enabled: false,
@@ -93,7 +100,7 @@ class PerfilConductor extends StatelessWidget {
                             ),
                           ),
                           SizedBox(
-                            height: 10,
+                            height: 20,
                           ),
                           TextField(
                             controller: controlapellidos,
@@ -113,7 +120,7 @@ class PerfilConductor extends StatelessWidget {
                             ),
                           ),
                           SizedBox(
-                            height: 10,
+                            height: 20,
                           ),
                           TextField(
                             controller: controlsexo,
@@ -132,7 +139,7 @@ class PerfilConductor extends StatelessWidget {
                             ),
                           ),
                           SizedBox(
-                            height: 10,
+                            height: 20,
                           ),
                           TextField(
                             controller: controltelefono,
@@ -152,7 +159,7 @@ class PerfilConductor extends StatelessWidget {
                             ),
                           ),
                           SizedBox(
-                            height: 10,
+                            height: 20,
                           ),
                           TextField(
                             controller: controlcorreo,
@@ -172,7 +179,7 @@ class PerfilConductor extends StatelessWidget {
                             ),
                           ),
                           SizedBox(
-                            height: 10,
+                            height: 20,
                           ),
                           TextField(
                             controller: controlplacamoto,
@@ -245,18 +252,18 @@ class MySliverAppBar extends SliverPersistentHeaderDelegate {
         Center(
           child: Opacity(
             opacity: shrinkOffset / expandedHeight,
-            child: Text(
-              "Mi Perfil",
-              style: TextStyle(
-                color: Colors.amber,
-                fontWeight: FontWeight.w700,
-                fontSize: 23,
-              ),
-            ),
+            // child: Text(
+            //   "Mi Perfil",
+            //   style: TextStyle(
+            //     color: Colors.amber,
+            //     fontWeight: FontWeight.w700,
+            //     fontSize: 23,
+            //   ),
+            // ),
           ),
         ),
         Positioned(
-          top: expandedHeight / 2 - shrinkOffset,
+          top: expandedHeight / 7 - shrinkOffset,
           left: MediaQuery.of(context).size.width / 4,
           child: Opacity(
             opacity: (1 - shrinkOffset / expandedHeight),

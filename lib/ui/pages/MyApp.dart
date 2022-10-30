@@ -1,5 +1,6 @@
 import 'package:coworkerdriver/domain/controller/controladoruser.dart';
 import 'package:coworkerdriver/domain/modelo/conductor.dart';
+import 'package:coworkerdriver/ui/pages/conductor/homeConductor.dart';
 import 'package:coworkerdriver/ui/pages/conductor/perfilConductor.dart';
 import 'package:coworkerdriver/ui/pages/login/registrarConductor.dart';
 import 'package:coworkerdriver/ui/pages/login/registrarPasajero.dart';
@@ -24,6 +25,7 @@ class MyApp extends StatelessWidget {
         '/loginConductor': (context) => const RegistrarConductor(),
         '/loginPasajero': (context) => const RegistrarPasajero(),
         '/perfilConductor': (context) => PerfilConductor(),
+        '/homeConductor': (context) => homeConductor(),
       },
       home: Login(),
     );

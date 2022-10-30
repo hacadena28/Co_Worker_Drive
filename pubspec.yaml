@@ -40,6 +40,9 @@ dependencies:
   firebase_auth: ^4.0.2 
 dev_dependencies:
   flutter_test:
+  cloud_firestore:
+  firebase_storage:
+  image_picker:
     sdk: flutter
 
   # The "flutter_lints" package below contains a set of recommended lints to
