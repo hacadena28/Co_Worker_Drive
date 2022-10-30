@@ -1,3 +1,5 @@
+import 'dart:ffi';
+
 import 'package:coworkerdriver/domain/modelo/conductor.dart';
 import 'package:coworkerdriver/ui/pages/navegador/menunav.dart';
 import 'package:flutter/material.dart';
@@ -43,6 +45,13 @@ class PerfilConductor extends StatelessWidget {
                       alignment: Alignment.bottomCenter,
                       child: Column(
                         children: [
+                          Text(
+                            'Datos Personales',
+                            textAlign: TextAlign.center,
+                          ),
+                          SizedBox(
+                            height: 30,
+                          ),
                           TextField(
                             enabled: false,
                             controller: controlnombres,
@@ -160,13 +169,7 @@ class PerfilConductor extends StatelessWidget {
                             ),
                           ),
                           SizedBox(
-                            height: 10,
-                          ),
-                          SizedBox(
-                            height: 10,
-                          ),
-                          SizedBox(
-                            height: 10,
+                            height: 30,
                           ),
                           Row(
                             mainAxisAlignment: MainAxisAlignment.center,

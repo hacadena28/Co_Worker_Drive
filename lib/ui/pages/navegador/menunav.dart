@@ -1,3 +1,5 @@
+import 'package:coworkerdriver/ui/pages/conductor/perfilConductor.dart';
+import 'package:coworkerdriver/ui/pages/login/registrarConductor.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -10,13 +12,20 @@ class menu extends StatefulWidget {
 
 class _menuState extends State<menu> {
   int index = 0;
+  List<Widget> _paginas = [
+    RegistrarConductor(),
+    PerfilConductor(),
+  ];
   @override
   Widget build(BuildContext context) {
+    //  _paginas[index];
     return BottomNavigationBar(
-      currentIndex: index,
-      onTap: (int i) {
-        setState(() {});
+      onTap: (i) {
+        setState(() {
+          index = i;
+        });
       },
+      currentIndex: index,
       type: BottomNavigationBarType.fixed,
       backgroundColor: Colors.indigo,
       selectedItemColor: Colors.amber,
@@ -31,6 +40,10 @@ class _menuState extends State<menu> {
         BottomNavigationBarItem(
           icon: Icon(Icons.person_outline_sharp),
           label: 'Perfil',
+        ),
+        BottomNavigationBarItem(
+          icon: Icon(Icons.output_rounded),
+          label: 'Salir',
         ),
       ],
     );
