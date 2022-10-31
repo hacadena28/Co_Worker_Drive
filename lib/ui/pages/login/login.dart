@@ -15,6 +15,7 @@ class Login extends StatefulWidget {
 Controllerauthf controlf = Get.find();
 
 class _LoginState extends State<Login> {
+
   TextEditingController controluser = TextEditingController();
   TextEditingController controlpassw = TextEditingController();
 
@@ -115,6 +116,7 @@ class _LoginState extends State<Login> {
                                       .then((value) {
                                     if (controlf.emailf != 'Sin Registro') {
                                       Get.offAllNamed('/perfilConductor');
+
                                       controlf.emailF("Sin Registro");
                                     } else {
                                       Get.showSnackbar(const GetSnackBar(
@@ -174,5 +176,5 @@ class _LoginState extends State<Login> {
     );
   }
 
-  
+ 
 }

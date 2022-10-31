@@ -5,6 +5,8 @@ class Administrador {
   var clave;
   var tipoUsuario;
 
+
+
   Administrador(
       {this.nombres,
       this.apellidos,
@@ -12,5 +14,6 @@ class Administrador {
       this.clave,
       this.tipoUsuario = "administrador"});
 }
+
 
 List<Administrador> listaAdministradores = [];

@@ -9,6 +9,7 @@ class Controllerauthf extends GetxController {
 
   String get emailf => _usuarior.value;
   String get uid => _uid.value;
+  
   emailF(String sin) {
     _usuarior.value = sin;
   }

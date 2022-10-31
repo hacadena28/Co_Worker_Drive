@@ -6,8 +6,9 @@ class Conductor {
   var correo;
   var placaMoto;
   var clave;
-  var tipoUsuario;
   final String foto;
+
+  dynamic tipoUsuario ="conductor";
 
   //hola mundo
 
@@ -19,9 +20,7 @@ class Conductor {
       required this.correo,
       required this.placaMoto,
       required this.clave,
-      this.tipoUsuario = "conductor",
       required this.foto});
-
 
   factory Conductor.desdeDoc(Map<String, dynamic> data) {
     return Conductor(
@@ -43,6 +42,7 @@ class Conductor {
         "correo": correo,
         "placaMoto": placaMoto,
         "clave": clave,
+        "tipoUsuario": tipoUsuario,
         "foto": foto
       };
 }
