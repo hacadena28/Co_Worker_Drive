@@ -311,7 +311,7 @@ class _RegistrarPasajeroState extends State<RegistrarPasajero> {
                                 });
                               } else {
                                 Get.showSnackbar(const GetSnackBar(
-                                  title: "Advertencia",
+                                  title: "ADVERTENCIA",
                                   message: "Por favor rellene todos los campos",
                                   icon: Icon(Icons.warning_amber_sharp),
                                   duration: Duration(seconds: 4),
