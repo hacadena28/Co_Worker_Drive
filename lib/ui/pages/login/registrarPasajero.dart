@@ -1,9 +1,9 @@
 import 'dart:io';
 
-import 'package:coworkerdriver/data/services/peticionFirebaseAuthConductor.dart';
 import 'package:coworkerdriver/data/services/peticionFirebaseAuthPasajero.dart';
 import 'package:coworkerdriver/domain/controller/controladorAuth.dart';
 import 'package:coworkerdriver/domain/modelo/pasajero.dart';
+import 'package:coworkerdriver/data/services/peticionFirebaseAuthConductor.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
@@ -270,45 +270,55 @@ class _RegistrarPasajeroState extends State<RegistrarPasajero> {
                               color: Colors.white,
                             ),
                             onPressed: () {
-                              var catalogo = <String, dynamic>{
-                                'nombres': controlnombres.text,
-                                'apellidos': controlapellidos.text,
-                                'sexo': controlsexo.text,
-                                'telefono': controltelefono.text,
-                                'correo': controlcorreo.text,
-                                'clave': controlclave.text,
-                                'foto': "",
-                              };
+                              if (validarCamposvasios()) {
+                                var catalogo = <String, dynamic>{
+                                  'nombres': controlnombres.text,
+                                  'apellidos': controlapellidos.text,
+                                  'sexo': controlsexo.text,
+                                  'telefono': controltelefono.text,
+                                  'correo': controlcorreo.text,
+                                  'clave': controlclave.text,
+                                  'foto': "",
+                                };
 
-                              PeticionesPasajero.crearPasajero(
-                                  catalogo, _image);
-
-                              controlf
-                                  .registraEmail(
-                                      controlcorreo.text, controlclave.text)
-                                  .then((Value) {
-                                if (controlf.emailf != "Sin registro") {
-                                  // Get.offAllNamed('/listarArticulos');
+                                controlf
+                                    .registraEmail(
+                                        controlcorreo.text, controlclave.text)
+                                    .then((Value) {
+                                  if (controlf.emailf != "Sin registro") {
+                                    // Get.offAllNamed('/listarArticulos');
+                                    PeticionesPasajero.crearPasajero(
+                                        catalogo, _image);
+                                    Get.showSnackbar(const GetSnackBar(
+                                      title: "Felicidades",
+                                      message: "Usuario Registrado",
+                                      icon: Icon(Icons.warning_amber_sharp),
+                                      duration: Duration(seconds: 4),
+                                      backgroundColor:
+                                          Color.fromARGB(255, 66, 231, 11),
+                                    ));
+                                    Get.offAllNamed('/login');
+                                  }
+                                }).catchError((onError) {
                                   Get.showSnackbar(const GetSnackBar(
-                                    title: "Felicidades",
-                                    message: "Usuario Registrado",
+                                    title: "Validacion de usuarios",
+                                    message: "Usuario ya esta registrado",
                                     icon: Icon(Icons.warning_amber_sharp),
                                     duration: Duration(seconds: 4),
                                     backgroundColor:
-                                        Color.fromARGB(255, 66, 231, 11),
+                                        Color.fromARGB(255, 213, 136, 130),
                                   ));
-                                  Get.offAllNamed('/login');
-                                }
-                              }).catchError((onError) {
+                                });
+                              } else {
                                 Get.showSnackbar(const GetSnackBar(
-                                  title: "Validacion de usuarios",
-                                  message: "Usuario ya esta registrado",
+                                  title: "Advertencia",
+                                  message: "Por favor rellene todos los campos",
                                   icon: Icon(Icons.warning_amber_sharp),
                                   duration: Duration(seconds: 4),
                                   backgroundColor:
                                       Color.fromARGB(255, 213, 136, 130),
                                 ));
-                              });
+                              }
                             },
                             style: TextButton.styleFrom(
                                 primary: Colors.white,
@@ -353,5 +363,17 @@ class _RegistrarPasajeroState extends State<RegistrarPasajero> {
             ),
           );
         });
+  }
+
+  bool validarCamposvasios() {
+    if (controlnombres.text.isNotEmpty &&
+        controlapellidos.text.isNotEmpty &&
+        controlsexo.text.isNotEmpty &&
+        controltelefono.text.isNotEmpty &&
+        controlcorreo.text.isNotEmpty &&
+        controlclave.text.isNotEmpty) {
+      return true;
+    }
+    return false;
   }
 }
