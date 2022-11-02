@@ -43,7 +43,7 @@ class DemoBottomAppBarPasajero extends StatelessWidget {
               tooltip: 'driver',
               icon: const Icon(Icons.motorcycle_rounded),
               onPressed: () {
-                Get.offAllNamed('/homeConductor');
+                Get.offAllNamed('/homeMaps');
               },
             ),
             IconButton(

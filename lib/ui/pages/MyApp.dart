@@ -9,6 +9,7 @@ import 'package:get/get.dart';
 
 import 'login/home-pages.dart';
 import 'login/login.dart';
+import 'maps/homeMaps.dart';
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -25,7 +26,7 @@ class MyApp extends StatelessWidget {
         '/loginConductor': (context) => const RegistrarConductor(),
         '/loginPasajero': (context) => const RegistrarPasajero(),
         '/perfilConductor': (context) => PerfilConductor(),
-        '/homeConductor': (context) => homeConductor(),
+        '/homeMaps': (context) => HomeMAps(),
       },
       home: Login(),
     );

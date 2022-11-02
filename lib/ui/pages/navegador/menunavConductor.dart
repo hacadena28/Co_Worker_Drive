@@ -40,10 +40,10 @@ class DemoBottomAppBar extends StatelessWidget {
             ),
             if (centerLocations.contains(fabLocation)) const Spacer(),
             IconButton(
-              tooltip: 'driver',
+              tooltip: 'Maps',
               icon: const Icon(Icons.motorcycle_rounded),
               onPressed: () {
-                Get.offAllNamed('/homeConductor');
+                Get.offAllNamed('/homeMaps');
               },
             ),
             IconButton(
