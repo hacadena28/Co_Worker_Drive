@@ -15,7 +15,6 @@ class Login extends StatefulWidget {
 Controllerauthf controlf = Get.find();
 
 class _LoginState extends State<Login> {
-
   TextEditingController controluser = TextEditingController();
   TextEditingController controlpassw = TextEditingController();
 
@@ -77,7 +76,7 @@ class _LoginState extends State<Login> {
                               30,
                             ),
                           ),
-                          labelText: 'Ingrese usuario',
+                          labelText: 'Ingrese correo electronico',
                           icon: Icon(
                             Icons.person,
                             color: Colors.amber,
@@ -160,6 +159,7 @@ class _LoginState extends State<Login> {
                               child: TextButton(
                                 onPressed: () {
                                   Get.offAllNamed('/rol');
+                                  controlf.emailF("Sin Registro");
                                 },
                                 child: Text("Registrate"),
                               )),
@@ -175,6 +175,4 @@ class _LoginState extends State<Login> {
       ),
     );
   }
-
- 
 }

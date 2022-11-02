@@ -11,8 +11,11 @@ import '../../../data/services/peticionFirebaseAuthConductor.dart';
 import '../login/login.dart';
 
 class PerfilConductor extends StatefulWidget {
-  const PerfilConductor({super.key, /*required this.gestionConductor*/});
- // final Conductor gestionConductor;
+  const PerfilConductor({
+    super.key,
+    /*required this.gestionConductor*/
+  });
+  // final Conductor gestionConductor;
 
   @override
   State<PerfilConductor> createState() => _PerfilConductorState();
@@ -116,280 +119,285 @@ class _PerfilConductorState extends State<PerfilConductor> {
                     topLeft: Radius.circular(70.0),
                     topRight: Radius.circular(70.0)),
               ),
-              child: Column(
-                children: [
-                  Center(
-                    child: GestureDetector(
-                      onTap: () async {
-                        _opcioncamara(context);
-                      },
-                      child: CircleAvatar(
-                        radius: 50,
-                        backgroundColor: Colors.blue,
-                        child: _image != null
-                            ? ClipRRect(
-                                borderRadius: BorderRadius.circular(48),
-                                child: Image.file(
-                                  _image,
+              child: Padding(
+                padding: const EdgeInsets.only(right: 10, left: 10),
+                child: Column(
+                  children: [
+                    Center(
+                      child: GestureDetector(
+                        onTap: () async {
+                          _opcioncamara(context);
+                        },
+                        child: CircleAvatar(
+                          radius: 50,
+                          backgroundColor: Colors.blue,
+                          child: _image != null
+                              ? ClipRRect(
+                                  borderRadius: BorderRadius.circular(48),
+                                  child: Image.file(
+                                    _image,
+                                    width: 100,
+                                    height: 100,
+                                    fit: BoxFit.fitHeight,
+                                  ),
+                                )
+                              : Container(
+                                  decoration: BoxDecoration(
+                                    color: Colors.blue,
+                                    borderRadius: BorderRadius.circular(48),
+                                  ),
                                   width: 100,
                                   height: 100,
-                                  fit: BoxFit.fitHeight,
+                                  child: const Icon(
+                                    Icons.camera_alt_outlined,
+                                    color: Colors.white,
+                                  ),
                                 ),
-                              )
-                            : Container(
-                                decoration: BoxDecoration(
-                                  color: Colors.blue,
-                                  borderRadius: BorderRadius.circular(48),
-                                ),
-                                width: 100,
-                                height: 100,
-                                child: const Icon(
-                                  Icons.camera_alt_outlined,
-                                  color: Colors.white,
-                                ),
+                        ),
+                      ),
+                    ),
+                    SizedBox(
+                      height: 5,
+                    ),
+                    TextField(
+                      enabled: false,
+                      controller: controlnombres,
+                      keyboardType: TextInputType.text,
+                      decoration: InputDecoration(
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(
+                            30,
+                          ),
+                        ),
+                        labelText: 'Nombres',
+                        icon: Icon(
+                          Icons.person,
+                          color: Colors.amber,
+                        ),
+                      ),
+                    ),
+                    SizedBox(
+                      height: 20,
+                    ),
+                    TextField(
+                      controller: controlapellidos,
+                      enabled: false,
+                      keyboardType: TextInputType.text,
+                      decoration: InputDecoration(
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(
+                            30,
+                          ),
+                        ),
+                        labelText: 'Apellidos',
+                        icon: Icon(
+                          Icons.person,
+                          color: Colors.amber,
+                        ),
+                      ),
+                    ),
+                    SizedBox(
+                      height: 20,
+                    ),
+                    TextField(
+                      controller: controlsexo,
+                      enabled: false,
+                      decoration: InputDecoration(
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(
+                            30,
+                          ),
+                        ),
+                        labelText: 'Sexo',
+                        icon: Icon(
+                          Icons.person,
+                          color: Colors.amber,
+                        ),
+                      ),
+                    ),
+                    SizedBox(
+                      height: 20,
+                    ),
+                    TextField(
+                      controller: controltelefono,
+                      enabled: false,
+                      keyboardType: TextInputType.number,
+                      decoration: InputDecoration(
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(
+                            30,
+                          ),
+                        ),
+                        labelText: 'Telefono',
+                        icon: Icon(
+                          Icons.person,
+                          color: Colors.amber,
+                        ),
+                      ),
+                    ),
+                    SizedBox(
+                      height: 20,
+                    ),
+                    TextField(
+                      controller: controlcorreo,
+                      enabled: false,
+                      keyboardType: TextInputType.emailAddress,
+                      decoration: InputDecoration(
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(
+                            30,
+                          ),
+                        ),
+                        labelText: 'Correo Electronico',
+                        icon: Icon(
+                          Icons.person,
+                          color: Colors.amber,
+                        ),
+                      ),
+                    ),
+                    SizedBox(
+                      height: 20,
+                    ),
+                    TextField(
+                      controller: controlplacamoto,
+                      enabled: false,
+                      keyboardType: TextInputType.text,
+                      decoration: InputDecoration(
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(
+                            30,
+                          ),
+                        ),
+                        labelText: 'placa moto',
+                        icon: Icon(
+                          Icons.person,
+                          color: Colors.amber,
+                        ),
+                      ),
+                    ),
+                    SizedBox(
+                      height: 30,
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: ElevatedButton.icon(
+                              // MODAL DE ACTUALIZACION DE DATOS
+                              icon: Icon(
+                                Icons.update_rounded,
+                                size: 20,
+                                color: Colors.white,
                               ),
-                      ),
-                    ),
-                  ),
-                  SizedBox(
-                    height: 5,
-                  ),
-                  TextField(
-                    enabled: false,
-                    controller: controlnombres,
-                    keyboardType: TextInputType.text,
-                    decoration: InputDecoration(
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(
-                          30,
-                        ),
-                      ),
-                      labelText: 'Nombres',
-                      icon: Icon(
-                        Icons.person,
-                        color: Colors.amber,
-                      ),
-                    ),
-                  ),
-                  SizedBox(
-                    height: 20,
-                  ),
-                  TextField(
-                    controller: controlapellidos,
-                    enabled: false,
-                    keyboardType: TextInputType.text,
-                    decoration: InputDecoration(
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(
-                          30,
-                        ),
-                      ),
-                      labelText: 'Apellidos',
-                      icon: Icon(
-                        Icons.person,
-                        color: Colors.amber,
-                      ),
-                    ),
-                  ),
-                  SizedBox(
-                    height: 20,
-                  ),
-                  TextField(
-                    controller: controlsexo,
-                    enabled: false,
-                    decoration: InputDecoration(
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(
-                          30,
-                        ),
-                      ),
-                      labelText: 'Sexo',
-                      icon: Icon(
-                        Icons.person,
-                        color: Colors.amber,
-                      ),
-                    ),
-                  ),
-                  SizedBox(
-                    height: 20,
-                  ),
-                  TextField(
-                    controller: controltelefono,
-                    enabled: false,
-                    keyboardType: TextInputType.number,
-                    decoration: InputDecoration(
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(
-                          30,
-                        ),
-                      ),
-                      labelText: 'Telefono',
-                      icon: Icon(
-                        Icons.person,
-                        color: Colors.amber,
-                      ),
-                    ),
-                  ),
-                  SizedBox(
-                    height: 20,
-                  ),
-                  TextField(
-                    controller: controlcorreo,
-                    enabled: false,
-                    keyboardType: TextInputType.emailAddress,
-                    decoration: InputDecoration(
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(
-                          30,
-                        ),
-                      ),
-                      labelText: 'Correo Electronico',
-                      icon: Icon(
-                        Icons.person,
-                        color: Colors.amber,
-                      ),
-                    ),
-                  ),
-                  SizedBox(
-                    height: 20,
-                  ),
-                  TextField(
-                    controller: controlplacamoto,
-                    enabled: false,
-                    keyboardType: TextInputType.text,
-                    decoration: InputDecoration(
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(
-                          30,
-                        ),
-                      ),
-                      labelText: 'placa moto',
-                      icon: Icon(
-                        Icons.person,
-                        color: Colors.amber,
-                      ),
-                    ),
-                  ),
-                  SizedBox(
-                    height: 30,
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: ElevatedButton.icon(
-                            // MODAL DE ACTUALIZACION DE DATOS
-                            icon: Icon(
-                              Icons.update_rounded,
-                              size: 20,
-                              color: Colors.white,
-                            ),
-                            onPressed: () {
-                              var catalogo = <String, dynamic>{
-                                'nombres': controlnombres.text,
-                                'apellidos': controlapellidos.text,
-                                'sexo': controlsexo.text,
-                                'telefono': controltelefono.text,
-                                'correo': controlcorreo.text,
-                                'clave': controlclave.text,
-                                'foto': "",
-                              };
-                              PeticionesConductor.crearConductor(
-                                  catalogo, _image);
+                              onPressed: () {
+                                var catalogo = <String, dynamic>{
+                                  'nombres': controlnombres.text,
+                                  'apellidos': controlapellidos.text,
+                                  'sexo': controlsexo.text,
+                                  'telefono': controltelefono.text,
+                                  'correo': controlcorreo.text,
+                                  'clave': controlclave.text,
+                                  'foto': "",
+                                };
+                                PeticionesConductor.crearConductor(
+                                    catalogo, _image);
 
-                              showModalBottomSheet<void>(
-                                context: context,
-                                builder: (BuildContext context) {
-                                  return Container(
-                                    height: 350,
-                                    color: Colors.indigo[100],
-                                    child: Center(
-                                      child: Padding(
-                                        padding: const EdgeInsets.all(11.0),
-                                        child: Column(
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.center,
-                                          mainAxisSize: MainAxisSize.max,
-                                          children: <Widget>[
-                                            const Text('Actualizacion de Datos',
-                                                style: TextStyle(
-                                                  color: Colors.indigo,
-                                                  fontFamily: 'Montserrat',
-                                                  fontWeight: FontWeight.bold,
-                                                  fontSize: 20.0,
-                                                )),
-                                            SizedBox(
-                                              height: 30,
-                                            ),
-                                            TextField(
-                                              enabled: true,
-                                              keyboardType:
-                                                  TextInputType.number,
-                                              decoration: InputDecoration(
-                                                border: OutlineInputBorder(
-                                                  borderRadius:
-                                                      BorderRadius.circular(
-                                                    15,
+                                showModalBottomSheet<void>(
+                                  context: context,
+                                  builder: (BuildContext context) {
+                                    return Container(
+                                      height: 350,
+                                      color: Colors.indigo[100],
+                                      child: Center(
+                                        child: Padding(
+                                          padding: const EdgeInsets.all(11.0),
+                                          child: Column(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.center,
+                                            mainAxisSize: MainAxisSize.max,
+                                            children: <Widget>[
+                                              const Text(
+                                                  'Actualizacion de Datos',
+                                                  style: TextStyle(
+                                                    color: Colors.indigo,
+                                                    fontFamily: 'Montserrat',
+                                                    fontWeight: FontWeight.bold,
+                                                    fontSize: 20.0,
+                                                  )),
+                                              SizedBox(
+                                                height: 30,
+                                              ),
+                                              TextField(
+                                                enabled: true,
+                                                keyboardType:
+                                                    TextInputType.number,
+                                                decoration: InputDecoration(
+                                                  border: OutlineInputBorder(
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                      15,
+                                                    ),
+                                                  ),
+                                                  labelText: 'Telefono',
+                                                  icon: Icon(
+                                                    Icons.person,
+                                                    color: Colors.amber,
                                                   ),
                                                 ),
-                                                labelText: 'Telefono',
-                                                icon: Icon(
-                                                  Icons.person,
-                                                  color: Colors.amber,
-                                                ),
                                               ),
-                                            ),
-                                            SizedBox(
-                                              height: 15,
-                                            ),
-                                            TextField(
-                                              controller: controlplacamoto,
-                                              enabled: true,
-                                              keyboardType: TextInputType.text,
-                                              decoration: InputDecoration(
-                                                border: OutlineInputBorder(
-                                                  borderRadius:
-                                                      BorderRadius.circular(
-                                                    15,
+                                              SizedBox(
+                                                height: 15,
+                                              ),
+                                              TextField(
+                                                controller: controlplacamoto,
+                                                enabled: true,
+                                                keyboardType:
+                                                    TextInputType.text,
+                                                decoration: InputDecoration(
+                                                  border: OutlineInputBorder(
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                      15,
+                                                    ),
+                                                  ),
+                                                  labelText: 'placa moto',
+                                                  icon: Icon(
+                                                    Icons.person,
+                                                    color: Colors.amber,
                                                   ),
                                                 ),
-                                                labelText: 'placa moto',
-                                                icon: Icon(
-                                                  Icons.person,
-                                                  color: Colors.amber,
-                                                ),
                                               ),
-                                            ),
-                                            SizedBox(
-                                              height: 15,
-                                            ),
-                                            ElevatedButton(
-                                              child:
-                                                  const Text('Guardar Cambios'),
-                                              onPressed: () =>
-                                                  Navigator.pop(context),
-                                              style: TextButton.styleFrom(
-                                                  primary: Colors.white,
-                                                  backgroundColor:
-                                                      Colors.green[600]),
-                                            ),
-                                          ],
+                                              SizedBox(
+                                                height: 15,
+                                              ),
+                                              ElevatedButton(
+                                                child: const Text(
+                                                    'Guardar Cambios'),
+                                                onPressed: () =>
+                                                    Navigator.pop(context),
+                                                style: TextButton.styleFrom(
+                                                    primary: Colors.white,
+                                                    backgroundColor:
+                                                        Colors.green[600]),
+                                              ),
+                                            ],
+                                          ),
                                         ),
                                       ),
-                                    ),
-                                  );
-                                },
-                              );
-                            },
-                            style: TextButton.styleFrom(
-                                primary: Colors.white,
-                                backgroundColor: Colors.green[600]),
-                            label: Text("Modificar Perfil")),
-                      ),
-                    ],
-                  ),
-                ],
+                                    );
+                                  },
+                                );
+                              },
+                              style: TextButton.styleFrom(
+                                  primary: Colors.white,
+                                  backgroundColor: Colors.green[600]),
+                              label: Text("Modificar Perfil")),
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
               ),
             ),
           ],

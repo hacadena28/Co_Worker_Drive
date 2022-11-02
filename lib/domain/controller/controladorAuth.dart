@@ -9,7 +9,7 @@ class Controllerauthf extends GetxController {
 
   String get emailf => _usuarior.value;
   String get uid => _uid.value;
-  
+
   emailF(String sin) {
     _usuarior.value = sin;
   }
@@ -21,10 +21,6 @@ class Controllerauthf extends GetxController {
 
       _uid.value = usuario.user!.uid;
       _usuarior.value = usuario.user!.email;
-
-      if (kDebugMode) {
-        print(usuario);
-      }
     } on FirebaseAuthException catch (e) {
       if (e.code == 'weak-password') {
         return Future.error('The password provided is too weak.');

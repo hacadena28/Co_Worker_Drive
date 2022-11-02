@@ -365,46 +365,59 @@ class _RegistrarConductorState extends State<RegistrarConductor> {
                               // conductor.placaMoto = controlplacamoto.text;
                               // conductor.clave = controlclave.text;
                               // listaConductores.add(conductor);
-                              var catalogo = <String, dynamic>{
-                                'nombres': controlnombres.text,
-                                'apellidos': controlapellidos.text,
-                                'sexo': controlsexo.text,
-                                'telefono': controltelefono.text,
-                                'correo': controlcorreo.text,
-                                'placaMoto': controlplacamoto.text,
-                                'clave': controlclave.text,
-                                'foto': "",
-                              };
 
-                              PeticionesConductor.crearConductor(
-                                  catalogo, _image);
-                              controlf
-                                  .registraEmail(
-                                      controlcorreo.text, controlclave.text)
-                                  .then((Value) {
-                                if (controlf.emailf != "Sin registro") {
-                                  // Get.offAllNamed('/listarArticulos');
+                              if (validarCamposvasios()) {
+                                var catalogo = <String, dynamic>{
+                                  'nombres': controlnombres.text,
+                                  'apellidos': controlapellidos.text,
+                                  'sexo': controlsexo.text,
+                                  'telefono': controltelefono.text,
+                                  'correo': controlcorreo.text,
+                                  'placaMoto': controlplacamoto.text,
+                                  'clave': controlclave.text,
+                                  'foto': "",
+                                };
+
+                                controlf
+                                    .registraEmail(
+                                        controlcorreo.text, controlclave.text)
+                                    .then((Value) {
+                                  if (controlf.emailf != "Sin registro") {
+                                    // Get.offAllNamed('/listarArticulos');
+                                    PeticionesConductor.crearConductor(
+                                        catalogo, _image);
+                                    Get.showSnackbar(const GetSnackBar(
+                                      title: "Felicidades",
+                                      message: "Usuario Registrado",
+                                      icon: Icon(Icons.warning_amber_sharp),
+                                      duration: Duration(seconds: 4),
+                                      backgroundColor:
+                                          Color.fromARGB(255, 66, 231, 11),
+                                    ));
+
+                                    Get.offAllNamed('/login');
+                                  }
+                                }).catchError((onError) {
                                   Get.showSnackbar(const GetSnackBar(
-                                    title: "Felicidades",
-                                    message: "Usuario Registrado",
+                                    title: "Validacion de usuarios",
+                                    message: "Usuario ya esta registrado",
                                     icon: Icon(Icons.warning_amber_sharp),
                                     duration: Duration(seconds: 4),
                                     backgroundColor:
-                                        Color.fromARGB(255, 66, 231, 11),
+                                        Color.fromARGB(255, 213, 136, 130),
                                   ));
-                                  Get.offAllNamed('/login');
-                                }
-                              }).catchError((onError) {
+                                });
+                              } else {
                                 Get.showSnackbar(const GetSnackBar(
-                                  title: "Validacion de usuarios",
-                                  message: "Usuario ya esta registrado",
+                                  title: "Advertencia",
+                                  message: "Por favor rellene todos los campos",
                                   icon: Icon(Icons.warning_amber_sharp),
                                   duration: Duration(seconds: 4),
                                   backgroundColor:
                                       Color.fromARGB(255, 213, 136, 130),
                                 ));
-                              });
-                            },
+                              }
+                            }, // cierre de boton
                             style: TextButton.styleFrom(
                                 primary: Colors.white,
                                 backgroundColor: Colors.green[600]),
@@ -448,5 +461,18 @@ class _RegistrarConductorState extends State<RegistrarConductor> {
             ),
           );
         });
+  }
+
+  bool validarCamposvasios() {
+    if (controlnombres.text.isNotEmpty &&
+        controlapellidos.text.isNotEmpty &&
+        controlsexo.text.isNotEmpty &&
+        controltelefono.text.isNotEmpty &&
+        controlcorreo.text.isNotEmpty &&
+        controlplacamoto.text.isNotEmpty &&
+        controlclave.text.isNotEmpty) {
+      return true;
+    }
+    return false;
   }
 }
