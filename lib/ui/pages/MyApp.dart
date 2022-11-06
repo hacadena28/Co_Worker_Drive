@@ -17,8 +17,8 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
-      title: 'Crud clientes',
-      theme: ThemeData(primarySwatch: Colors.purple),
+      title: 'Co-workerDrive',
+      theme: ThemeData(primarySwatch: Colors.indigo),
       debugShowCheckedModeBanner: false,
       routes: {
         '/login': (context) => Login(),
