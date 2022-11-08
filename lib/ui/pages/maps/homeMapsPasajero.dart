@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 import '../navegador/menunavConductor.dart';
+import '../navegador/menunavPasajero.dart';
 
 class HomeMApsPasajero extends StatefulWidget {
   const HomeMApsPasajero({super.key});
@@ -21,7 +22,7 @@ class _HomeMApsState extends State<HomeMApsPasajero> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      bottomNavigationBar: DemoBottomAppBar(),
+      bottomNavigationBar: DemoBottomAppBarPasajero(),
       appBar: AppBar(
         backgroundColor: Colors.indigo,
       ),
