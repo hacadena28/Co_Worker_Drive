@@ -38,7 +38,7 @@ class _PresentacionState extends State<Presentacion> {
                         child: Row(
                           children: [
                             Column(
-                              //mainAxisAlignment: MainAxisAlignment.center,
+                              mainAxisAlignment: MainAxisAlignment.center,
                               children: [
                                 Center(
                                   child: Padding(
@@ -74,15 +74,47 @@ class _PresentacionState extends State<Presentacion> {
                             bottomRight: Radius.circular(30.0),
                           ),
                         ),
+                        child: Center(
+                          child: Padding(
+                            padding: const EdgeInsets.all(10.0),
+                            child: SizedBox(
+                              height: 350,
+                              width: 300,
+                              child: Image.asset('assets/seguro.png'),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+                Row(
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Container(
+                        height: MediaQuery.of(context).size.height - 586.0,
+                        width: MediaQuery.of(context).size.height - 405,
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.only(
+                            topLeft: Radius.circular(30.0),
+                            topRight: Radius.circular(30.0),
+                            bottomLeft: Radius.circular(30.0),
+                            bottomRight: Radius.circular(30.0),
+                          ),
+                        ),
                         child: Row(
                           children: [
-                            Padding(
-                              padding: const EdgeInsets.all(50.0),
-                              child: Text("SEGURO",
-                                  style: TextStyle(
-                                      fontFamily: 'Montserrat',
-                                      color: Colors.amber,
-                                      fontSize: 20.0)),
+                            Center(
+                              child: Padding(
+                                padding: const EdgeInsets.all(10.0),
+                                child: SizedBox(
+                                  height: 350,
+                                  width: 350,
+                                  child: Image.asset('assets/economico.png'),
+                                ),
+                              ),
                             )
                           ],
                         ),
@@ -109,44 +141,12 @@ class _PresentacionState extends State<Presentacion> {
                         child: Row(
                           children: [
                             Padding(
-                              padding: const EdgeInsets.all(50.0),
-                              child: Text("ECONOMICO",
-                                  style: TextStyle(
-                                      fontFamily: 'Montserrat',
-                                      color: Colors.amber,
-                                      fontSize: 20.0)),
-                            )
-                          ],
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-                Row(
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Container(
-                        height: MediaQuery.of(context).size.height - 586.0,
-                        width: MediaQuery.of(context).size.height - 405,
-                        decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.only(
-                            topLeft: Radius.circular(30.0),
-                            topRight: Radius.circular(30.0),
-                            bottomLeft: Radius.circular(30.0),
-                            bottomRight: Radius.circular(30.0),
-                          ),
-                        ),
-                        child: Row(
-                          children: [
-                            Padding(
-                              padding: const EdgeInsets.all(50.0),
-                              child: Text("RAPIDO",
-                                  style: TextStyle(
-                                      fontFamily: 'Montserrat',
-                                      color: Colors.amber,
-                                      fontSize: 20.0)),
+                              padding: const EdgeInsets.all(10.0),
+                              child: SizedBox(
+                                height: 350,
+                                width: 350,
+                                child: Image.asset('assets/rapido.png'),
+                              ),
                             )
                           ],
                         ),
