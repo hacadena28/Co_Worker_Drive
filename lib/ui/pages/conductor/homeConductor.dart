@@ -14,6 +14,20 @@ class _homeConductorState extends State<homeConductor> {
   Widget build(BuildContext context) {
     return Scaffold(
         bottomNavigationBar: DemoBottomAppBar(),
+         appBar: AppBar(
+          title: Center(
+            child: Text(
+              'Historial conductor',
+              style: TextStyle(
+                color: Colors.amber,
+                fontFamily: 'Montserrat',
+                fontSize: 20,
+              ),
+            ),
+          ),
+          backgroundColor: Colors.indigo,
+           ),
+       
 
     );
   }

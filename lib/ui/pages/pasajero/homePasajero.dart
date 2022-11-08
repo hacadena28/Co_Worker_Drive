@@ -14,6 +14,19 @@ class _homeConductorState extends State<homePasajero> {
   Widget build(BuildContext context) {
     return Scaffold(
       bottomNavigationBar: DemoBottomAppBarPasajero(),
+      appBar: AppBar(
+        title: Center(
+          child: Text(
+            'Historial Pasajero',
+            style: TextStyle(
+              color: Colors.amber,
+              fontFamily: 'Montserrat',
+              fontSize: 20,
+            ),
+          ),
+        ),
+        backgroundColor: Colors.indigo,
+      ),
     );
   }
 }

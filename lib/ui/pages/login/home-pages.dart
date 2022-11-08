@@ -72,7 +72,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     minWidth: 200.0,
                     height: 40.0,
                     onPressed: () {
-                      Get.offAllNamed('/loginConductor');
+                      Get.offAllNamed('/perfilConductor');
                     },
                     color: Colors.indigo[700],
                     child: Text('Conductor',
@@ -91,7 +91,7 @@ class _MyHomePageState extends State<MyHomePage> {
                       minWidth: 200.0,
                       height: 40.0,
                       onPressed: () {
-                        Get.offAllNamed('/loginPasajero');
+                        Get.offAllNamed('/PerfilPasajero');
                       },
                       color: Colors.indigo[700],
                       child: Text('Pasajero',

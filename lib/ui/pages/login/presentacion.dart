@@ -18,6 +18,7 @@ class _PresentacionState extends State<Presentacion> {
           children: <Widget>[
             Padding(padding: const EdgeInsets.only(top: 15.0, left: 10.0)),
             Column(
+              mainAxisSize: MainAxisSize.max,
               children: [
                 Row(
                   children: [
@@ -25,7 +26,7 @@ class _PresentacionState extends State<Presentacion> {
                       padding: const EdgeInsets.all(8.0),
                       child: Container(
                         height: MediaQuery.of(context).size.height - 586.0,
-                        width: MediaQuery.of(context).size.height - 405,
+                        width: MediaQuery.of(context).size.width - 16,
                         decoration: BoxDecoration(
                           color: Colors.white,
                           borderRadius: BorderRadius.only(
@@ -64,7 +65,7 @@ class _PresentacionState extends State<Presentacion> {
                       padding: const EdgeInsets.all(8.0),
                       child: Container(
                         height: MediaQuery.of(context).size.height - 586.0,
-                        width: MediaQuery.of(context).size.height - 405,
+                        width: MediaQuery.of(context).size.width - 16,
                         decoration: BoxDecoration(
                           color: Colors.white,
                           borderRadius: BorderRadius.only(
@@ -94,7 +95,7 @@ class _PresentacionState extends State<Presentacion> {
                       padding: const EdgeInsets.all(8.0),
                       child: Container(
                         height: MediaQuery.of(context).size.height - 586.0,
-                        width: MediaQuery.of(context).size.height - 405,
+                        width: MediaQuery.of(context).size.width - 16,
                         decoration: BoxDecoration(
                           color: Colors.white,
                           borderRadius: BorderRadius.only(
@@ -128,7 +129,7 @@ class _PresentacionState extends State<Presentacion> {
                       padding: const EdgeInsets.all(8.0),
                       child: Container(
                         height: MediaQuery.of(context).size.height - 586.0,
-                        width: MediaQuery.of(context).size.height - 405,
+                        width: MediaQuery.of(context).size.width - 16,
                         decoration: BoxDecoration(
                           color: Colors.white,
                           borderRadius: BorderRadius.only(
