@@ -114,7 +114,7 @@ class _LoginState extends State<Login> {
                                           controluser.text, controlpassw.text)
                                       .then((value) {
                                     if (controlf.emailf != 'Sin Registro') {
-                                      Get.offAllNamed('/perfilConductor');
+                                      Get.offAllNamed('/PerfilPasajero');
 
                                       controlf.emailF("Sin Registro");
                                     } else {
@@ -158,10 +158,16 @@ class _LoginState extends State<Login> {
                               padding: const EdgeInsets.all(0.0),
                               child: TextButton(
                                 onPressed: () {
-                                  Get.offAllNamed('/rol');
+                                  Get.offAllNamed('/loginPasajero');
                                   controlf.emailF("Sin Registro");
                                 },
-                                child: Text("Registrate"),
+                                child: Text("Registrate",
+                                    style: TextStyle(
+                                      color: Colors.purple[400],
+                                      fontFamily: 'Montserrat',
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 15.0,
+                                    )),
                               )),
                         ],
                       ),

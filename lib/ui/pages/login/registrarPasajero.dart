@@ -66,7 +66,7 @@ class _RegistrarPasajeroState extends State<RegistrarPasajero> {
                   children: [
                     IconButton(
                       onPressed: () {
-                        Get.offAllNamed('/rol');
+                        Get.offAllNamed('/login');
                       },
                       icon: const Icon(
                         Icons.arrow_back_ios_rounded,

@@ -33,24 +33,27 @@ class DemoBottomAppBar extends StatelessWidget {
               padding: const EdgeInsets.only(
                   top: 8.0, right: 5.0, left: 5.0, bottom: 2),
               child: IconButton(
-                tooltip: 'Inicio',
-                icon: const Icon(Icons.home_rounded),
-                onPressed: () {},
+                tooltip: 'perfil',
+                icon: const Icon(Icons.person_rounded),
+                onPressed: () {
+                  Get.offAllNamed('/perfilConductor');
+                },
               ),
             ),
             if (centerLocations.contains(fabLocation)) const Spacer(),
             IconButton(
               tooltip: 'Maps',
-              icon: const Icon(Icons.motorcycle_rounded),
+              icon: const Icon(Icons.place_outlined),
               onPressed: () {
                 Get.offAllNamed('/homeMaps');
               },
             ),
             IconButton(
-              tooltip: 'perfil',
-              icon: const Icon(Icons.person_rounded),
+              tooltip: 'moto',
+              icon: const Icon(Icons.motorcycle),
               onPressed: () {
-                Get.offAllNamed('/perfilConductor');
+                Get.offAllNamed('/homeConductor');
+
               },
             ),
           ],

@@ -8,6 +8,7 @@ import 'package:get/get.dart';
 import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:image_picker/image_picker.dart';
 import '../../../data/services/peticionFirebaseAuthConductor.dart';
+import '../login/home-pages.dart';
 import '../login/login.dart';
 
 class PerfilConductor extends StatefulWidget {
@@ -79,7 +80,7 @@ class _PerfilConductorState extends State<PerfilConductor> {
         appBar: AppBar(
           title: Center(
             child: Text(
-              'Datos Personales',
+              'Datos del conductor',
               style: TextStyle(
                 color: Colors.amber,
                 fontFamily: 'Montserrat',
@@ -91,6 +92,16 @@ class _PerfilConductorState extends State<PerfilConductor> {
           actions: <Widget>[
             Row(
               children: [
+                IconButton(
+                  tooltip: 'Rol',
+                  onPressed: () {
+                    Get.to(() => MyHomePage());
+                  },
+                  icon: const Icon(
+                    Icons.motorcycle,
+                    color: Colors.white,
+                  ),
+                ),
                 IconButton(
                   tooltip: 'Salir',
                   onPressed: () {
