@@ -2,6 +2,7 @@ import 'package:coworkerdriver/domain/controller/controladoruser.dart';
 import 'package:coworkerdriver/domain/modelo/conductor.dart';
 import 'package:coworkerdriver/ui/pages/conductor/homeConductor.dart';
 import 'package:coworkerdriver/ui/pages/conductor/perfilConductor.dart';
+import 'package:coworkerdriver/ui/pages/login/presentacion.dart';
 import 'package:coworkerdriver/ui/pages/login/registrarConductor.dart';
 import 'package:coworkerdriver/ui/pages/login/registrarPasajero.dart';
 import 'package:flutter/material.dart';
@@ -27,8 +28,9 @@ class MyApp extends StatelessWidget {
         '/loginPasajero': (context) => const RegistrarPasajero(),
         '/perfilConductor': (context) => PerfilConductor(),
         '/homeMaps': (context) => HomeMAps(),
+        '/presentacion': (context) => Presentacion()
       },
-      home: Login(),
+      home: Presentacion(),
     );
   }
 }
