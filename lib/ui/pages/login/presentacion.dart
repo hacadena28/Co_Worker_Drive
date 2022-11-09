@@ -10,176 +10,100 @@ class Presentacion extends StatefulWidget {
 }
 
 class _PresentacionState extends State<Presentacion> {
+  final images = [
+    {'image': 'assets/seguro.png'},
+    {'image': 'assets/rapido.png'},
+    {'image': 'assets/economico.png'}
+  ];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: Colors.white,
-        body: ListView(
-          children: <Widget>[
-            Padding(padding: const EdgeInsets.only(top: 15.0, left: 10.0)),
+      appBar: AppBar(
+        backgroundColor: Colors.indigo,
+      ),
+      body: Container(
+        padding: EdgeInsets.all(8),
+        height: MediaQuery.of(context).size.height * 1,
+        //  padding: EdgeInsets.all(20),
+        child: Column(
+          children: [
             Column(
-              mainAxisSize: MainAxisSize.max,
               children: [
-                Row(
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Container(
-                        height: MediaQuery.of(context).size.height - 586.0,
-                        width: MediaQuery.of(context).size.width - 16,
-                        decoration: BoxDecoration(
-                          color: Colors.transparent,
-                          borderRadius: BorderRadius.only(
-                            topLeft: Radius.circular(30.0),
-                            topRight: Radius.circular(30.0),
-                            bottomLeft: Radius.circular(30.0),
-                            bottomRight: Radius.circular(30.0),
-                          ),
-                        ),
-                        child: Row(
-                          children: [
-                            Column(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                Center(
-                                    child: SizedBox(
-                                  height: 250,
-                                  width: 350,
-                                  child: Image.asset(
-                                    'assets/logo.png',
-                                  ),
-                                ))
-                              ],
-                            ),
-                          ],
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-                Row(
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Container(
-                        height: MediaQuery.of(context).size.height - 586.0,
-                        width: MediaQuery.of(context).size.width - 16,
-                        decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.only(
-                            topLeft: Radius.circular(30.0),
-                            topRight: Radius.circular(30.0),
-                            bottomLeft: Radius.circular(30.0),
-                            bottomRight: Radius.circular(30.0),
-                          ),
-                        ),
-                        child: Center(
-                          child: Padding(
-                            padding: const EdgeInsets.all(10.0),
-                            child: SizedBox(
-                              height: 350,
-                              width: 300,
-                              child: Image.asset('assets/seguro.png',
-                                  fit: BoxFit.fill),
-                            ),
-                          ),
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-                Row(
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Container(
-                        height: MediaQuery.of(context).size.height - 586.0,
-                        width: MediaQuery.of(context).size.width - 16,
-                        decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.only(
-                            topLeft: Radius.circular(30.0),
-                            topRight: Radius.circular(30.0),
-                            bottomLeft: Radius.circular(30.0),
-                            bottomRight: Radius.circular(30.0),
-                          ),
-                        ),
-                        child: Row(
-                          children: [
-                            Center(
-                              child: Padding(
-                                padding: const EdgeInsets.all(10.0),
-                                child: SizedBox(
-                                  height: 350,
-                                  width: 350,
-                                  child: Image.asset('assets/economico.png'),
-                                ),
-                              ),
-                            )
-                          ],
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-                Row(
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Container(
-                        height: MediaQuery.of(context).size.height - 586.0,
-                        width: MediaQuery.of(context).size.width - 16,
-                        decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.only(
-                            topLeft: Radius.circular(30.0),
-                            topRight: Radius.circular(30.0),
-                            bottomLeft: Radius.circular(30.0),
-                            bottomRight: Radius.circular(30.0),
-                          ),
-                        ),
-                        child: Row(
-                          children: [
-                            Padding(
-                              padding: const EdgeInsets.all(10.0),
-                              child: SizedBox(
-                                height: 350,
-                                width: 350,
-                                child: Image.asset('assets/rapido.png'),
-                              ),
-                            )
-                          ],
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Padding(
-                      padding: const EdgeInsets.fromLTRB(0, 15, 0, 0),
-                      child: ElevatedButton.icon(
-                          icon: Icon(
-                            Icons.home,
-                            size: 25,
-                            color: Colors.white,
-                          ),
-                          onPressed: () {
-                            Get.offAllNamed('/login');
-                          },
-                          style: TextButton.styleFrom(
-                              primary: Colors.white,
-                              backgroundColor: Colors.indigo),
-                          label: Text("Empezar",
-                              style: TextStyle(
-                                  fontFamily: 'Montserrat', fontSize: 20.0))),
+                    Text(
+                      'Bienvenido',
+                      style: TextStyle(color: Colors.indigo[900], fontSize: 32),
                     ),
                   ],
                 ),
+                Container(
+                  height: MediaQuery.of(context).size.height * 0.4,
+                  padding: EdgeInsets.only(bottom: 8),
+                  child: Image.asset(
+                    'assets/logo.png',
+                  ),
+                ),
               ],
-            )
+            ),
+            Container(
+              height: MediaQuery.of(context).size.height * 0.3,
+              width: MediaQuery.of(context).size.width * 1,
+              child: Container(
+                child: ListView.builder(
+                  scrollDirection: Axis.horizontal,
+                  itemCount: images.length,
+                  itemBuilder: (_, i) => Row(
+                    children: [
+                      Container(
+                        width: MediaQuery.of(context).size.width * 1,
+                        child: Image.asset(
+                          images[i]['image'].toString(),
+                          //  fit: BoxFit.cover,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            ),
+            Center(
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Center(
+                    child: ElevatedButton.icon(
+                        icon: Icon(
+                          Icons.home,
+                          size: 25,
+                          color: Colors.white,
+                        ),
+                        onPressed: () {
+                          Get.offAllNamed('/login');
+                        },
+                        style: TextButton.styleFrom(
+                            primary: Colors.white,
+                            backgroundColor: Colors.indigo),
+                        label: Text("Empezar",
+                            style: TextStyle(
+                                fontFamily: 'Montserrat', fontSize: 20.0))),
+                  ),
+                ],
+              ),
+            ),
           ],
-        ));
+        ),
+      ),
+    );
   }
+}
+
+Widget box(String title, Color backgroundcolor) {
+  return Container(
+      margin: EdgeInsets.all(10),
+      width: 80,
+      color: backgroundcolor,
+      alignment: Alignment.center,
+      child: Text(title, style: TextStyle(color: Colors.white, fontSize: 20)));
 }
