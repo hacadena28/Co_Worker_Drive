@@ -49,7 +49,7 @@ class _HomeMApsState extends State<HomeMApsPasajero> {
               ),
 >>>>>>> fbba48d77a05073ee60adb6186ccb8de362fb0e9
             ),
-          )
+          ),
         ],
       ),
       floatingActionButton: FloatingActionButton.extended(
