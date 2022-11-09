@@ -22,9 +22,10 @@ class _HomeMApsState extends State<HomeMApsPasajero> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      bottomNavigationBar: DemoBottomAppBar(),
+      bottomNavigationBar: DemoBottomAppBarPasajero(),
       body: Column(
         children: [
+<<<<<<< HEAD
           SizedBox(
             width: MediaQuery.of(context).size.width * 1,
             height: MediaQuery.of(context).size.height * 0.91,
@@ -34,8 +35,21 @@ class _HomeMApsState extends State<HomeMApsPasajero> {
               initialCameraPosition: _initialCameraPosition,
               myLocationButtonEnabled: true,
               mapType: MapType.normal,
+=======
+          Expanded(
+            child: SizedBox(
+              width: MediaQuery.of(context).size.width * 1,
+              //height: MediaQuery.of(context).size.height * 0.933,
+              child: GoogleMap(
+                zoomControlsEnabled: false,
+                onMapCreated: _Controller.onMapCreated,
+                initialCameraPosition: _initialCameraPosition,
+                myLocationButtonEnabled: true,
+                mapType: MapType.normal,
+              ),
+>>>>>>> fbba48d77a05073ee60adb6186ccb8de362fb0e9
             ),
-          ),
+          )
         ],
       ),
       floatingActionButton: FloatingActionButton.extended(

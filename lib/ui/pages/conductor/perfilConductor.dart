@@ -33,6 +33,19 @@ class _PerfilConductorState extends State<PerfilConductor> {
   TextEditingController controlcorreo = TextEditingController();
   TextEditingController controlplacamoto = TextEditingController();
   TextEditingController controlclave = TextEditingController();
+  void initState() {
+    var catalogo = <String, dynamic>{
+      'nombres': controlnombres.text = "Edna Rocio",
+      'apellidos': controlapellidos.text = "Cadena Arenilla",
+      'sexo': controlsexo.text,
+      'telefono': controltelefono.text = "3106987456",
+      'correo': controlcorreo.text = "cadenaalberto123@gmail.com",
+      'clave': controlclave.text,
+      'foto': "",
+      'placa moto': controlplacamoto.text = "abc - 124"
+    };
+  }
+
   @override
   // void initState() {
   //   controlnombres.text = widget.gestionConductor.nombres;
