@@ -22,15 +22,32 @@ class _HomeMApsState extends State<HomeMApsPasajero> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      bottomNavigationBar: DemoBottomAppBarPasajero(),
-      appBar: AppBar(
-        backgroundColor: Colors.indigo,
+      bottomNavigationBar: DemoBottomAppBar(),
+      body: Column(
+        children: [
+          SizedBox(
+            width: MediaQuery.of(context).size.width * 1,
+            height: MediaQuery.of(context).size.height * 0.933,
+            child: GoogleMap(
+              zoomControlsEnabled: false,
+              onMapCreated: _Controller.onMapCreated,
+              initialCameraPosition: _initialCameraPosition,
+              myLocationButtonEnabled: true,
+              mapType: MapType.normal,
+            ),
+          ),
+        ],
       ),
-      body: GoogleMap(
-        onMapCreated: _Controller.onMapCreated,
-        initialCameraPosition: _initialCameraPosition,
-        myLocationButtonEnabled: false,
-        mapType: MapType.normal,
+      floatingActionButton: FloatingActionButton.extended(
+        onPressed: () {},
+        label: const Text(
+          "Where are you going?",
+          textAlign: TextAlign.center,
+          style: TextStyle(
+            color: Colors.black54,
+          ),
+        ),
+        icon: Icon(Icons.navigation),
       ),
     );
   }
