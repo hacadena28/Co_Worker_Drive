@@ -13,7 +13,7 @@ class _PresentacionState extends State<Presentacion> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: Colors.indigo,
+        backgroundColor: Colors.white,
         body: ListView(
           children: <Widget>[
             Padding(padding: const EdgeInsets.only(top: 15.0, left: 10.0)),
@@ -28,7 +28,7 @@ class _PresentacionState extends State<Presentacion> {
                         height: MediaQuery.of(context).size.height - 586.0,
                         width: MediaQuery.of(context).size.width - 16,
                         decoration: BoxDecoration(
-                          color: Colors.white,
+                          color: Colors.transparent,
                           borderRadius: BorderRadius.only(
                             topLeft: Radius.circular(30.0),
                             topRight: Radius.circular(30.0),
@@ -42,15 +42,13 @@ class _PresentacionState extends State<Presentacion> {
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
                                 Center(
-                                  child: Padding(
-                                    padding: const EdgeInsets.all(5),
                                     child: SizedBox(
-                                      height: 180,
-                                      width: 350,
-                                      child: Image.asset('assets/logo.png'),
-                                    ),
+                                  height: 250,
+                                  width: 350,
+                                  child: Image.asset(
+                                    'assets/logo.png',
                                   ),
-                                )
+                                ))
                               ],
                             ),
                           ],
@@ -81,7 +79,8 @@ class _PresentacionState extends State<Presentacion> {
                             child: SizedBox(
                               height: 350,
                               width: 300,
-                              child: Image.asset('assets/seguro.png'),
+                              child: Image.asset('assets/seguro.png',
+                                  fit: BoxFit.fill),
                             ),
                           ),
                         ),
