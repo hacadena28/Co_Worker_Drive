@@ -35,6 +35,20 @@ class _PerfilPasajeroState extends State<PerfilPasajero> {
   TextEditingController controlplacamoto = TextEditingController();
   TextEditingController controlclave = TextEditingController();
   @override
+  void initState() {
+    var catalogo = <String, dynamic>{
+      'nombres': controlnombres.text = "Heli ALberto",
+      'apellidos': controlapellidos.text = "Cadena Arenilla",
+      'sexo': controlsexo.text,
+      'telefono': controltelefono.text = "3206870778",
+      'correo': controlcorreo.text = "hc@gmail.com",
+      'clave': controlclave.text,
+      'foto': "",
+    };
+  }
+
+  @override
+
   // void initState() {
 
   //   controlapellidos.text = widget.gestionConductor.apellidos;
@@ -62,16 +76,10 @@ class _PerfilPasajeroState extends State<PerfilPasajero> {
 
   set controlf(String controlf) {}
 
-/*
   PerfilPasajero(Conductor usuario) {
-    controlnombres.text = usuario.nombres.toString();
-    controlapellidos.text = usuario.apellidos.toString();
-    controlsexo.text = usuario.sexo.toString();
-    controltelefono.text = usuario.telefono.toString();
-    controlcorreo.text = usuario.correo.toString();
-    controlplacamoto.text = usuario.placaMoto.toString();
+    controlnombres.text = "hola mundo";
   }
-  */
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -285,11 +293,14 @@ class _PerfilPasajeroState extends State<PerfilPasajero> {
                               ),
                               onPressed: () {
                                 var catalogo = <String, dynamic>{
-                                  'nombres': controlnombres.text,
-                                  'apellidos': controlapellidos.text,
+                                  'nombres': controlnombres.text =
+                                      "Heli ALberto",
+                                  'apellidos': controlapellidos.text =
+                                      "Cadena Arenilla",
                                   'sexo': controlsexo.text,
-                                  'telefono': controltelefono.text,
-                                  'correo': controlcorreo.text,
+                                  'telefono': controltelefono.text =
+                                      "3206870778",
+                                  'correo': controlcorreo.text = "hc@gmail.com",
                                   'clave': controlclave.text,
                                   'foto': "",
                                 };
