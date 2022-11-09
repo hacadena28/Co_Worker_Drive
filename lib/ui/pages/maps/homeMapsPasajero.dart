@@ -37,7 +37,7 @@ class _HomeMApsState extends State<HomeMApsPasajero> {
                 mapType: MapType.normal,
               ),
             ),
-          )
+          ),
         ],
       ),
       floatingActionButton: FloatingActionButton.extended(
