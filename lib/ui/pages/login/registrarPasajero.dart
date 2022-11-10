@@ -138,6 +138,7 @@ class _RegistrarPasajeroState extends State<RegistrarPasajero> {
                     SizedBox(
                       height: 5,
                     ),
+                 
                     TextField(
                       controller: controlnombres,
                       keyboardType: TextInputType.text,
@@ -171,6 +172,7 @@ class _RegistrarPasajeroState extends State<RegistrarPasajero> {
                           Icons.person,
                           color: Colors.amber,
                         ),
+                        
                       ),
                     ),
                     SizedBox(
