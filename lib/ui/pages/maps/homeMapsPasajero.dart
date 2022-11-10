@@ -25,21 +25,10 @@ class _HomeMApsState extends State<HomeMApsPasajero> {
       bottomNavigationBar: DemoBottomAppBarPasajero(),
       body: Column(
         children: [
-<<<<<<< HEAD
-          SizedBox(
-            width: MediaQuery.of(context).size.width * 1,
-            height: MediaQuery.of(context).size.height * 0.91,
-            child: GoogleMap(
-              zoomControlsEnabled: false,
-              onMapCreated: _Controller.onMapCreated,
-              initialCameraPosition: _initialCameraPosition,
-              myLocationButtonEnabled: true,
-              mapType: MapType.normal,
-=======
           Expanded(
             child: SizedBox(
               width: MediaQuery.of(context).size.width * 1,
-              //height: MediaQuery.of(context).size.height * 0.933,
+              height: MediaQuery.of(context).size.height * 0.91,
               child: GoogleMap(
                 zoomControlsEnabled: false,
                 onMapCreated: _Controller.onMapCreated,
@@ -47,7 +36,6 @@ class _HomeMApsState extends State<HomeMApsPasajero> {
                 myLocationButtonEnabled: true,
                 mapType: MapType.normal,
               ),
->>>>>>> fbba48d77a05073ee60adb6186ccb8de362fb0e9
             ),
           ),
         ],
