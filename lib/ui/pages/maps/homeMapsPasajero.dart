@@ -25,7 +25,6 @@ class _HomeMApsState extends State<HomeMApsPasajero> {
       bottomNavigationBar: DemoBottomAppBarPasajero(),
       body: Column(
         children: [
-<<<<<<< HEAD
           SizedBox(
             width: MediaQuery.of(context).size.width * 1,
             height: MediaQuery.of(context).size.height * 0.91,
@@ -35,25 +34,107 @@ class _HomeMApsState extends State<HomeMApsPasajero> {
               initialCameraPosition: _initialCameraPosition,
               myLocationButtonEnabled: true,
               mapType: MapType.normal,
-=======
-          Expanded(
-            child: SizedBox(
-              width: MediaQuery.of(context).size.width * 1,
-              //height: MediaQuery.of(context).size.height * 0.933,
-              child: GoogleMap(
-                zoomControlsEnabled: false,
-                onMapCreated: _Controller.onMapCreated,
-                initialCameraPosition: _initialCameraPosition,
-                myLocationButtonEnabled: true,
-                mapType: MapType.normal,
-              ),
->>>>>>> fbba48d77a05073ee60adb6186ccb8de362fb0e9
             ),
           ),
         ],
       ),
       floatingActionButton: FloatingActionButton.extended(
-        onPressed: () {},
+        onPressed: () {
+          showModalBottomSheet<void>(
+            context: context,
+            builder: (BuildContext context) {
+              return Container(
+                height: 350,
+                color: Colors.indigo[100],
+                child: Center(
+                  child: Padding(
+                    padding: const EdgeInsets.all(11.0),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      mainAxisSize: MainAxisSize.max,
+                      children: <Widget>[
+                        const Text('Escoge tu ruta',
+                            style: TextStyle(
+                              color: Colors.indigo,
+                              fontFamily: 'Montserrat',
+                              fontWeight: FontWeight.bold,
+                              fontSize: 20.0,
+                            )),
+                        SizedBox(
+                          height: 30,
+                        ),
+                        TextField(
+                          enabled: true,
+                          keyboardType: TextInputType.text,
+                          decoration: InputDecoration(
+                            border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(
+                                15,
+                              ),
+                            ),
+                            labelText: 'Origen',
+                            icon: Icon(
+                              Icons.place,
+                              color: Colors.amber,
+                            ),
+                          ),
+                        ),
+                        SizedBox(
+                          height: 15,
+                        ),
+                        TextField(
+                          enabled: true,
+                          keyboardType: TextInputType.text,
+                          decoration: InputDecoration(
+                            border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(
+                                15,
+                              ),
+                            ),
+                            labelText: 'Destino',
+                            icon: Icon(
+                              Icons.place_outlined,
+                              color: Colors.amber,
+                            ),
+                          ),
+                        ),
+                        SizedBox(
+                          height: 15,
+                        ),
+                        TextField(
+                          enabled: true,
+                          keyboardType: TextInputType.number,
+                          decoration: InputDecoration(
+                            border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(
+                                15,
+                              ),
+                            ),
+                            labelText: 'Tarifa',
+                            icon: Icon(
+                              Icons.money,
+                              color: Colors.amber,
+                            ),
+                          ),
+                        ),
+                        SizedBox(
+                          height: 15,
+                        ),
+                        ElevatedButton(
+                          child: const Text('Solicitar Servicio'),
+                          onPressed: () => Navigator.pop(context),
+                          style: TextButton.styleFrom(
+                              primary: Colors.white,
+                              backgroundColor: Colors.green[600]),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              );
+            },
+          );
+        },
         label: const Text(
           "Where are you going?",
           textAlign: TextAlign.center,
