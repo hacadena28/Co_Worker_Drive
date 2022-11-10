@@ -23,6 +23,7 @@ class _RegistrarConductorState extends State<RegistrarConductor> {
   TextEditingController controlplacamoto = TextEditingController();
   TextEditingController controlusuario = TextEditingController();
   TextEditingController controlclave = TextEditingController();
+  TextEditingController controlconfirmarclave = TextEditingController();
   final sexo = ["Masculino", "Femenino", "Otros"];
   String? selectSexo;
   Controllerauthf controlf = Get.find();
@@ -203,7 +204,7 @@ class _RegistrarConductorState extends State<RegistrarConductor> {
                       ),
                       labelText: 'Sexo',
                       icon: Icon(
-                        Icons.pages,
+                        Icons.wc,
                         color: Colors.amber,
                       ),
                     ),
@@ -222,7 +223,7 @@ class _RegistrarConductorState extends State<RegistrarConductor> {
                       ),
                       labelText: 'Telefono',
                       icon: Icon(
-                        Icons.person,
+                        Icons.phone,
                         color: Colors.amber,
                       ),
                     ),
@@ -241,7 +242,7 @@ class _RegistrarConductorState extends State<RegistrarConductor> {
                       ),
                       labelText: 'Correo Electronico',
                       icon: Icon(
-                        Icons.person,
+                        Icons.mail,
                         color: Colors.amber,
                       ),
                     ),
@@ -260,7 +261,7 @@ class _RegistrarConductorState extends State<RegistrarConductor> {
                       ),
                       labelText: 'placa moto',
                       icon: Icon(
-                        Icons.person,
+                        Icons.motorcycle,
                         color: Colors.amber,
                       ),
                     ),
@@ -279,7 +280,26 @@ class _RegistrarConductorState extends State<RegistrarConductor> {
                       ),
                       labelText: 'Clave',
                       icon: Icon(
-                        Icons.person,
+                        Icons.password,
+                        color: Colors.amber,
+                      ),
+                    ),
+                  ),
+                  SizedBox(
+                    height: 10,
+                  ),
+                  TextField(
+                    controller: controlconfirmarclave,
+                    obscureText: true,
+                    decoration: InputDecoration(
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(
+                          30,
+                        ),
+                      ),
+                      labelText: 'Confirmar Clave',
+                      icon: Icon(
+                        Icons.password,
                         color: Colors.amber,
                       ),
                     ),

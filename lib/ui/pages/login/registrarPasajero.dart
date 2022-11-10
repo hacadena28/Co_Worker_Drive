@@ -22,6 +22,7 @@ class _RegistrarPasajeroState extends State<RegistrarPasajero> {
   TextEditingController controlcorreo = TextEditingController();
   TextEditingController controlusuario = TextEditingController();
   TextEditingController controlclave = TextEditingController();
+  TextEditingController controlconfirmarclave = TextEditingController();
   final sexo = ["Masculino", "Femenino", "Otros"];
   String? selectSexo;
   Controllerauthf controlf = Get.find();
@@ -259,6 +260,25 @@ class _RegistrarPasajeroState extends State<RegistrarPasajero> {
                           ),
                         ),
                         labelText: 'Clave',
+                        icon: Icon(
+                          Icons.password,
+                          color: Colors.amber,
+                        ),
+                      ),
+                    ),
+                    SizedBox(
+                      height: 10,
+                    ),
+                    TextField(
+                      controller: controlconfirmarclave,
+                      obscureText: true,
+                      decoration: InputDecoration(
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(
+                            30,
+                          ),
+                        ),
+                        labelText: 'Confirmar Clave',
                         icon: Icon(
                           Icons.password,
                           color: Colors.amber,
