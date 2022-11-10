@@ -1,8 +1,6 @@
 import 'dart:io';
 
 import 'package:coworkerdriver/domain/controller/controladorAuth.dart';
-import 'package:coworkerdriver/domain/modelo/conductor.dart';
-import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
@@ -11,16 +9,6 @@ import '../../../data/services/peticionFirebaseAuthConductor.dart';
 
 class RegistrarConductor extends StatefulWidget {
   const RegistrarConductor({super.key});
-
-/*   var nombres;
-  var apellidos;
-  var sexo;
-  var telefono;
-  var correo;
-  var placaMoto;
-  var usuario;
-  var clave;
-*/
 
   @override
   State<RegistrarConductor> createState() => _RegistrarConductorState();
@@ -35,6 +23,9 @@ class _RegistrarConductorState extends State<RegistrarConductor> {
   TextEditingController controlplacamoto = TextEditingController();
   TextEditingController controlusuario = TextEditingController();
   TextEditingController controlclave = TextEditingController();
+  TextEditingController controlconfirmarclave = TextEditingController();
+  final sexo = ["Masculino", "Femenino", "Otros"];
+  String? selectSexo;
   Controllerauthf controlf = Get.find();
   var _image;
   ImagePicker picker = ImagePicker();
@@ -48,12 +39,6 @@ class _RegistrarConductorState extends State<RegistrarConductor> {
       _image = (image != null) ? File(image.path) : null;
     });
   }
-
-  final List<String> items = [
-    'F',
-    'M',
-  ];
-  String? selectedValue;
 
   @override
   Widget build(BuildContext context) {
@@ -191,8 +176,26 @@ class _RegistrarConductorState extends State<RegistrarConductor> {
                   SizedBox(
                     height: 10,
                   ),
-                  TextField(
-                    controller: controlsexo,
+                  DropdownButtonFormField(
+                    value: selectSexo,
+                    items: sexo
+                        .map(
+                          (e) => DropdownMenuItem(
+                            child: Text(e),
+                            value: e,
+                          ),
+                        )
+                        .toList(),
+                    onChanged: (val) {
+                      setState(() {
+                        selectSexo = val as String;
+                      });
+                    },
+                    icon: const Icon(
+                      Icons.arrow_drop_down_circle,
+                      color: Colors.amber,
+                    ),
+                    dropdownColor: Colors.amber[50],
                     decoration: InputDecoration(
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(
@@ -201,68 +204,11 @@ class _RegistrarConductorState extends State<RegistrarConductor> {
                       ),
                       labelText: 'Sexo',
                       icon: Icon(
-                        Icons.person,
+                        Icons.wc,
                         color: Colors.amber,
                       ),
                     ),
                   ),
-                  // DropdownButtonHideUnderline(
-                  //     child: Center(
-                  //   child: DropdownButton2(
-                  //     isExpanded: true,
-                  //     hint: Row(
-                  //       children: const [
-                  //         Padding(
-                  //           padding: const EdgeInsets.only(left: 7, right: 18),
-                  //           child: Icon(
-                  //             Icons.list,
-                  //             size: 28,
-                  //             color: Colors.amber,
-                  //           ),
-                  //         ),
-                  //         SizedBox(
-                  //           width: 4,
-                  //         ),
-                  //         Center(
-                  //           child: Expanded(
-                  //             child: Padding(
-                  //               padding: EdgeInsets.only(left: 15.0),
-                  //               child: Text(
-                  //                 'selecciona el sexo',
-                  //                 style: TextStyle(
-                  //                   fontSize: 20,
-                  //                   //fontWeight: FontWeight.bold,
-                  //                   color: Colors.black,
-                  //                 ),
-                  //                 overflow: TextOverflow.ellipsis,
-                  //               ),
-                  //             ),
-                  //           ),
-                  //         ),
-                  //       ],
-                  //     ),
-                  //     items: items
-                  //         .map(
-                  //           (item) => DropdownMenuItem<String>(
-                  //             value: item,
-                  //             child: Text(
-                  //               item,
-                  //               style: const TextStyle(
-                  //                 fontSize: 14,
-                  //               ),
-                  //             ),
-                  //           ),
-                  //         )
-                  //         .toList(),
-                  //     value: selectedValue,
-                  //     onChanged: (value) {
-                  //       setState(() {
-                  //         selectedValue = value as String;
-                  //       });
-                  //     },
-                  //   ),
-                  // )),
-
                   SizedBox(
                     height: 10,
                   ),
@@ -277,7 +223,7 @@ class _RegistrarConductorState extends State<RegistrarConductor> {
                       ),
                       labelText: 'Telefono',
                       icon: Icon(
-                        Icons.person,
+                        Icons.phone,
                         color: Colors.amber,
                       ),
                     ),
@@ -296,7 +242,7 @@ class _RegistrarConductorState extends State<RegistrarConductor> {
                       ),
                       labelText: 'Correo Electronico',
                       icon: Icon(
-                        Icons.person,
+                        Icons.mail,
                         color: Colors.amber,
                       ),
                     ),
@@ -315,7 +261,7 @@ class _RegistrarConductorState extends State<RegistrarConductor> {
                       ),
                       labelText: 'placa moto',
                       icon: Icon(
-                        Icons.person,
+                        Icons.motorcycle,
                         color: Colors.amber,
                       ),
                     ),
@@ -323,7 +269,6 @@ class _RegistrarConductorState extends State<RegistrarConductor> {
                   SizedBox(
                     height: 10,
                   ),
-
                   TextField(
                     controller: controlclave,
                     obscureText: true,
@@ -335,7 +280,26 @@ class _RegistrarConductorState extends State<RegistrarConductor> {
                       ),
                       labelText: 'Clave',
                       icon: Icon(
-                        Icons.person,
+                        Icons.password,
+                        color: Colors.amber,
+                      ),
+                    ),
+                  ),
+                  SizedBox(
+                    height: 10,
+                  ),
+                  TextField(
+                    controller: controlconfirmarclave,
+                    obscureText: true,
+                    decoration: InputDecoration(
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(
+                          30,
+                        ),
+                      ),
+                      labelText: 'Confirmar Clave',
+                      icon: Icon(
+                        Icons.password,
                         color: Colors.amber,
                       ),
                     ),

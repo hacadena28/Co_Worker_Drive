@@ -2,24 +2,13 @@ import 'dart:io';
 
 import 'package:coworkerdriver/data/services/peticionFirebaseAuthPasajero.dart';
 import 'package:coworkerdriver/domain/controller/controladorAuth.dart';
-import 'package:coworkerdriver/domain/modelo/pasajero.dart';
-import 'package:coworkerdriver/data/services/peticionFirebaseAuthConductor.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
 
 class RegistrarPasajero extends StatefulWidget {
   const RegistrarPasajero({super.key});
-
-/*   var nombres;
-  var apellidos;
-  var sexo;
-  var telefono;
-  var correo;
-  var placaMoto;
-  var usuario;
-  var clave;
-*/
 
   @override
   State<RegistrarPasajero> createState() => _RegistrarPasajeroState();
@@ -33,6 +22,9 @@ class _RegistrarPasajeroState extends State<RegistrarPasajero> {
   TextEditingController controlcorreo = TextEditingController();
   TextEditingController controlusuario = TextEditingController();
   TextEditingController controlclave = TextEditingController();
+  TextEditingController controlconfirmarclave = TextEditingController();
+  final sexo = ["Masculino", "Femenino", "Otros"];
+  String? selectSexo;
   Controllerauthf controlf = Get.find();
   var _image;
   ImagePicker picker = ImagePicker();
@@ -106,228 +98,279 @@ class _RegistrarPasajeroState extends State<RegistrarPasajero> {
             ),
             child: Padding(
               padding: const EdgeInsets.only(left: 15, right: 15),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Center(
-                    child: GestureDetector(
-                      onTap: () async {
-                        _opcioncamara(context);
-                      },
-                      child: CircleAvatar(
-                        radius: 50,
-                        backgroundColor: Colors.blue,
-                        child: _image != null
-                            ? ClipRRect(
-                                borderRadius: BorderRadius.circular(48),
-                                child: Image.file(
-                                  _image,
+              child: Expanded(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Center(
+                      child: GestureDetector(
+                        onTap: () async {
+                          _opcioncamara(context);
+                        },
+                        child: CircleAvatar(
+                          radius: 50,
+                          backgroundColor: Colors.blue,
+                          child: _image != null
+                              ? ClipRRect(
+                                  borderRadius: BorderRadius.circular(48),
+                                  child: Image.file(
+                                    _image,
+                                    width: 100,
+                                    height: 100,
+                                    fit: BoxFit.fitHeight,
+                                  ),
+                                )
+                              : Container(
+                                  decoration: BoxDecoration(
+                                    color: Colors.blue,
+                                    borderRadius: BorderRadius.circular(48),
+                                  ),
                                   width: 100,
                                   height: 100,
-                                  fit: BoxFit.fitHeight,
+                                  child: const Icon(
+                                    Icons.camera_alt_outlined,
+                                    color: Colors.white,
+                                  ),
                                 ),
-                              )
-                            : Container(
-                                decoration: BoxDecoration(
-                                  color: Colors.blue,
-                                  borderRadius: BorderRadius.circular(48),
-                                ),
-                                width: 100,
-                                height: 100,
-                                child: const Icon(
-                                  Icons.camera_alt_outlined,
-                                  color: Colors.white,
-                                ),
-                              ),
-                      ),
-                    ),
-                  ),
-                  SizedBox(
-                    height: 5,
-                  ),
-                  TextField(
-                    controller: controlnombres,
-                    keyboardType: TextInputType.text,
-                    decoration: InputDecoration(
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(
-                          30,
                         ),
                       ),
-                      labelText: 'Nombres',
-                      icon: Icon(
-                        Icons.person,
-                        color: Colors.amber,
-                      ),
                     ),
-                  ),
-                  SizedBox(
-                    height: 10,
-                  ),
-                  TextField(
-                    controller: controlapellidos,
-                    keyboardType: TextInputType.text,
-                    decoration: InputDecoration(
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(
-                          30,
+                    SizedBox(
+                      height: 5,
+                    ),
+                    TextField(
+                      controller: controlnombres,
+                      keyboardType: TextInputType.text,
+                      decoration: InputDecoration(
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(
+                            30,
+                          ),
+                        ),
+                        labelText: 'Nombres',
+                        icon: Icon(
+                          Icons.person,
+                          color: Colors.amber,
                         ),
                       ),
-                      labelText: 'Apellidos',
-                      icon: Icon(
-                        Icons.person,
-                        color: Colors.amber,
-                      ),
                     ),
-                  ),
-                  SizedBox(
-                    height: 10,
-                  ),
-                  TextField(
-                    controller: controlsexo,
-                    decoration: InputDecoration(
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(
-                          30,
+                    SizedBox(
+                      height: 10,
+                    ),
+                    TextField(
+                      controller: controlapellidos,
+                      keyboardType: TextInputType.text,
+                      decoration: InputDecoration(
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(
+                            30,
+                          ),
+                        ),
+                        labelText: 'Apellidos',
+                        icon: Icon(
+                          Icons.person,
+                          color: Colors.amber,
                         ),
                       ),
-                      labelText: 'Sexo',
-                      icon: Icon(
-                        Icons.person,
-                        color: Colors.amber,
-                      ),
                     ),
-                  ),
-                  SizedBox(
-                    height: 10,
-                  ),
-                  TextField(
-                    controller: controltelefono,
-                    keyboardType: TextInputType.number,
-                    decoration: InputDecoration(
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(
-                          30,
-                        ),
-                      ),
-                      labelText: 'Telefono',
-                      icon: Icon(
-                        Icons.person,
-                        color: Colors.amber,
-                      ),
+                    SizedBox(
+                      height: 10,
                     ),
-                  ),
-                  SizedBox(
-                    height: 10,
-                  ),
-                  TextField(
-                    controller: controlcorreo,
-                    keyboardType: TextInputType.emailAddress,
-                    decoration: InputDecoration(
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(
-                          30,
-                        ),
-                      ),
-                      labelText: 'Correo Electronico',
-                      icon: Icon(
-                        Icons.person,
-                        color: Colors.amber,
-                      ),
-                    ),
-                  ),
-                  SizedBox(
-                    height: 10,
-                  ),
-                  TextField(
-                    controller: controlclave,
-                    obscureText: true,
-                    decoration: InputDecoration(
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(
-                          30,
-                        ),
-                      ),
-                      labelText: 'Clave',
-                      icon: Icon(
-                        Icons.person,
-                        color: Colors.amber,
-                      ),
-                    ),
-                  ),
-                  SizedBox(
-                    height: 10,
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: ElevatedButton.icon(
-                            icon: Icon(
-                              Icons.login,
-                              size: 20,
-                              color: Colors.white,
+                    DropdownButtonFormField(
+                      value: selectSexo,
+                      items: sexo
+                          .map(
+                            (e) => DropdownMenuItem(
+                              child: Text(e),
+                              value: e,
                             ),
-                            onPressed: () {
-                              if (validarCamposvasios()) {
-                                var catalogo = <String, dynamic>{
-                                  'nombres': controlnombres.text,
-                                  'apellidos': controlapellidos.text,
-                                  'sexo': controlsexo.text,
-                                  'telefono': controltelefono.text,
-                                  'correo': controlcorreo.text,
-                                  'clave': controlclave.text,
-                                  'foto': "",
-                                };
-
-                                controlf
-                                    .registraEmail(
-                                        controlcorreo.text, controlclave.text)
-                                    .then((Value) {
-                                  if (controlf.emailf != "Sin registro") {
-                                    // Get.offAllNamed('/listarArticulos');
-                                    PeticionesPasajero.crearPasajero(
-                                        catalogo, _image);
+                          )
+                          .toList(),
+                      onChanged: (val) {
+                        setState(() {
+                          selectSexo = val as String;
+                        });
+                      },
+                      icon: const Icon(
+                        Icons.arrow_drop_down_circle,
+                        color: Colors.amber,
+                      ),
+                      dropdownColor: Colors.amber[50],
+                      decoration: InputDecoration(
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(
+                            30,
+                          ),
+                        ),
+                        labelText: 'Sexo',
+                        icon: Icon(
+                          Icons.wc,
+                          color: Colors.amber,
+                        ),
+                      ),
+                    ),
+                    SizedBox(
+                      height: 10,
+                    ),
+                    TextField(
+                      controller: controltelefono,
+                      keyboardType: TextInputType.number,
+                      decoration: InputDecoration(
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(
+                            30,
+                          ),
+                        ),
+                        labelText: 'Telefono',
+                        icon: Icon(
+                          Icons.phone,
+                          color: Colors.amber,
+                        ),
+                      ),
+                    ),
+                    SizedBox(
+                      height: 10,
+                    ),
+                    TextField(
+                      controller: controlcorreo,
+                      keyboardType: TextInputType.emailAddress,
+                      decoration: InputDecoration(
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(
+                            30,
+                          ),
+                        ),
+                        labelText: 'Correo Electronico',
+                        icon: Icon(
+                          Icons.mail,
+                          color: Colors.amber,
+                        ),
+                      ),
+                    ),
+                    SizedBox(
+                      height: 10,
+                    ),
+                    TextField(
+                      controller: controlclave,
+                      obscureText: true,
+                      decoration: InputDecoration(
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(
+                            30,
+                          ),
+                        ),
+                        labelText: 'Clave',
+                        icon: Icon(
+                          Icons.password,
+                          color: Colors.amber,
+                        ),
+                      ),
+                    ),
+                    SizedBox(
+                      height: 10,
+                    ),
+                    TextField(
+                      controller: controlconfirmarclave,
+                      obscureText: true,
+                      decoration: InputDecoration(
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(
+                            30,
+                          ),
+                        ),
+                        labelText: 'Confirmar Clave',
+                        icon: Icon(
+                          Icons.password,
+                          color: Colors.amber,
+                        ),
+                      ),
+                    ),
+                    SizedBox(
+                      height: 10,
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: ElevatedButton.icon(
+                              icon: Icon(
+                                Icons.login,
+                                size: 20,
+                                color: Colors.white,
+                              ),
+                              onPressed: () {
+                                if (validarCamposvasios()) {
+                                  if (controlclave.text ==
+                                      controlconfirmarclave.text) {
+                                    var catalogo = <String, dynamic>{
+                                      'nombres': controlnombres.text,
+                                      'apellidos': controlapellidos.text,
+                                      'sexo': selectSexo,
+                                      'telefono': controltelefono.text,
+                                      'correo': controlcorreo.text,
+                                      'clave': controlclave.text,
+                                      'foto': "",
+                                    };
+                                    controlf
+                                        .registraEmail(controlcorreo.text,
+                                            controlclave.text)
+                                        .then((Value) {
+                                      if (controlf.emailf != "Sin registro") {
+                                        // Get.offAllNamed('/listarArticulos');
+                                        PeticionesPasajero.crearPasajero(
+                                            catalogo, _image);
+                                        Get.showSnackbar(const GetSnackBar(
+                                          title: "Felicidades",
+                                          message: "Usuario Registrado",
+                                          icon: Icon(Icons.warning_amber_sharp),
+                                          duration: Duration(seconds: 4),
+                                          backgroundColor:
+                                              Color.fromARGB(255, 66, 231, 11),
+                                        ));
+                                        Get.offAllNamed('/login');
+                                      }
+                                    }).catchError((onError) {
+                                      Get.showSnackbar(const GetSnackBar(
+                                        title: "Validacion de usuarios",
+                                        message: "Usuario ya esta registrado",
+                                        icon: Icon(Icons.warning_amber_sharp),
+                                        duration: Duration(seconds: 4),
+                                        backgroundColor:
+                                            Color.fromARGB(255, 213, 136, 130),
+                                      ));
+                                    });
+                                  } else {
                                     Get.showSnackbar(const GetSnackBar(
-                                      title: "Felicidades",
-                                      message: "Usuario Registrado",
+                                      title: "Contraseña",
+                                      message: "Contraseñas no coinciden",
                                       icon: Icon(Icons.warning_amber_sharp),
                                       duration: Duration(seconds: 4),
                                       backgroundColor:
-                                          Color.fromARGB(255, 66, 231, 11),
+                                          Color.fromARGB(255, 213, 136, 130),
                                     ));
-                                    Get.offAllNamed('/login');
                                   }
-                                }).catchError((onError) {
+                                } else {
                                   Get.showSnackbar(const GetSnackBar(
-                                    title: "Validacion de usuarios",
-                                    message: "Usuario ya esta registrado",
+                                    title: "ADVERTENCIA",
+                                    message:
+                                        "Por favor rellene todos los campos",
                                     icon: Icon(Icons.warning_amber_sharp),
                                     duration: Duration(seconds: 4),
                                     backgroundColor:
                                         Color.fromARGB(255, 213, 136, 130),
                                   ));
-                                });
-                              } else {
-                                Get.showSnackbar(const GetSnackBar(
-                                  title: "ADVERTENCIA",
-                                  message: "Por favor rellene todos los campos",
-                                  icon: Icon(Icons.warning_amber_sharp),
-                                  duration: Duration(seconds: 4),
-                                  backgroundColor:
-                                      Color.fromARGB(255, 213, 136, 130),
-                                ));
-                              }
-                            },
-                            style: TextButton.styleFrom(
-                                primary: Colors.white,
-                                backgroundColor: Colors.green[600]),
-                            label: Text("Registrar")),
-                      ),
-                    ],
-                  ),
-                ],
+                                }
+                              },
+                              style: TextButton.styleFrom(
+                                  primary: Colors.white,
+                                  backgroundColor: Colors.green[600]),
+                              label: Text("Registrar")),
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
               ),
             ),
           ),
@@ -368,7 +411,6 @@ class _RegistrarPasajeroState extends State<RegistrarPasajero> {
   bool validarCamposvasios() {
     if (controlnombres.text.isNotEmpty &&
         controlapellidos.text.isNotEmpty &&
-        controlsexo.text.isNotEmpty &&
         controltelefono.text.isNotEmpty &&
         controlcorreo.text.isNotEmpty &&
         controlclave.text.isNotEmpty) {
