@@ -204,7 +204,7 @@ class _RegistrarPasajeroState extends State<RegistrarPasajero> {
                         ),
                         labelText: 'Sexo',
                         icon: Icon(
-                          Icons.pages,
+                          Icons.wc,
                           color: Colors.amber,
                         ),
                       ),
@@ -301,44 +301,55 @@ class _RegistrarPasajeroState extends State<RegistrarPasajero> {
                               ),
                               onPressed: () {
                                 if (validarCamposvasios()) {
-                                  var catalogo = <String, dynamic>{
-                                    'nombres': controlnombres.text,
-                                    'apellidos': controlapellidos.text,
-                                    'sexo': controlsexo.text,
-                                    'telefono': controltelefono.text,
-                                    'correo': controlcorreo.text,
-                                    'clave': controlclave.text,
-                                    'foto': "",
-                                  };
-
-                                  controlf
-                                      .registraEmail(
-                                          controlcorreo.text, controlclave.text)
-                                      .then((Value) {
-                                    if (controlf.emailf != "Sin registro") {
-                                      // Get.offAllNamed('/listarArticulos');
-                                      PeticionesPasajero.crearPasajero(
-                                          catalogo, _image);
+                                  if (controlclave.text ==
+                                      controlconfirmarclave.text) {
+                                    var catalogo = <String, dynamic>{
+                                      'nombres': controlnombres.text,
+                                      'apellidos': controlapellidos.text,
+                                      'sexo': selectSexo,
+                                      'telefono': controltelefono.text,
+                                      'correo': controlcorreo.text,
+                                      'clave': controlclave.text,
+                                      'foto': "",
+                                    };
+                                    controlf
+                                        .registraEmail(controlcorreo.text,
+                                            controlclave.text)
+                                        .then((Value) {
+                                      if (controlf.emailf != "Sin registro") {
+                                        // Get.offAllNamed('/listarArticulos');
+                                        PeticionesPasajero.crearPasajero(
+                                            catalogo, _image);
+                                        Get.showSnackbar(const GetSnackBar(
+                                          title: "Felicidades",
+                                          message: "Usuario Registrado",
+                                          icon: Icon(Icons.warning_amber_sharp),
+                                          duration: Duration(seconds: 4),
+                                          backgroundColor:
+                                              Color.fromARGB(255, 66, 231, 11),
+                                        ));
+                                        Get.offAllNamed('/login');
+                                      }
+                                    }).catchError((onError) {
                                       Get.showSnackbar(const GetSnackBar(
-                                        title: "Felicidades",
-                                        message: "Usuario Registrado",
+                                        title: "Validacion de usuarios",
+                                        message: "Usuario ya esta registrado",
                                         icon: Icon(Icons.warning_amber_sharp),
                                         duration: Duration(seconds: 4),
                                         backgroundColor:
-                                            Color.fromARGB(255, 66, 231, 11),
+                                            Color.fromARGB(255, 213, 136, 130),
                                       ));
-                                      Get.offAllNamed('/login');
-                                    }
-                                  }).catchError((onError) {
+                                    });
+                                  } else {
                                     Get.showSnackbar(const GetSnackBar(
-                                      title: "Validacion de usuarios",
-                                      message: "Usuario ya esta registrado",
+                                      title: "Contraseña",
+                                      message: "Contraseñas no coinciden",
                                       icon: Icon(Icons.warning_amber_sharp),
                                       duration: Duration(seconds: 4),
                                       backgroundColor:
                                           Color.fromARGB(255, 213, 136, 130),
                                     ));
-                                  });
+                                  }
                                 } else {
                                   Get.showSnackbar(const GetSnackBar(
                                     title: "ADVERTENCIA",
@@ -400,7 +411,6 @@ class _RegistrarPasajeroState extends State<RegistrarPasajero> {
   bool validarCamposvasios() {
     if (controlnombres.text.isNotEmpty &&
         controlapellidos.text.isNotEmpty &&
-        controlsexo.text.isNotEmpty &&
         controltelefono.text.isNotEmpty &&
         controlcorreo.text.isNotEmpty &&
         controlclave.text.isNotEmpty) {
