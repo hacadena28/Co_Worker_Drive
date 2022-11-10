@@ -45,7 +45,8 @@ class _HomeMApsState extends State<HomeMAps> {
             context: context,
             builder: (BuildContext context) {
               return Container(
-                height: 350,
+                height: 450,
+                width: MediaQuery.of(context).size.width,
                 color: Colors.indigo[100],
                 child: Center(
                   child: Padding(
@@ -140,12 +141,40 @@ class _HomeMApsState extends State<HomeMAps> {
                         SizedBox(
                           height: 15,
                         ),
-                        ElevatedButton(
-                          child: const Text('Aceptar Servicio'),
-                          onPressed: () => Navigator.pop(context),
-                          style: TextButton.styleFrom(
-                              primary: Colors.white,
-                              backgroundColor: Colors.green[600]),
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Expanded(
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Column(
+                                  children: [
+                                    ElevatedButton(
+                                      child: const Text('Aceptar Servicio'),
+                                      onPressed: () => Navigator.pop(context),
+                                      style: TextButton.styleFrom(
+                                          primary: Colors.white,
+                                          backgroundColor: Colors.green[600]),
+                                    ),
+                                  ],
+                                ),
+                                SizedBox(
+                                  width: 40,
+                                ),
+                                Column(
+                                  children: [
+                                    ElevatedButton(
+                                      child: const Text('Contra Oferta'),
+                                      onPressed: () => Navigator.pop(context),
+                                      style: TextButton.styleFrom(
+                                          primary: Colors.white,
+                                          backgroundColor: Colors.green[600]),
+                                    ),
+                                  ],
+                                ),
+                              ],
+                            ),
+                          ),
                         ),
                       ],
                     ),
@@ -156,7 +185,7 @@ class _HomeMApsState extends State<HomeMAps> {
           );
         },
         label: const Text(
-          "Where are you going?",
+          "Aceptar Servicio",
           textAlign: TextAlign.center,
           style: TextStyle(
             color: Colors.black54,

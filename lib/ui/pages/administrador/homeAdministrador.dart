@@ -1,22 +1,50 @@
-import 'package:coworkerdriver/ui/pages/conductor/historial.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
-import '../navegador/menunavPasajero.dart';
+import '../login/login.dart';
 
-class homePasajero extends StatefulWidget {
-  const homePasajero({super.key});
+class HomeAdministrador extends StatefulWidget {
+  const HomeAdministrador({super.key});
 
   @override
-  State<homePasajero> createState() => _homeConductorState();
+  State<HomeAdministrador> createState() => _homeAdministradorState();
 }
 
-class _homeConductorState extends State<homePasajero> {
+class _homeAdministradorState extends State<HomeAdministrador> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      bottomNavigationBar: DemoBottomAppBarPasajero(),
-      backgroundColor: Colors.white,
+      appBar: AppBar(
+        title: Center(
+          child: Text(
+            'Lista de conductores',
+            style: TextStyle(
+              color: Colors.amber,
+              fontFamily: 'Montserrat',
+              fontSize: 20,
+            ),
+          ),
+        ),
+        backgroundColor: Colors.indigo,
+        actions: <Widget>[
+          Row(
+            children: [
+              IconButton(
+                tooltip: 'Salir',
+                onPressed: () {
+                  Get.to(() => Login());
+                },
+                icon: const Icon(
+                  Icons.output_rounded,
+                  color: Colors.white,
+                ),
+              ),
+            ],
+          ),
+        ],
+      ),
       body: ListView(
+        padding: const EdgeInsets.all(10.0),
         children: <Widget>[
           Padding(
             padding: const EdgeInsets.all(8.0),
@@ -24,47 +52,68 @@ class _homeConductorState extends State<homePasajero> {
           Column(
             children: [
               Container(
-                height: 230,
-                decoration: const BoxDecoration(
-                  // ignore: unnecessary_const
-                  borderRadius:
-                      const BorderRadius.only(bottomRight: Radius.circular(50)),
-                  color: Colors.indigo,
+                padding: const EdgeInsets.all(10.0),
+                decoration: BoxDecoration(
+                  color: (Colors.indigo),
+                  borderRadius: BorderRadius.circular(10.0),
                 ),
-                child: Stack(
+                child: Row(
                   children: [
-                    Positioned(
-                        top: 80,
-                        left: 0,
-                        child: Container(
-                          height: 100,
-                          width: 300,
-                          decoration: const BoxDecoration(
-                              color: Colors.white,
-                              borderRadius: BorderRadius.only(
-                                topRight: Radius.circular(50),
-                                bottomRight: Radius.circular(50),
-                              )),
-                        )),
-                    const Positioned(
-                        top: 110,
-                        left: 20,
-                        child: Text(
-                          "Mis Rutas.",
-                          style: const TextStyle(
-                            color: Colors.amber,
-                            fontFamily: 'Montserrat',
-                            fontSize: 46,
-                          ),
-                        ))
+                    Container(
+                      width: 200,
+                      child: Text(
+                        "Ingresos Generados:",
+                        style: TextStyle(
+                            fontSize: 20,
+                            color: (Colors.amber),
+                            fontWeight: FontWeight.bold),
+                      ),
+                    ),
+                    Text(
+                      "2.900.700",
+                      style: TextStyle(
+                          fontSize: 20,
+                          color: (Colors.green),
+                          fontWeight: FontWeight.bold),
+                    ),
                   ],
                 ),
               ),
               SizedBox(
-                height: MediaQuery.of(context).size.height * 0.01,
+                height: 10,
               ),
               Container(
-                padding: const EdgeInsets.all(8),
+                padding: const EdgeInsets.all(10.0),
+                decoration: BoxDecoration(
+                  color: (Colors.indigo),
+                  borderRadius: BorderRadius.circular(10.0),
+                ),
+                child: Row(
+                  children: [
+                    Container(
+                      width: 200,
+                      child: Text(
+                        "Numero de viajes Realizados:",
+                        style: TextStyle(
+                            fontSize: 20,
+                            color: (Colors.amber),
+                            fontWeight: FontWeight.bold),
+                      ),
+                    ),
+                    Text(
+                      "230",
+                      style: TextStyle(
+                          fontSize: 20,
+                          color: (Colors.green),
+                          fontWeight: FontWeight.bold),
+                    ),
+                  ],
+                ),
+              ),
+              SizedBox(
+                height: MediaQuery.of(context).size.height * 0.02,
+              ),
+              Container(
                 child: TextField(
                   //controller: controlcorreo,
                   keyboardType: TextInputType.emailAddress,
@@ -83,10 +132,10 @@ class _homeConductorState extends State<homePasajero> {
                 ),
               ),
               SizedBox(
-                height: MediaQuery.of(context).size.height * 0.01,
+                height: MediaQuery.of(context).size.height * 0.02,
               ),
               Container(
-                height: 230,
+                height: 250,
                 child: Stack(
                   children: [
                     Positioned(
@@ -94,7 +143,7 @@ class _homeConductorState extends State<homePasajero> {
                         left: 20,
                         child: Material(
                           child: Container(
-                            height: 180.0,
+                            height: 200,
                             width: MediaQuery.of(context).size.width * 0.9,
                             decoration: BoxDecoration(
                               color: Colors.white,
@@ -137,34 +186,34 @@ class _homeConductorState extends State<homePasajero> {
                         top: 45,
                         left: 200,
                         child: Container(
-                          height: 150,
+                          height: 200,
                           width: 180,
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Text(
-                                "Origen",
+                                "Nombre",
                                 style: TextStyle(
                                     fontSize: 20,
                                     color: (Colors.blue),
                                     fontWeight: FontWeight.bold),
                               ),
                               Text(
-                                "Universidad",
+                                "Heli Alberto Cadena Arenilla",
                                 style: TextStyle(
                                     fontSize: 15,
                                     color: (Colors.green),
                                     fontWeight: FontWeight.bold),
                               ),
                               Text(
-                                "Destino",
+                                "Vehiculo",
                                 style: TextStyle(
                                     fontSize: 20,
                                     color: (Colors.blue),
                                     fontWeight: FontWeight.bold),
                               ),
                               Text(
-                                "Hurtado",
+                                "Moto",
                                 style: TextStyle(
                                     fontSize: 15,
                                     color: (Colors.green),
@@ -172,14 +221,14 @@ class _homeConductorState extends State<homePasajero> {
                               ),
                               Divider(color: Colors.black),
                               Text(
-                                "Valor: 3000",
+                                "Cantidad De Viajes: 17",
                                 style: TextStyle(
                                     fontSize: 15,
                                     color: (Colors.green),
                                     fontWeight: FontWeight.bold),
                               ),
                               Text(
-                                "Vehiculo: Moto",
+                                "Ingresos Generados: 450.000",
                                 style: TextStyle(
                                     fontSize: 15,
                                     color: (Colors.green),
@@ -192,7 +241,7 @@ class _homeConductorState extends State<homePasajero> {
                 ),
               ),
               Container(
-                height: 230,
+                height: 250,
                 child: Stack(
                   children: [
                     Positioned(
@@ -200,7 +249,7 @@ class _homeConductorState extends State<homePasajero> {
                         left: 20,
                         child: Material(
                           child: Container(
-                            height: 180.0,
+                            height: 200.0,
                             width: MediaQuery.of(context).size.width * 0.9,
                             decoration: BoxDecoration(
                               color: Colors.white,
@@ -243,34 +292,34 @@ class _homeConductorState extends State<homePasajero> {
                         top: 45,
                         left: 200,
                         child: Container(
-                          height: 150,
+                          height: 200,
                           width: 180,
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Text(
-                                "Origen",
+                                "Nombre",
                                 style: TextStyle(
                                     fontSize: 20,
                                     color: (Colors.blue),
                                     fontWeight: FontWeight.bold),
                               ),
                               Text(
-                                "Universidad",
+                                "Edna Rocio Cadena Arenilla",
                                 style: TextStyle(
                                     fontSize: 15,
                                     color: (Colors.green),
                                     fontWeight: FontWeight.bold),
                               ),
                               Text(
-                                "Destino",
+                                "Vehiculo",
                                 style: TextStyle(
                                     fontSize: 20,
                                     color: (Colors.blue),
                                     fontWeight: FontWeight.bold),
                               ),
                               Text(
-                                "Hurtado",
+                                "Moto",
                                 style: TextStyle(
                                     fontSize: 15,
                                     color: (Colors.green),
@@ -278,14 +327,14 @@ class _homeConductorState extends State<homePasajero> {
                               ),
                               Divider(color: Colors.black),
                               Text(
-                                "Valor: 3000",
+                                "Cantidad De Viajes: 32",
                                 style: TextStyle(
                                     fontSize: 15,
                                     color: (Colors.green),
                                     fontWeight: FontWeight.bold),
                               ),
                               Text(
-                                "Vehiculo: Moto",
+                                "Ingresos Generados: 1.050.000",
                                 style: TextStyle(
                                     fontSize: 15,
                                     color: (Colors.green),
@@ -298,7 +347,7 @@ class _homeConductorState extends State<homePasajero> {
                 ),
               ),
               Container(
-                height: 230,
+                height: 250,
                 child: Stack(
                   children: [
                     Positioned(
@@ -306,7 +355,7 @@ class _homeConductorState extends State<homePasajero> {
                         left: 20,
                         child: Material(
                           child: Container(
-                            height: 180.0,
+                            height: 200.0,
                             width: MediaQuery.of(context).size.width * 0.9,
                             decoration: BoxDecoration(
                               color: Colors.white,
@@ -352,34 +401,34 @@ class _homeConductorState extends State<homePasajero> {
                         top: 45,
                         left: 200,
                         child: Container(
-                          height: 150,
+                          height: 200,
                           width: 180,
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Text(
-                                "Origen",
+                                "Nombre",
                                 style: TextStyle(
                                     fontSize: 20,
                                     color: (Colors.blue),
                                     fontWeight: FontWeight.bold),
                               ),
                               Text(
-                                "Universidad",
+                                "Yulieth Vanesa Gonzales Larios",
                                 style: TextStyle(
                                     fontSize: 15,
                                     color: (Colors.green),
                                     fontWeight: FontWeight.bold),
                               ),
                               Text(
-                                "Destino",
+                                "Vehiculo",
                                 style: TextStyle(
                                     fontSize: 20,
                                     color: (Colors.blue),
                                     fontWeight: FontWeight.bold),
                               ),
                               Text(
-                                "Hurtado",
+                                "Moto",
                                 style: TextStyle(
                                     fontSize: 15,
                                     color: (Colors.green),
@@ -387,14 +436,14 @@ class _homeConductorState extends State<homePasajero> {
                               ),
                               Divider(color: Colors.black),
                               Text(
-                                "Valor: 3000",
+                                "Cantidad De Viajes: 5",
                                 style: TextStyle(
                                     fontSize: 15,
                                     color: (Colors.green),
                                     fontWeight: FontWeight.bold),
                               ),
                               Text(
-                                "Vehiculo: Moto",
+                                "Ingresos Generados: 220.000",
                                 style: TextStyle(
                                     fontSize: 15,
                                     color: (Colors.green),
@@ -410,6 +459,22 @@ class _homeConductorState extends State<homePasajero> {
           ),
         ],
       ),
+      //   children: <Widget>[
+      //     Row(
+      //       children: [
+      //         Column(
+      //           children: [Text("Ingresos")],
+      //         ),
+      //         Column(
+      //           children: [Text("Cantidad de Recorridos")],
+      //         ),
+      //       ],
+      //     ),
+      //     Row(
+      //       children: [Column()],
+      //     )
+      //   ],
+      // )
     );
   }
 }

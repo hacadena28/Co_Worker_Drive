@@ -37,7 +37,7 @@ class _PerfilConductorState extends State<PerfilConductor> {
     var catalogo = <String, dynamic>{
       'nombres': controlnombres.text = "Edna Rocio",
       'apellidos': controlapellidos.text = "Cadena Arenilla",
-      'sexo': controlsexo.text,
+      'sexo': controlsexo.text = "Femenino",
       'telefono': controltelefono.text = "3106987456",
       'correo': controlcorreo.text = "cadenaalberto123@gmail.com",
       'clave': controlclave.text,

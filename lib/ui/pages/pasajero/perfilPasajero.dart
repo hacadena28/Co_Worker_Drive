@@ -39,7 +39,7 @@ class _PerfilPasajeroState extends State<PerfilPasajero> {
     var catalogo = <String, dynamic>{
       'nombres': controlnombres.text = "Heli ALberto",
       'apellidos': controlapellidos.text = "Cadena Arenilla",
-      'sexo': controlsexo.text = "Femenino",
+      'sexo': controlsexo.text = "Masculino",
       'telefono': controltelefono.text = "3206870778",
       'correo': controlcorreo.text = "hc@gmail.com",
       'clave': controlclave.text,

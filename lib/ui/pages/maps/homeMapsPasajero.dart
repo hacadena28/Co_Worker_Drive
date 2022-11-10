@@ -55,7 +55,8 @@ class _HomeMApsState extends State<HomeMApsPasajero> {
             context: context,
             builder: (BuildContext context) {
               return Container(
-                height: 350,
+                height: MediaQuery.of(context).size.width * 1,
+                width: MediaQuery.of(context).size.width,
                 color: Colors.indigo[100],
                 child: Center(
                   child: Padding(
@@ -147,7 +148,7 @@ class _HomeMApsState extends State<HomeMApsPasajero> {
           );
         },
         label: const Text(
-          "Where are you going?",
+          "Solicitar Servicio",
           textAlign: TextAlign.center,
           style: TextStyle(
             color: Colors.black54,

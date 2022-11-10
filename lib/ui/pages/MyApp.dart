@@ -1,5 +1,6 @@
 import 'package:coworkerdriver/domain/controller/controladoruser.dart';
 import 'package:coworkerdriver/domain/modelo/conductor.dart';
+import 'package:coworkerdriver/ui/pages/administrador/homeAdministrador.dart';
 import 'package:coworkerdriver/ui/pages/conductor/homeConductor.dart';
 import 'package:coworkerdriver/ui/pages/conductor/perfilConductor.dart';
 import 'package:coworkerdriver/ui/pages/login/presentacion.dart';
@@ -35,7 +36,8 @@ class MyApp extends StatelessWidget {
         '/HomeMApsPasajero': (context) => HomeMApsPasajero(),
         '/homePasajero': (context) => homePasajero(),
         '/homeConductor': (context) => homeConductor(),
-        '/presentacion': (context) => Presentacion()
+        '/presentacion': (context) => Presentacion(),
+        '/homeAdministrador': (context) => HomeAdministrador(),
       },
       home: Presentacion(),
     );

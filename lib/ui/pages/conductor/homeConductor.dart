@@ -60,6 +60,28 @@ class _homeConductorState extends State<homeConductor> {
                 ),
               ),
               SizedBox(
+                height: MediaQuery.of(context).size.height * 0.01,
+              ),
+              Container(
+                padding: const EdgeInsets.all(8),
+                child: TextField(
+                  //controller: controlcorreo,
+                  keyboardType: TextInputType.emailAddress,
+                  decoration: InputDecoration(
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(
+                        30,
+                      ),
+                    ),
+                    labelText: 'Buscar ',
+                    icon: Icon(
+                      Icons.search,
+                      color: Colors.amber,
+                    ),
+                  ),
+                ),
+              ),
+              SizedBox(
                 height: MediaQuery.of(context).size.height * 0.05,
               ),
               Container(

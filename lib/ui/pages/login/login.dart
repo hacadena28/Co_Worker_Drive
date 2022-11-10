@@ -1,9 +1,4 @@
 import 'package:coworkerdriver/domain/controller/controladorAuth.dart';
-import 'package:coworkerdriver/domain/controller/controladoruser.dart';
-import 'package:coworkerdriver/domain/modelo/administrador.dart';
-import 'package:coworkerdriver/domain/modelo/conductor.dart';
-import 'package:coworkerdriver/domain/modelo/pasajero.dart';
-import 'package:coworkerdriver/ui/pages/conductor/perfilConductor.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -31,13 +26,50 @@ class _LoginState extends State<Login> {
           Padding(
             padding: EdgeInsets.only(left: 30.0),
             child: Row(
+              mainAxisSize: MainAxisSize.max,
               children: <Widget>[
-                Text('B I E N V E N I D O',
-                    style: TextStyle(
-                        fontFamily: 'Montserrat',
-                        color: Colors.white,
-                        fontSize: 25.0)),
-                SizedBox(width: 10.0),
+                Column(
+                  mainAxisSize: MainAxisSize.max,
+                  children: [
+                    Text('B I E N V E N I D O',
+                        style: TextStyle(
+                            fontFamily: 'Montserrat',
+                            color: Colors.white,
+                            fontSize: 25.0)),
+                  ],
+                ),
+                SizedBox(
+                  width: MediaQuery.of(context).size.width * 0.25,
+                ),
+                Column(crossAxisAlignment: CrossAxisAlignment.end, children: [
+                  IconButton(
+                      onPressed: () {
+                        if (controluser.text != "" && controlpassw.text != "") {
+                          if (controluser.text == "admin" &&
+                              controlpassw.text == "admin") {
+                            Get.offAllNamed('/homeAdministrador');
+                          } else {
+                            Get.showSnackbar(const GetSnackBar(
+                              title: 'Validacion Admin',
+                              message:
+                                  'Sus credenciales no son de tipo administrador',
+                              icon: Icon(Icons.warning_amber_sharp),
+                              duration: Duration(seconds: 4),
+                              backgroundColor: Colors.red,
+                            ));
+                          }
+                        } else {
+                          Get.showSnackbar(const GetSnackBar(
+                            title: 'Validacion de Adminstrador',
+                            message: 'Rellenar los campos',
+                            icon: Icon(Icons.warning_amber_sharp),
+                            duration: Duration(seconds: 4),
+                            backgroundColor: Colors.red,
+                          ));
+                        }
+                      },
+                      icon: Icon(Icons.key)),
+                ])
               ],
             ),
           ),
