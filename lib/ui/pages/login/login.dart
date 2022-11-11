@@ -60,7 +60,7 @@ class _LoginState extends State<Login> {
                           }
                         } else {
                           Get.showSnackbar(const GetSnackBar(
-                            title: 'Validacion de Adminstrador',
+                            title: 'Validacion de Administrador',
                             message: 'Rellenar los campos',
                             icon: Icon(Icons.warning_amber_sharp),
                             duration: Duration(seconds: 4),
