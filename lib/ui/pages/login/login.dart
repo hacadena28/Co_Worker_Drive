@@ -12,6 +12,11 @@ Controllerauthf controlf = Get.find();
 class _LoginState extends State<Login> {
   TextEditingController controluser = TextEditingController();
   TextEditingController controlpassw = TextEditingController();
+  var _passwordVisible;
+  @override
+  void initState() {
+    _passwordVisible = false;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -120,14 +125,27 @@ class _LoginState extends State<Login> {
                       ),
                       TextField(
                         controller: controlpassw,
-                        obscureText: true,
+                        obscureText: !_passwordVisible,
                         decoration: InputDecoration(
                             border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(30),
                             ),
                             labelText: 'Ingrese Contraseña',
                             icon: Icon(Icons.password_rounded,
-                                color: Colors.amber)),
+                                color: Colors.amber),
+                            suffixIcon: IconButton(
+                              icon: Icon(
+                                _passwordVisible
+                                    ? Icons.visibility
+                                    : Icons.visibility_off,
+                                color: Colors.indigo,
+                              ),
+                              onPressed: () {
+                                setState(() {
+                                  _passwordVisible = !_passwordVisible;
+                                });
+                              },
+                            )),
                       ),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
