@@ -7,12 +7,15 @@ import 'package:coworkerdriver/ui/pages/login/presentacion.dart';
 import 'package:coworkerdriver/ui/pages/login/registrarConductor.dart';
 import 'package:coworkerdriver/ui/pages/login/registrarPasajero.dart';
 import 'package:coworkerdriver/ui/pages/maps/homeMapsPasajero.dart';
+import 'package:coworkerdriver/ui/pages/maps/splash/paginaruta.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import 'login/home-pages.dart';
 import 'login/login.dart';
 import 'maps/homeMaps.dart';
+import 'maps/request_permission/request_permission.dart';
+import 'maps/splash/splash_page.dart';
 import 'pasajero/homePasajero.dart';
 import 'pasajero/perfilPasajero.dart';
 
@@ -26,6 +29,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(primarySwatch: Colors.indigo),
       debugShowCheckedModeBanner: false,
       routes: {
+       
         '/login': (context) => Login(),
         '/rol': (context) => MyHomePage(),
         '/loginConductor': (context) => const RegistrarConductor(),
@@ -37,9 +41,14 @@ class MyApp extends StatelessWidget {
         '/homePasajero': (context) => homePasajero(),
         '/homeConductor': (context) => homeConductor(),
         '/presentacion': (context) => Presentacion(),
+        '/SplashPage': (context) => SplashPage(),
+
         '/homeAdministrador': (context) => HomeAdministrador(),
+        '/RequestPermissionPage': (context) => RequestPermissionPage(),
+         
       },
       home: Presentacion(),
+    
     );
   }
 }
