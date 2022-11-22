@@ -43,6 +43,7 @@ dependencies:
   http:
   firebase_core: ^2.1.0
   firebase_auth: ^4.0.2
+  google_sign_in:
   cloud_firestore:
   firebase_storage:
   image_picker:

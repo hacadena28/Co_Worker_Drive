@@ -1,4 +1,5 @@
 import 'package:coworkerdriver/domain/controller/controladorAuth.dart';
+import 'package:coworkerdriver/ui/pages/login/autfService/authService.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -10,10 +11,10 @@ class Login extends StatefulWidget {
 Controllerauthf controlf = Get.find();
 
 class _LoginState extends State<Login> {
-
   TextEditingController controluser = TextEditingController();
   TextEditingController controlpassw = TextEditingController();
   var _passwordVisible;
+
   @override
   void initState() {
     _passwordVisible = false;
@@ -21,7 +22,7 @@ class _LoginState extends State<Login> {
 
   @override
   Widget build(BuildContext context) {
-    
+    AuthService().handleAuthState();
     return Scaffold(
       backgroundColor: Colors.indigo,
       body: ListView(
@@ -166,7 +167,9 @@ class _LoginState extends State<Login> {
                                           controluser.text, controlpassw.text)
                                       .then((value) {
                                     if (controlf.emailf != 'Sin Registro') {
-                                      Get.offAllNamed('/PerfilPasajero');
+                                      setState(() {
+                                        Get.offAllNamed('/PerfilPasajero');
+                                      });
 
                                       controlf.emailF("Sin Registro");
                                     } else {
@@ -196,32 +199,44 @@ class _LoginState extends State<Login> {
                           ),
                         ],
                       ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: <Widget>[
-                          Text('¿No tienes una cuenta?',
-                              style: TextStyle(
-                                color: Colors.indigo,
-                                fontFamily: 'Montserrat',
-                                fontWeight: FontWeight.bold,
-                                fontSize: 15.0,
-                              )),
-                          Padding(
-                              padding: const EdgeInsets.all(0.0),
-                              child: TextButton(
-                                onPressed: () {
-                                  Get.offAllNamed('/loginPasajero');
-                                  controlf.emailF("Sin Registro");
-                                },
-                                child: Text("Registrate",
+                      Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                const Text("¿No tienes una cuenta? ",
                                     style: TextStyle(
-                                      color: Colors.purple[400],
+                                      color: Colors.indigo,
                                       fontFamily: 'Montserrat',
                                       fontWeight: FontWeight.bold,
                                       fontSize: 15.0,
                                     )),
-                              )),
-                        ],
+                              ],
+                            ),
+                            GestureDetector(
+                              onTap: () {
+                                setState(() {
+                                  AuthService().signInWithGoogle();
+                                });
+                              },
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Text("Inicia Con Google",
+                                      style: TextStyle(
+                                        color: Colors.purple[400],
+                                        fontFamily: 'Montserrat',
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: 15.0,
+                                      )),
+                                ],
+                              ),
+                            )
+                          ],
+                        ),
                       ),
                     ],
                   ),

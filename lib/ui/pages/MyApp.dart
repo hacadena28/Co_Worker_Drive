@@ -3,6 +3,7 @@ import 'package:coworkerdriver/domain/modelo/conductor.dart';
 import 'package:coworkerdriver/ui/pages/administrador/homeAdministrador.dart';
 import 'package:coworkerdriver/ui/pages/conductor/homeConductor.dart';
 import 'package:coworkerdriver/ui/pages/conductor/perfilConductor.dart';
+import 'package:coworkerdriver/ui/pages/login/autfService/authService.dart';
 import 'package:coworkerdriver/ui/pages/login/presentacion.dart';
 import 'package:coworkerdriver/ui/pages/login/registrarConductor.dart';
 import 'package:coworkerdriver/ui/pages/login/registrarPasajero.dart';
@@ -29,7 +30,6 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(primarySwatch: Colors.indigo),
       debugShowCheckedModeBanner: false,
       routes: {
-       
         '/login': (context) => Login(),
         '/rol': (context) => MyHomePage(),
         '/loginConductor': (context) => const RegistrarConductor(),
@@ -42,13 +42,11 @@ class MyApp extends StatelessWidget {
         '/homeConductor': (context) => homeConductor(),
         '/presentacion': (context) => Presentacion(),
         '/SplashPage': (context) => SplashPage(),
-
         '/homeAdministrador': (context) => HomeAdministrador(),
         '/RequestPermissionPage': (context) => RequestPermissionPage(),
-         
       },
-      home: Presentacion(),
-    
+      // home: Presentacion(),
+      home: AuthService().handleAuthState(),
     );
   }
 }
