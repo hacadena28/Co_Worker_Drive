@@ -1,5 +1,6 @@
 import 'package:coworkerdriver/domain/controller/controladorAuth.dart';
 import 'package:coworkerdriver/ui/pages/login/autfService/authService.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -16,12 +17,27 @@ class _LoginState extends State<Login> with WidgetsBindingObserver {
     WidgetsBinding.instance.addObserver(this);
     _passwordVisible = false;
     super.initState();
+    try {
+      if (!prueba2.pruebaMensaje()) {
+        Get.showSnackbar(const GetSnackBar(
+          title: 'Validacion de usarios',
+          message: 'No eres usuario de unicesar',
+          icon: Icon(Icons.warning_amber_sharp),
+          duration: Duration(seconds: 4),
+          backgroundColor: Colors.red,
+        ));
+      }
+    } catch (e) {}
+
+    Text('hello ');
   }
+
   void updateState(_LoginState loginState) {
     setState(() {
       //Login = loginState;
     });
   }
+
   @override
   void dispose() {
     WidgetsBinding.instance.removeObserver(this);
@@ -29,9 +45,9 @@ class _LoginState extends State<Login> with WidgetsBindingObserver {
     super.dispose();
   }
 
-
   TextEditingController controluser = TextEditingController();
   TextEditingController controlpassw = TextEditingController();
+  AuthService prueba2 = new AuthService();
   var _passwordVisible;
 
   @override
@@ -234,6 +250,8 @@ class _LoginState extends State<Login> with WidgetsBindingObserver {
                               onTap: () {
                                 setState(() {
                                   AuthService().signInWithGoogle();
+                                  print(prueba2.prueba);
+                                  Get.offAllNamed('/validarC');
                                 });
                               },
                               child: Row(

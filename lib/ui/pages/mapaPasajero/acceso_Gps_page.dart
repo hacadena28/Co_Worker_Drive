@@ -60,7 +60,7 @@ class _AccesoGpsState extends State<AccesoGps> with WidgetsBindingObserver {
   }
 
   void accesoGps(PermissionStatus status) {
-    switch (status) {
+    switch(status) {
       case PermissionStatus.granted:
         Navigator.pushReplacementNamed(context, '/mapa');
         break;

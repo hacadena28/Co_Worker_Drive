@@ -40,6 +40,7 @@ class MyApp extends StatelessWidget {
         '/mapa': (context) => Mapa(),
         '/LoadingGps': (context) => LoadingGps(),
         '/AccesoGps': (context) => AccesoGps(),
+        '/validarC': (context) => AuthService().handleAuthState(),
       },
       // home: Presentacion(),
       home: AuthService().handleAuthState(),

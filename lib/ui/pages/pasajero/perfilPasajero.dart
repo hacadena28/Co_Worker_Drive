@@ -21,9 +21,9 @@ class _PerfilPasajeroState extends State<PerfilPasajero> {
   TextEditingController controlcorreo = TextEditingController();
   TextEditingController controlsexo = TextEditingController();
 
-
   @override
   void initState() {
+    PerfilPasajero();
     try {
       var catalogo = <String, dynamic>{
         'nombres': controlnombres.text =

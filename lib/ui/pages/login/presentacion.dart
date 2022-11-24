@@ -1,5 +1,6 @@
 import 'package:coworkerdriver/ui/pages/login/autfService/authService.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class Presentacion extends StatefulWidget {
   const Presentacion({super.key});
@@ -79,8 +80,8 @@ class _PresentacionState extends State<Presentacion> {
                           color: Colors.white,
                         ),
                         onPressed: () {
-                          //Get.offAllNamed('/login');
-                          AuthService().handleAuthState();
+                          Get.offAllNamed('/login');
+                         // AuthService().handleAuthState();
                         },
                         style: TextButton.styleFrom(
                             primary: Colors.white,
