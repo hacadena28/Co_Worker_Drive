@@ -1,4 +1,3 @@
-import 'package:coworkerdriver/domain/modelo/conductor.dart';
 import 'package:coworkerdriver/ui/pages/login/autfService/authService.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -17,7 +16,6 @@ class PerfilPasajero extends StatefulWidget {
 }
 
 class _PerfilPasajeroState extends State<PerfilPasajero> {
-  @override
   TextEditingController controlnombres = TextEditingController();
   TextEditingController controltelefono = TextEditingController();
   TextEditingController controlcorreo = TextEditingController();

@@ -1,11 +1,8 @@
-import 'dart:ffi';
 import 'dart:io';
 
-import 'package:coworkerdriver/domain/modelo/conductor.dart';
 import 'package:coworkerdriver/ui/pages/navegador/menunavConductor.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:image_picker/image_picker.dart';
 import '../../../data/services/peticionFirebaseAuthConductor.dart';
 import '../login/home-pages.dart';
@@ -23,7 +20,6 @@ class PerfilConductor extends StatefulWidget {
 }
 
 class _PerfilConductorState extends State<PerfilConductor> {
-  @override
   var _image;
   ImagePicker picker = ImagePicker();
   TextEditingController controlnombres = TextEditingController();
@@ -45,20 +41,10 @@ class _PerfilConductorState extends State<PerfilConductor> {
   FocusNode f4 = FocusNode();
   FocusNode f5 = FocusNode();
   FocusNode f6 = FocusNode();
+  // ignore: must_call_super
   void initState() {
-    var catalogo = <String, dynamic>{
-      'nombres': controlnombres.text = "Edna Rocio",
-      'apellidos': controlapellidos.text = "Cadena Arenilla",
-      'sexo': controlsexo.text = "Femenino",
-      'telefono': controltelefono.text = "3106987456",
-      'correo': controlcorreo.text = "cadenaalberto123@gmail.com",
-      'clave': controlclave.text,
-      'foto': "",
-      'placa moto': controlplacamoto.text = "abc - 124"
-    };
   }
 
-  @override
   // void initState() {
   //   controlnombres.text = widget.gestionConductor.nombres;
   //   controlapellidos.text = widget.gestionConductor.apellidos;
@@ -98,7 +84,6 @@ class _PerfilConductorState extends State<PerfilConductor> {
   @override
   Widget build(BuildContext context) {
     double largo = MediaQuery.of(context).size.width;
-    double alto = MediaQuery.of(context).size.height;
     return SafeArea(
       child: Scaffold(
         backgroundColor: Colors.indigo,

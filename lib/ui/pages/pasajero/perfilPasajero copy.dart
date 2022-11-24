@@ -1,17 +1,11 @@
-import 'dart:ffi';
-import 'dart:io';
 
 import 'package:coworkerdriver/domain/modelo/conductor.dart';
-import 'package:coworkerdriver/ui/pages/login/autfService/authService.dart';
-import 'package:coworkerdriver/ui/pages/navegador/menunavConductor.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:image_picker/image_picker.dart';
 import '../../../data/services/peticionFirebaseAuthConductor.dart';
 import '../login/home-pages.dart';
-import '../login/login.dart';
 import '../navegador/menunavPasajero.dart';
 
 class PerfilPasajero2 extends StatefulWidget {
@@ -26,7 +20,6 @@ class PerfilPasajero2 extends StatefulWidget {
 }
 
 class _PerfilPasajero2State extends State<PerfilPasajero2> {
-  @override
   var _image;
   ImagePicker picker = ImagePicker();
   TextEditingController controlnombres = TextEditingController();
@@ -37,21 +30,8 @@ class _PerfilPasajero2State extends State<PerfilPasajero2> {
   TextEditingController controlplacamoto = TextEditingController();
   TextEditingController controlclave = TextEditingController();
   @override
+  // ignore: must_call_super
   void initState() {
-    var catalogo = <String, dynamic>{
-      //_image:FirebaseAuth.instance.currentUser!.photoURL!,
-
-      'nombres': controlnombres.text =
-          FirebaseAuth.instance.currentUser!.displayName!,
-      'apellidos': controlapellidos.text =
-          FirebaseAuth.instance.currentUser!.photoURL!,
-      'sexo': controlsexo.text =
-          FirebaseAuth.instance.currentUser!.phoneNumber!,
-      'telefono': controltelefono.text = "3206870778",
-      'correo': controlcorreo.text = FirebaseAuth.instance.currentUser!.email!,
-      'clave': controlclave.text,
-      'foto': "",
-    };
   }
 
   // void initState() {
@@ -68,16 +48,6 @@ class _PerfilPasajero2State extends State<PerfilPasajero2> {
 
   var bandera = false;
   var nom = 'Lau';
-  _camGaleria(bool op) async {
-    XFile? image;
-    image = op
-        ? await picker.pickImage(source: ImageSource.camera, imageQuality: 50)
-        : await picker.pickImage(source: ImageSource.gallery, imageQuality: 50);
-
-    setState(() {
-      _image = (image != null) ? File(image.path) : null;
-    });
-  }
 
   set controlf(String controlf) {}
 
@@ -396,32 +366,4 @@ class _PerfilPasajero2State extends State<PerfilPasajero2> {
     );
   }
 
-  void _opcioncamara(context) {
-    showModalBottomSheet(
-        context: context,
-        builder: (BuildContext bc) {
-          return SafeArea(
-            child: Wrap(
-              children: <Widget>[
-                ListTile(
-                    leading: const Icon(Icons.photo_library),
-                    title: const Text('Imagen de Galeria'),
-                    onTap: () {
-                      _camGaleria(false);
-                      Get.back();
-                      // Navigator.of(context).pop();
-                    }),
-                ListTile(
-                  leading: const Icon(Icons.photo_camera),
-                  title: const Text('Capturar Imagen'),
-                  onTap: () {
-                    _camGaleria(true);
-                    Navigator.of(context).pop();
-                  },
-                ),
-              ],
-            ),
-          );
-        });
-  }
 }

@@ -1,7 +1,5 @@
 import 'package:coworkerdriver/ui/pages/login/autfService/authService.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
 
 class Presentacion extends StatefulWidget {
   const Presentacion({super.key});

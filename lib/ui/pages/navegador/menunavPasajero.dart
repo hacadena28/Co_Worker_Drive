@@ -1,7 +1,3 @@
-import 'package:coworkerdriver/ui/pages/conductor/perfilConductor.dart';
-import 'package:coworkerdriver/ui/pages/login/registrarConductor.dart';
-import 'package:coworkerdriver/ui/pages/maps/splash/routes.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -47,7 +43,7 @@ class DemoBottomAppBarPasajero extends StatelessWidget {
               icon: const Icon(Icons.place_outlined),
               onPressed: () {
                 // Get.offAllNamed('/HomeMApsPasajero');
-                Get.offAllNamed('/SplashPage');
+                Get.offAllNamed('/AccesoGps');
               },
             ),
             IconButton(

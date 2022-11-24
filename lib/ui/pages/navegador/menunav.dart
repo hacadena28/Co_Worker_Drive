@@ -1,6 +1,3 @@
-import 'package:coworkerdriver/ui/pages/conductor/perfilConductor.dart';
-import 'package:coworkerdriver/ui/pages/login/registrarConductor.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class menu extends StatefulWidget {
@@ -12,10 +9,6 @@ class menu extends StatefulWidget {
 
 class _menuState extends State<menu> {
   int index = 0;
-  final List<Widget> _paginas = [
-    RegistrarConductor(),
-    PerfilConductor(),
-  ];
 
   @override
   Widget build(BuildContext context) {

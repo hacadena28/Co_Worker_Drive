@@ -10,15 +10,29 @@ class Login extends StatefulWidget {
 
 Controllerauthf controlf = Get.find();
 
-class _LoginState extends State<Login> {
+class _LoginState extends State<Login> with WidgetsBindingObserver {
+  @override
+  void initState() {
+    WidgetsBinding.instance.addObserver(this);
+    _passwordVisible = false;
+    super.initState();
+  }
+  void updateState(_LoginState loginState) {
+    setState(() {
+      //Login = loginState;
+    });
+  }
+  @override
+  void dispose() {
+    WidgetsBinding.instance.removeObserver(this);
+
+    super.dispose();
+  }
+
+
   TextEditingController controluser = TextEditingController();
   TextEditingController controlpassw = TextEditingController();
   var _passwordVisible;
-
-  @override
-  void initState() {
-    _passwordVisible = false;
-  }
 
   @override
   Widget build(BuildContext context) {

@@ -3,7 +3,6 @@ import 'dart:io';
 import 'package:coworkerdriver/data/services/peticionFirebaseAuthPasajero.dart';
 import 'package:coworkerdriver/domain/controller/controladorAuth.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
 

@@ -2,7 +2,6 @@ import 'package:coworkerdriver/ui/pages/login/login.dart';
 import 'package:coworkerdriver/ui/pages/pasajero/perfilPasajero.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:get/get.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
 class AuthService {
@@ -22,6 +21,7 @@ class AuthService {
   }
 
   signInWithGoogle() async {
+    //const correo= FirebaseAuth.instance.currentUser!.email!;
     final GoogleSignInAccount? googleUser =
         await GoogleSignIn(scopes: <String>["email"]).signIn();
     final GoogleSignInAuthentication googleAuth =
@@ -30,8 +30,13 @@ class AuthService {
       accessToken: googleAuth.accessToken,
       idToken: googleAuth.idToken,
     );
-    print(googleUser);
-    return await FirebaseAuth.instance.signInWithCredential(credential);
+
+    if (googleUser.email == "lauradayana87@gmail.com") {
+      print('-----------------este es mi correo ');
+      return await FirebaseAuth.instance.signInWithCredential(credential);
+    } else {
+      print("-------------No ingreso" "$googleUser");
+    }
   }
 
   Future<void> signOutGoogle() async {
