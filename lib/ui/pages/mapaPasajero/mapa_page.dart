@@ -11,7 +11,6 @@ class Mapa extends StatefulWidget {
 class _MapaState extends State<Mapa> {
   @override
   void initState() {
-    // MiUbicacionBloc().iniciarSeguimiento();
 
     super.initState();
   }
@@ -28,4 +27,5 @@ class _MapaState extends State<Mapa> {
       body: Center(child: Text(' mapa')),
     );
   }
+  
 }
