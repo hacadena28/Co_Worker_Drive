@@ -17,15 +17,7 @@ class Mapa_controller extends ChangeNotifier {
   Stream<String> get onMarkerTap => _markersController.stream;
 
   @override
-  void initState() {
-    _init();
-  }
-
-  Future<void> _init() async {
-    final posicionInicial = await Geolocator.getCurrentPosition();
-
-    print(posicionInicial);
-  }
+  void initState() {}
 
   final initialCameraPosition = CameraPosition(
     target: LatLng(10.450254, -73.260486),

@@ -34,8 +34,9 @@ class HomeMApsPasajero extends StatelessWidget {
                     myLocationButtonEnabled: true,
                     mapType: MapType.normal,
                     markers: Controller.markers,
-                    onTap: Controller.onTap,
                     myLocationEnabled: true,
+
+                    onTap: Controller.onTap,
 
                     // Expanded(
                     //   child: SizedBox(
