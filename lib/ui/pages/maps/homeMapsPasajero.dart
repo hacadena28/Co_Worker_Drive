@@ -15,7 +15,7 @@ class HomeMApsPasajero extends StatelessWidget {
       create: (_) {
         final controller = Mapa_controller();
         controller.onMarkerTap.listen((String id) {
-          print("IR A $id"); 
+          print("IR A $id");
         });
         return controller;
       },
@@ -35,6 +35,8 @@ class HomeMApsPasajero extends StatelessWidget {
                     mapType: MapType.normal,
                     markers: Controller.markers,
                     onTap: Controller.onTap,
+                    myLocationEnabled: true,
+
                     // Expanded(
                     //   child: SizedBox(
                     //     width: MediaQuery.of(context).size.width * 1,

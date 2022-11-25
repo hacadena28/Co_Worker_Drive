@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/foundation.dart';
 import 'package:flutter/widgets.dart' show ChangeNotifier;
+import 'package:geolocator/geolocator.dart';
 
 import 'package:get/get.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
@@ -13,7 +14,18 @@ class Mapa_controller extends ChangeNotifier {
   Set<Marker> get markers => _markers.values.toSet();
 
   final _markersController = StreamController<String>.broadcast();
-  Stream<String> get onMarkerTap => _markersController.stream; 
+  Stream<String> get onMarkerTap => _markersController.stream;
+
+  @override
+  void initState() {
+    _init();
+  }
+
+  Future<void> _init() async {
+    final posicionInicial = await Geolocator.getCurrentPosition();
+
+    print(posicionInicial);
+  }
 
   final initialCameraPosition = CameraPosition(
     target: LatLng(10.450254, -73.260486),

@@ -42,8 +42,8 @@ class DemoBottomAppBarPasajero extends StatelessWidget {
               tooltip: 'Maps',
               icon: const Icon(Icons.place_outlined),
               onPressed: () {
-                // Get.offAllNamed('/HomeMApsPasajero');
-                Get.offAllNamed('/AccesoGps');
+                Get.offAllNamed('/HomeMApsPasajero');
+                //Get.offAllNamed('/AccesoGps');
               },
             ),
             IconButton(
