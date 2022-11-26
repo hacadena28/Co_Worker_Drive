@@ -25,6 +25,7 @@ class _PerfilPasajeroState extends State<PerfilPasajero> {
   void initState() {
     PerfilPasajero();
     try {
+      var imagen;
       var catalogo = <String, dynamic>{
         'nombres': controlnombres.text =
             FirebaseAuth.instance.currentUser!.displayName!,
@@ -110,15 +111,16 @@ class _PerfilPasajeroState extends State<PerfilPasajero> {
                   padding: const EdgeInsets.all(12.0),
                   child: Column(
                     children: [
-                      
                       Center(
                         child: GestureDetector(
                           child: CircleAvatar(
                             radius: 90,
                             // aqui tengo la foto de mi usuario de google
-                            
-                            backgroundImage: NetworkImage(
-                                 FirebaseAuth.instance.currentUser!.photoURL!),
+
+                            backgroundImage: AssetImage(
+                              "assets/ella.png",
+                            ),
+                            //     FirebaseAuth.instance.currentUser!.photoURL!),
                           ),
                         ),
                       ),

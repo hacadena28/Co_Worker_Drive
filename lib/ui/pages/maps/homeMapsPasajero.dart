@@ -9,9 +9,12 @@ import '../navegador/menunavPasajero.dart';
 class HomeMApsPasajero extends StatelessWidget {
   const HomeMApsPasajero({Key? key}) : super(key: key);
 
+ // Polyline _miRuta = new Polyline(polylineId: PolylineId(''));
+
   @override
   Widget build(BuildContext context) {
     return ChangeNotifierProvider<Mapa_controller>(
+      
       create: (_) {
         final controller = Mapa_controller();
         controller.onMarkerTap.listen((String id) {
@@ -35,6 +38,7 @@ class HomeMApsPasajero extends StatelessWidget {
                     mapType: MapType.normal,
                     markers: Controller.markers,
                     myLocationEnabled: true,
+                    
 
                     onTap: Controller.onTap,
 
@@ -162,5 +166,6 @@ class HomeMApsPasajero extends StatelessWidget {
         ),
       ),
     );
+
   }
 }

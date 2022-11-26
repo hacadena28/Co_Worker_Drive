@@ -229,44 +229,58 @@ class _LoginState extends State<Login> with WidgetsBindingObserver {
                           ),
                         ],
                       ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.fromLTRB(0, 15, 0, 0),
+                            child: ElevatedButton.icon(
+                                icon: Icon(
+                                  Icons.login,
+                                  size: 25,
+                                  color: Colors.white,
+                                ),
+                                onPressed: () {
+                                  setState(() {
+                                    AuthService().signInWithGoogle();
+                                    print(prueba2.prueba);
+                                    Get.offAllNamed('/validarC');
+                                  });
+                                },
+                                style: TextButton.styleFrom(
+                                    primary: Colors.white,
+                                    backgroundColor: Colors.blue[600]),
+                                label: Text("Google")),
+                          ),
+                        ],
+                      ),
                       Padding(
                         padding: const EdgeInsets.all(8.0),
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                const Text("¿No tienes una cuenta? ",
-                                    style: TextStyle(
-                                      color: Colors.indigo,
-                                      fontFamily: 'Montserrat',
-                                      fontWeight: FontWeight.bold,
-                                      fontSize: 15.0,
-                                    )),
-                              ],
-                            ),
-                            GestureDetector(
-                              onTap: () {
-                                setState(() {
-                                  AuthService().signInWithGoogle();
-                                  print(prueba2.prueba);
-                                  Get.offAllNamed('/validarC');
-                                });
-                              },
-                              child: Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  Text("Inicia Con Google",
+                          children: <Widget>[
+                            Text('¿No tienes una cuenta?',
+                                style: TextStyle(
+                                  color: Colors.indigo,
+                                  fontFamily: 'Montserrat',
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 15.0,
+                                )),
+                            Padding(
+                                padding: const EdgeInsets.all(0.0),
+                                child: TextButton(
+                                  onPressed: () {
+                                    Get.offAllNamed('/loginPasajero');
+                                    controlf.emailF("Sin Registro");
+                                  },
+                                  child: Text("Registrate",
                                       style: TextStyle(
                                         color: Colors.purple[400],
                                         fontFamily: 'Montserrat',
                                         fontWeight: FontWeight.bold,
                                         fontSize: 15.0,
                                       )),
-                                ],
-                              ),
-                            )
+                                )),
                           ],
                         ),
                       ),
