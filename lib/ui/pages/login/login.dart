@@ -236,9 +236,18 @@ class _LoginState extends State<Login> with WidgetsBindingObserver {
                             padding: const EdgeInsets.fromLTRB(0, 15, 0, 0),
                             child: ElevatedButton.icon(
                                 icon: Icon(
-                                  Icons.login,
-                                  size: 25,
+                                  Icons.g_mobiledata_rounded,
+                                  size: 35,
                                   color: Colors.white,
+                                ),
+                                style: ButtonStyle(
+                                  backgroundColor: MaterialStateProperty.all(
+                                      Colors.redAccent),
+                                  elevation: MaterialStateProperty.all(12),
+                                  shape: MaterialStateProperty.all(
+                                      RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(25),
+                                  )),
                                 ),
                                 onPressed: () {
                                   setState(() {
@@ -247,9 +256,9 @@ class _LoginState extends State<Login> with WidgetsBindingObserver {
                                     Get.offAllNamed('/validarC');
                                   });
                                 },
-                                style: TextButton.styleFrom(
-                                    primary: Colors.white,
-                                    backgroundColor: Colors.blue[600]),
+                                // style: TextButton.styleFrom(
+                                //     primary: Colors.white,
+                                //     backgroundColor: Colors.blue[600]),
                                 label: Text("Google")),
                           ),
                         ],

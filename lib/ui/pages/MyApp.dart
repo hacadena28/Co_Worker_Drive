@@ -47,4 +47,5 @@ class MyApp extends StatelessWidget {
       home: AuthService().handleAuthState(),
     );
   }
+  
 }

@@ -1,7 +1,9 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:coworkerdriver/ui/pages/login/autfService/authService.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import '../../../data/services/peticionFirebaseAuthPasajero.dart';
 import '../login/home-pages.dart';
 import '../login/login.dart';
 import '../navegador/menunavPasajero.dart';
@@ -19,7 +21,9 @@ class _PerfilPasajeroState extends State<PerfilPasajero> {
   TextEditingController controlnombres = TextEditingController();
   TextEditingController controltelefono = TextEditingController();
   TextEditingController controlcorreo = TextEditingController();
-  TextEditingController controlsexo = TextEditingController();
+  final sexo = ["Masculino", "Femenino", "Otros"];
+  String? selectSexo;
+  var _image = null;
 
   @override
   void initState() {
@@ -29,15 +33,13 @@ class _PerfilPasajeroState extends State<PerfilPasajero> {
       var catalogo = <String, dynamic>{
         'nombres': controlnombres.text =
             FirebaseAuth.instance.currentUser!.displayName!,
-        'sexo': controlsexo.text = "F",
         'correo': controlcorreo.text =
             FirebaseAuth.instance.currentUser!.email!,
+        
         'foto': "",
-        'telefono': controltelefono.text =
-            FirebaseAuth.instance.currentUser!.phoneNumber!,
       };
     } catch (e) {
-      print("Este es mi error");
+      print("Este Algunos datos vienen vacios");
 
       print(e);
     }
@@ -187,9 +189,26 @@ class _PerfilPasajeroState extends State<PerfilPasajero> {
                       SizedBox(
                         height: 20,
                       ),
-                      TextField(
-                        controller: controlsexo,
-                        enabled: false,
+                      DropdownButtonFormField(
+                        value: selectSexo,
+                        items: sexo
+                            .map(
+                              (e) => DropdownMenuItem(
+                                child: Text(e),
+                                value: e,
+                              ),
+                            )
+                            .toList(),
+                        onChanged: (val) {
+                          setState(() {
+                            selectSexo = val as String;
+                          });
+                        },
+                        icon: const Icon(
+                          Icons.arrow_drop_down_circle,
+                          color: Colors.amber,
+                        ),
+                        dropdownColor: Colors.amber[50],
                         decoration: InputDecoration(
                           border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(
@@ -198,7 +217,7 @@ class _PerfilPasajeroState extends State<PerfilPasajero> {
                           ),
                           labelText: 'Sexo',
                           icon: Icon(
-                            Icons.wc_rounded,
+                            Icons.wc,
                             color: Colors.amber,
                           ),
                         ),
@@ -249,6 +268,7 @@ class _PerfilPasajeroState extends State<PerfilPasajero> {
                                                   height: 30,
                                                 ),
                                                 TextField(
+                                                  controller: controltelefono,
                                                   enabled: true,
                                                   keyboardType:
                                                       TextInputType.number,
@@ -272,8 +292,44 @@ class _PerfilPasajeroState extends State<PerfilPasajero> {
                                                 ElevatedButton(
                                                   child: const Text(
                                                       'Guardar Cambios'),
-                                                  onPressed: () =>
-                                                      Navigator.pop(context),
+                                                  onPressed: () {
+                                                    if (validarCamposvasios()) {
+                                                      print('campos llenos');
+                                                      var catalogo =
+                                                          <String, dynamic>{
+                                                        'nombres':
+                                                            controlnombres.text,
+                                                        'sexo': selectSexo,
+                                                        'telefono':
+                                                            controltelefono
+                                                                .text,
+                                                        'correo':
+                                                            controlcorreo.text,
+                                                        'foto': "",
+                                                      };
+                                                      PeticionesPasajero
+                                                          .crearPasajero(
+                                                              catalogo,
+                                                              "assets/ella.png");
+
+                                                      Get.offAllNamed(
+                                                          '/PerfilPasajero');
+                                                    } else {
+                                                      Get.showSnackbar(
+                                                          const GetSnackBar(
+                                                        title: "ADVERTENCIA",
+                                                        message:
+                                                            "Por favor rellene todos los campos",
+                                                        icon: Icon(Icons
+                                                            .warning_amber_sharp),
+                                                        duration: Duration(
+                                                            seconds: 4),
+                                                        backgroundColor:
+                                                            Color.fromARGB(255,
+                                                                213, 136, 130),
+                                                      ));
+                                                    }
+                                                  },
                                                   style: TextButton.styleFrom(
                                                       primary: Colors.white,
                                                       backgroundColor:
@@ -303,5 +359,14 @@ class _PerfilPasajeroState extends State<PerfilPasajero> {
         ),
       ),
     );
+  }
+
+  bool validarCamposvasios() {
+    if (controlnombres.text.isNotEmpty &&
+        controltelefono.text.isNotEmpty &&
+        controlcorreo.text.isNotEmpty) {
+      return true;
+    }
+    return false;
   }
 }

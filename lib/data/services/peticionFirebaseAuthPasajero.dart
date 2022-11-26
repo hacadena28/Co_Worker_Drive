@@ -9,7 +9,7 @@ class PeticionesPasajero {
   static Future<void> crearPasajero(Map<String, dynamic> catalogo, foto) async {
     var url = '';
     if (foto != null) {
-      url = await cargarfoto(foto, catalogo['correo']);
+   //   url = await cargarfoto(foto, catalogo['correo']);
     }
 
     catalogo['foto'] = url.toString();
