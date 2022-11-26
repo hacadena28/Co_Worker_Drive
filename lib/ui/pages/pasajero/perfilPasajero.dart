@@ -1,4 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:coworkerdriver/domain/controller/controladorPasajero.dart';
+import 'package:coworkerdriver/domain/modelo/pasajero.dart';
 import 'package:coworkerdriver/ui/pages/login/autfService/authService.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -21,13 +23,29 @@ class _PerfilPasajeroState extends State<PerfilPasajero> {
   TextEditingController controlnombres = TextEditingController();
   TextEditingController controltelefono = TextEditingController();
   TextEditingController controlcorreo = TextEditingController();
+  TextEditingController controlSexo = TextEditingController();
+  late Pasajero listaFinal;
   final sexo = ["Masculino", "Femenino", "Otros"];
   String? selectSexo;
   var _image = null;
 
   @override
   void initState() {
+    PasajeroController pasajeroController = Get.put(PasajeroController());
+
+    pasajeroController.consultaArticulos().then((value) => null);
+
     PerfilPasajero();
+    try {
+      listaFinal = pasajeroController.getArticulosGral![0];
+      print("Lista cargada de firebase");
+      print(listaFinal);
+    } catch (e) {
+      print("Lista no cargada de firebase");
+      print(e);
+    }
+
+    print("Lista Prueba 1 pasajeros");
     try {
       var imagen;
       var catalogo = <String, dynamic>{
@@ -35,17 +53,41 @@ class _PerfilPasajeroState extends State<PerfilPasajero> {
             FirebaseAuth.instance.currentUser!.displayName!,
         'correo': controlcorreo.text =
             FirebaseAuth.instance.currentUser!.email!,
-        
-        'foto': "",
       };
+
+      print(listaFinal);
+      print(
+          "-----------------------------------------------------------------------------------------");
+
+      if (catalogo == null) {}
     } catch (e) {
       print("Este Algunos datos vienen vacios");
 
+      llenar();
       print(e);
     }
   }
 
   set controlf(String controlf) {}
+
+  llenar() {
+    print("Llenando");
+    try {
+      var catalogo = <String, dynamic>{
+        'nombres': controlnombres.text = listaFinal.nombres,
+        'correo': controlcorreo.text = listaFinal.correo,
+        'telefono': controltelefono.text = listaFinal.telefono,
+        'sexo': controlSexo.text = listaFinal.sexo,
+        'foto': "",
+      };
+    } catch (e) {
+      print("se va por aca.............");
+      print(e);
+    }
+
+    print(
+        "----------------------------------------------------------------------------------");
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -189,30 +231,14 @@ class _PerfilPasajeroState extends State<PerfilPasajero> {
                       SizedBox(
                         height: 20,
                       ),
-                      DropdownButtonFormField(
-                        value: selectSexo,
-                        items: sexo
-                            .map(
-                              (e) => DropdownMenuItem(
-                                child: Text(e),
-                                value: e,
-                              ),
-                            )
-                            .toList(),
-                        onChanged: (val) {
-                          setState(() {
-                            selectSexo = val as String;
-                          });
-                        },
-                        icon: const Icon(
-                          Icons.arrow_drop_down_circle,
-                          color: Colors.amber,
-                        ),
-                        dropdownColor: Colors.amber[50],
+                      TextField(
+                        controller: controlSexo,
+                        enabled: false,
+                        keyboardType: TextInputType.text,
                         decoration: InputDecoration(
                           border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(
-                              30,
+                              20,
                             ),
                           ),
                           labelText: 'Sexo',

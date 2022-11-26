@@ -29,6 +29,7 @@ class Pasajero {
       foto: data['foto'] ?? '',
     );
   }
+
   Map<String, dynamic> toJson() => {
         "nombres": nombres,
         "apellidos": apellidos,

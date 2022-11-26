@@ -1,5 +1,9 @@
+import 'dart:developer';
+
 import 'package:firebase_storage/firebase_storage.dart' as fs;
 import 'package:cloud_firestore/cloud_firestore.dart';
+
+import '../../domain/modelo/pasajero.dart';
 
 class PeticionesPasajero {
   static final fs.FirebaseStorage storage =
@@ -9,7 +13,7 @@ class PeticionesPasajero {
   static Future<void> crearPasajero(Map<String, dynamic> catalogo, foto) async {
     var url = '';
     if (foto != null) {
-   //   url = await cargarfoto(foto, catalogo['correo']);
+      //   url = await cargarfoto(foto, catalogo['correo']);
     }
 
     catalogo['foto'] = url.toString();
@@ -28,5 +32,20 @@ class PeticionesPasajero {
     var url = await taskSnapshot.ref.getDownloadURL();
 
     return url.toString();
+  }
+
+  static Future<List<Pasajero>> consultarGral() async {
+    List<Pasajero> lista = [];
+    await _db.collection("Pasajeros").get().then((respuesta) {
+      for (var doc in respuesta.docs) {
+        log(doc.data().toString());
+        lista.add(Pasajero.desdeDoc(doc.data()));
+      }
+      print("listaaaaaaaa gralll");
+      print(lista);
+      print("listaaaaaaaa gralll final");
+    });
+
+    return lista;
   }
 }
