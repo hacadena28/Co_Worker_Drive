@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:coworkerdriver/data/services/peticionFirebaseAuthPasajero.dart';
 import 'package:coworkerdriver/domain/controller/controladorAuth.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
@@ -36,6 +37,30 @@ class _RegistrarPasajeroState extends State<RegistrarPasajero> {
     setState(() {
       _image = (image != null) ? File(image.path) : null;
     });
+  }
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+
+    print("Lista Prueba 1 pasajeros");
+    try {
+      var imagen;
+      var catalogo = <String, dynamic>{
+        'nombres': controlnombres.text =
+            FirebaseAuth.instance.currentUser!.displayName!,
+        'correo': controlcorreo.text =
+            FirebaseAuth.instance.currentUser!.email!,
+      };
+
+      print(
+          "-----------------------------------------------------------------------------------------");
+    } catch (e) {
+      print("Este Algunos datos vienen vacios");
+
+      print(e);
+    }
   }
 
   @override
@@ -137,7 +162,6 @@ class _RegistrarPasajeroState extends State<RegistrarPasajero> {
                     SizedBox(
                       height: 5,
                     ),
-                 
                     TextField(
                       controller: controlnombres,
                       keyboardType: TextInputType.text,
@@ -152,26 +176,6 @@ class _RegistrarPasajeroState extends State<RegistrarPasajero> {
                           Icons.person,
                           color: Colors.amber,
                         ),
-                      ),
-                    ),
-                    SizedBox(
-                      height: 10,
-                    ),
-                    TextField(
-                      controller: controlapellidos,
-                      keyboardType: TextInputType.text,
-                      decoration: InputDecoration(
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(
-                            30,
-                          ),
-                        ),
-                        labelText: 'Apellidos',
-                        icon: Icon(
-                          Icons.person,
-                          color: Colors.amber,
-                        ),
-                        
                       ),
                     ),
                     SizedBox(
@@ -306,7 +310,6 @@ class _RegistrarPasajeroState extends State<RegistrarPasajero> {
                                       controlconfirmarclave.text) {
                                     var catalogo = <String, dynamic>{
                                       'nombres': controlnombres.text,
-                                      'apellidos': controlapellidos.text,
                                       'sexo': selectSexo,
                                       'telefono': controltelefono.text,
                                       'correo': controlcorreo.text,
@@ -411,7 +414,6 @@ class _RegistrarPasajeroState extends State<RegistrarPasajero> {
 
   bool validarCamposvasios() {
     if (controlnombres.text.isNotEmpty &&
-        controlapellidos.text.isNotEmpty &&
         controltelefono.text.isNotEmpty &&
         controlcorreo.text.isNotEmpty &&
         controlclave.text.isNotEmpty) {

@@ -6,6 +6,7 @@ class Pasajero {
   var correo;
   var clave;
   var tipoUsuario;
+  var placa;
   final String foto;
 
   Pasajero(
@@ -16,7 +17,8 @@ class Pasajero {
       required this.correo,
       required this.clave,
       this.tipoUsuario = "pasajero",
-      required this.foto});
+      required this.foto,
+      required this.placa});
 
   factory Pasajero.desdeDoc(Map<String, dynamic> data) {
     return Pasajero(
@@ -27,6 +29,7 @@ class Pasajero {
       correo: data['correo'] ?? '',
       clave: data['clave'] ?? '',
       foto: data['foto'] ?? '',
+      placa: data['placa'] ?? '',
     );
   }
 
@@ -37,6 +40,7 @@ class Pasajero {
         "telefono": telefono,
         "correo": correo,
         "clave": clave,
-        "foto": foto
+        "foto": foto,
+        "placa": placa,
       };
 }

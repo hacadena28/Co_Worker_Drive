@@ -8,7 +8,10 @@ class PasajeroController extends GetxController {
 
   Future<void> consultaArticulos() async {
     _listaDeUsuarios.value = await PeticionesPasajero.consultarGral();
+    print("pintando lista consultada");
+
     print(_listaDeUsuarios);
+    print("FIn pintando lista consultada");
   }
 
   List<Pasajero>? get getArticulosGral => _listaDeUsuarios.value;

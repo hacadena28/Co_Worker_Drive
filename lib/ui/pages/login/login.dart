@@ -184,7 +184,7 @@ class _LoginState extends State<Login> with WidgetsBindingObserver {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Padding(
-                            padding: const EdgeInsets.fromLTRB(0, 15, 0, 0),
+                            padding: const EdgeInsets.fromLTRB(0, 15, 0, 15),
                             child: ElevatedButton.icon(
                                 icon: Icon(
                                   Icons.login,
@@ -199,6 +199,8 @@ class _LoginState extends State<Login> with WidgetsBindingObserver {
                                     if (controlf.emailf != 'Sin Registro') {
                                       setState(() {
                                         Get.offAllNamed('/PerfilPasajero');
+                                        controlf
+                                            .controlarAcceso(controluser.text);
                                       });
 
                                       controlf.emailF("Sin Registro");
@@ -222,12 +224,33 @@ class _LoginState extends State<Login> with WidgetsBindingObserver {
                                     ));
                                   });
                                 },
-                                style: TextButton.styleFrom(
-                                    primary: Colors.white,
-                                    backgroundColor: Colors.green[600]),
+                                style: ButtonStyle(
+                                  backgroundColor:
+                                      MaterialStateProperty.all(Colors.green),
+                                  elevation: MaterialStateProperty.all(12),
+                                  shape: MaterialStateProperty.all(
+                                      RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(25),
+                                  )),
+                                ),
                                 label: Text("Iniciar Sesion")),
                           ),
                         ],
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: <Widget>[
+                            Text('¿No tienes una cuenta?',
+                                style: TextStyle(
+                                  color: Colors.indigo,
+                                  fontFamily: 'Montserrat',
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 15.0,
+                                )),
+                          ],
+                        ),
                       ),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
@@ -253,7 +276,7 @@ class _LoginState extends State<Login> with WidgetsBindingObserver {
                                   setState(() {
                                     AuthService().signInWithGoogle();
                                     print(prueba2.prueba);
-                                    Get.offAllNamed('/validarC');
+                                    Get.offAllNamed('/RegistrarC');
                                   });
                                 },
                                 // style: TextButton.styleFrom(
@@ -261,37 +284,36 @@ class _LoginState extends State<Login> with WidgetsBindingObserver {
                                 //     backgroundColor: Colors.blue[600]),
                                 label: Text("Google")),
                           ),
+                          SizedBox(
+                            width: 20, // para dar espacio
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.fromLTRB(0, 15, 0, 0),
+                            child: ElevatedButton.icon(
+                                icon: Icon(
+                                  Icons.account_circle_rounded,
+                                  size: 35,
+                                  color: Colors.white,
+                                ),
+                                style: ButtonStyle(
+                                  backgroundColor: MaterialStateProperty.all(
+                                      Colors.redAccent),
+                                  elevation: MaterialStateProperty.all(12),
+                                  shape: MaterialStateProperty.all(
+                                      RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(25),
+                                  )),
+                                ),
+                                onPressed: () {
+                                  Get.offAllNamed('/registrarPasajero');
+                                  controlf.emailF("Sin Registro");
+                                },
+                                // style: TextButton.styleFrom(
+                                //     primary: Colors.white,
+                                //     backgroundColor: Colors.blue[600]),
+                                label: Text("Registrate")),
+                          ),
                         ],
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: <Widget>[
-                            Text('¿No tienes una cuenta?',
-                                style: TextStyle(
-                                  color: Colors.indigo,
-                                  fontFamily: 'Montserrat',
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 15.0,
-                                )),
-                            Padding(
-                                padding: const EdgeInsets.all(0.0),
-                                child: TextButton(
-                                  onPressed: () {
-                                    Get.offAllNamed('/loginPasajero');
-                                    controlf.emailF("Sin Registro");
-                                  },
-                                  child: Text("Registrate",
-                                      style: TextStyle(
-                                        color: Colors.purple[400],
-                                        fontFamily: 'Montserrat',
-                                        fontWeight: FontWeight.bold,
-                                        fontSize: 15.0,
-                                      )),
-                                )),
-                          ],
-                        ),
                       ),
                     ],
                   ),

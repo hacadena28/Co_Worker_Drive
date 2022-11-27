@@ -31,7 +31,7 @@ class MyApp extends StatelessWidget {
         '/login': (context) => Login(),
         '/rol': (context) => MyHomePage(),
         '/loginConductor': (context) => const RegistrarConductor(),
-        '/loginPasajero': (context) => const RegistrarPasajero(),
+        '/registrarPasajero': (context) => const RegistrarPasajero(),
         '/perfilConductor': (context) => PerfilConductor(),
         '/PerfilPasajero': (context) => PerfilPasajero(),
         '/homePasajero': (context) => homePasajero(),
@@ -42,10 +42,10 @@ class MyApp extends StatelessWidget {
         '/LoadingGps': (context) => LoadingGps(),
         '/AccesoGps': (context) => AccesoGps(),
         '/validarC': (context) => AuthService().handleAuthState(),
+        '/RegistrarC': (context) => AuthService().handleAuthState(),
       },
       // home: Presentacion(),
       home: AuthService().handleAuthState(),
     );
   }
-  
 }

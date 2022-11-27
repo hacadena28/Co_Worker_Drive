@@ -6,6 +6,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../../../data/services/peticionFirebaseAuthPasajero.dart';
+import '../../../domain/controller/controladorAuth.dart';
 import '../login/home-pages.dart';
 import '../login/login.dart';
 import '../navegador/menunavPasajero.dart';
@@ -19,12 +20,15 @@ class PerfilPasajero extends StatefulWidget {
   State<PerfilPasajero> createState() => _PerfilPasajeroState();
 }
 
+Controllerauthf controlf = Get.find();
+
 class _PerfilPasajeroState extends State<PerfilPasajero> {
   TextEditingController controlnombres = TextEditingController();
   TextEditingController controltelefono = TextEditingController();
   TextEditingController controlcorreo = TextEditingController();
   TextEditingController controlSexo = TextEditingController();
-  late Pasajero listaFinal;
+  List<Pasajero> listaFinal = [];
+  late Pasajero pasajeroFinal;
   final sexo = ["Masculino", "Femenino", "Otros"];
   String? selectSexo;
   var _image = null;
@@ -34,50 +38,49 @@ class _PerfilPasajeroState extends State<PerfilPasajero> {
     PasajeroController pasajeroController = Get.put(PasajeroController());
 
     pasajeroController.consultaArticulos().then((value) => null);
-
     PerfilPasajero();
+
     try {
-      listaFinal = pasajeroController.getArticulosGral![0];
-      print("Lista cargada de firebase");
-      print(listaFinal);
+      for (int i = 0; i <= pasajeroController.getArticulosGral!.length; i++) {
+        pasajeroFinal = pasajeroController.getArticulosGral![i];
+        print(controlf.email);
+        print("validando................. correso");
+        print(pasajeroFinal.correo);
+        print(controlf.emailf);
+        if (pasajeroFinal.correo == controlf.email) {
+          pasajeroFinal = pasajeroFinal;
+          print(pasajeroFinal);
+          llenar();
+        }
+        ;
+      }
     } catch (e) {
+      print(pasajeroFinal.correo);
+      print(controlf.emailf);
       print("Lista no cargada de firebase");
+
       print(e);
     }
 
-    print("Lista Prueba 1 pasajeros");
-    try {
-      var imagen;
-      var catalogo = <String, dynamic>{
-        'nombres': controlnombres.text =
-            FirebaseAuth.instance.currentUser!.displayName!,
-        'correo': controlcorreo.text =
-            FirebaseAuth.instance.currentUser!.email!,
-      };
-
-      print(listaFinal);
-      print(
-          "-----------------------------------------------------------------------------------------");
-
-      if (catalogo == null) {}
-    } catch (e) {
-      print("Este Algunos datos vienen vacios");
-
-      llenar();
-      print(e);
-    }
+    // try {
+    //   pasajeroFinal = pasajeroController.getArticulosGral![0];
+    //   print("Lista cargada de firebase");
+    //   print(pasajeroFinal);
+    //   llenar();
+    // } catch (e) {
+    //   print("Lista no cargada de firebase");
+    //   print(e);
+    // }
   }
-
-  set controlf(String controlf) {}
 
   llenar() {
     print("Llenando");
     try {
       var catalogo = <String, dynamic>{
-        'nombres': controlnombres.text = listaFinal.nombres,
-        'correo': controlcorreo.text = listaFinal.correo,
-        'telefono': controltelefono.text = listaFinal.telefono,
-        'sexo': controlSexo.text = listaFinal.sexo,
+        'nombres': controlnombres.text = pasajeroFinal.nombres,
+        'correo': controlcorreo.text = pasajeroFinal.correo,
+        'telefono': controltelefono.text = pasajeroFinal.telefono,
+        'sexo': controlSexo.text = pasajeroFinal.sexo,
         'foto': "",
       };
     } catch (e) {
@@ -333,13 +336,7 @@ class _PerfilPasajeroState extends State<PerfilPasajero> {
                                                             controlcorreo.text,
                                                         'foto': "",
                                                       };
-                                                      PeticionesPasajero
-                                                          .crearPasajero(
-                                                              catalogo,
-                                                              "assets/ella.png");
-
-                                                      Get.offAllNamed(
-                                                          '/PerfilPasajero');
+                                                      navigator?.pop(context);
                                                     } else {
                                                       Get.showSnackbar(
                                                           const GetSnackBar(

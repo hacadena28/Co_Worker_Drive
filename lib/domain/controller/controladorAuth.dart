@@ -6,12 +6,18 @@ class Controllerauthf extends GetxController {
   final FirebaseAuth authf = FirebaseAuth.instance;
   final Rx<dynamic> _uid = "".obs;
   final Rx<dynamic> _usuarior = "Sin Registro".obs;
+  final Rx<dynamic> _email = "".obs;
 
   String get emailf => _usuarior.value;
   String get uid => _uid.value;
+  String get email => _email.value;
 
   emailF(String sin) {
     _usuarior.value = sin;
+  }
+
+  void controlarAcceso(String email) {
+    _email.value = email;
   }
 
   Future<void> registraEmail(String email, String passwd) async {

@@ -1,4 +1,5 @@
 import 'package:coworkerdriver/ui/pages/login/login.dart';
+import 'package:coworkerdriver/ui/pages/login/registrarPasajero.dart';
 import 'package:coworkerdriver/ui/pages/pasajero/perfilPasajero.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
@@ -20,10 +21,11 @@ class AuthService {
         print(snapshot.hasData);
 
         if (snapshot.hasData) {
-          return PerfilPasajero();
+          return RegistrarPasajero();
         } else {
           prueba = 1;
           pruebaMensaje();
+          // return Login();
           return Login();
         }
       },
