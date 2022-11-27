@@ -28,7 +28,14 @@ class _PerfilPasajeroState extends State<PerfilPasajero> {
   TextEditingController controlcorreo = TextEditingController();
   TextEditingController controlSexo = TextEditingController();
   List<Pasajero> listaFinal = [];
-  late Pasajero pasajeroFinal;
+  late Pasajero _pasajeroFinal;
+
+  Pasajero get pasajeroFinal => _pasajeroFinal;
+
+  set pasajeroFinal(Pasajero pasajeroFinal) {
+    _pasajeroFinal = pasajeroFinal;
+  }
+
   final sexo = ["Masculino", "Femenino", "Otros"];
   String? selectSexo;
   var _image = null;
