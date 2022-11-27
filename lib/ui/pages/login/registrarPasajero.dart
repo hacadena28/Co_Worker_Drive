@@ -7,6 +7,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
 
+import '../../../domain/controller/controladorPasajero.dart';
+
 class RegistrarPasajero extends StatefulWidget {
   const RegistrarPasajero({super.key});
 
@@ -26,6 +28,8 @@ class _RegistrarPasajeroState extends State<RegistrarPasajero> {
   final sexo = ["Masculino", "Femenino", "Otros"];
   String? selectSexo;
   Controllerauthf controlf = Get.find();
+  PasajeroController pasajeroController = Get.put(PasajeroController());
+
   var _image;
   ImagePicker picker = ImagePicker();
   _camGaleria(bool op) async {
@@ -45,22 +49,6 @@ class _RegistrarPasajeroState extends State<RegistrarPasajero> {
     super.initState();
 
     print("Lista Prueba 1 pasajeros");
-    try {
-      var imagen;
-      var catalogo = <String, dynamic>{
-        'nombres': controlnombres.text =
-            FirebaseAuth.instance.currentUser!.displayName!,
-        'correo': controlcorreo.text =
-            FirebaseAuth.instance.currentUser!.email!,
-      };
-
-      print(
-          "-----------------------------------------------------------------------------------------");
-    } catch (e) {
-      print("Este Algunos datos vienen vacios");
-
-      print(e);
-    }
   }
 
   @override
@@ -332,6 +320,10 @@ class _RegistrarPasajeroState extends State<RegistrarPasajero> {
                                           backgroundColor:
                                               Color.fromARGB(255, 66, 231, 11),
                                         ));
+
+                                        pasajeroController
+                                            .consultaArticulos()
+                                            .then((value) => null);
                                         Get.offAllNamed('/login');
                                       }
                                     }).catchError((onError) {

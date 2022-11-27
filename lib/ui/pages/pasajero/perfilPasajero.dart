@@ -28,7 +28,15 @@ class _PerfilPasajeroState extends State<PerfilPasajero> {
   TextEditingController controlcorreo = TextEditingController();
   TextEditingController controlSexo = TextEditingController();
   List<Pasajero> listaFinal = [];
-  late Pasajero _pasajeroFinal;
+  late Pasajero _pasajeroFinal = Pasajero(
+      nombres: "",
+      apellidos: "",
+      sexo: "",
+      telefono: "",
+      correo: "",
+      clave: "",
+      foto: "",
+      placa: "");
 
   Pasajero get pasajeroFinal => _pasajeroFinal;
 

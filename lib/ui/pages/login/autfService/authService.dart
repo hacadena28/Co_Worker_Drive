@@ -51,9 +51,9 @@ class AuthService {
       idToken: googleAuth.idToken,
     );
 
+    return await FirebaseAuth.instance.signInWithCredential(credential);
     if (googleUser.email.contains("@unicesar.edu.co")) {
       print('-----------------inicio ----------------------------- ');
-      return await FirebaseAuth.instance.signInWithCredential(credential);
     } else {
       print("-------------No inicia-------------------" "$credential");
       prueba = 1;

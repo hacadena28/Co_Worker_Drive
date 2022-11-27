@@ -44,8 +44,8 @@ class MyApp extends StatelessWidget {
         '/validarC': (context) => AuthService().handleAuthState(),
         '/RegistrarC': (context) => AuthService().handleAuthState(),
       },
-      // home: Presentacion(),
-      home: AuthService().handleAuthState(),
+      home: Presentacion(),
+      // home: AuthService().handleAuthState(),
     );
   }
 }

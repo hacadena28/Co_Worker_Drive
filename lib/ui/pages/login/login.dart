@@ -192,6 +192,7 @@ class _LoginState extends State<Login> with WidgetsBindingObserver {
                                   color: Colors.white,
                                 ),
                                 onPressed: () {
+                                  controlf = Get.find();
                                   controlf
                                       .ingresarEmail(
                                           controluser.text, controlpassw.text)
@@ -255,38 +256,38 @@ class _LoginState extends State<Login> with WidgetsBindingObserver {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          Padding(
-                            padding: const EdgeInsets.fromLTRB(0, 15, 0, 0),
-                            child: ElevatedButton.icon(
-                                icon: Icon(
-                                  Icons.g_mobiledata_rounded,
-                                  size: 35,
-                                  color: Colors.white,
-                                ),
-                                style: ButtonStyle(
-                                  backgroundColor: MaterialStateProperty.all(
-                                      Colors.redAccent),
-                                  elevation: MaterialStateProperty.all(12),
-                                  shape: MaterialStateProperty.all(
-                                      RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(25),
-                                  )),
-                                ),
-                                onPressed: () {
-                                  setState(() {
-                                    AuthService().signInWithGoogle();
-                                    print(prueba2.prueba);
-                                    Get.offAllNamed('/RegistrarC');
-                                  });
-                                },
-                                // style: TextButton.styleFrom(
-                                //     primary: Colors.white,
-                                //     backgroundColor: Colors.blue[600]),
-                                label: Text("Google")),
-                          ),
-                          SizedBox(
-                            width: 20, // para dar espacio
-                          ),
+                          // Padding(
+                          //   padding: const EdgeInsets.fromLTRB(0, 15, 0, 0),
+                          //   child: ElevatedButton.icon(
+                          //       icon: Icon(
+                          //         Icons.g_mobiledata_rounded,
+                          //         size: 35,
+                          //         color: Colors.white,
+                          //       ),
+                          //       style: ButtonStyle(
+                          //         backgroundColor: MaterialStateProperty.all(
+                          //             Colors.redAccent),
+                          //         elevation: MaterialStateProperty.all(12),
+                          //         shape: MaterialStateProperty.all(
+                          //             RoundedRectangleBorder(
+                          //           borderRadius: BorderRadius.circular(25),
+                          //         )),
+                          //       ),
+                          //       onPressed: () {
+                          //         setState(() {
+                          //           AuthService().signInWithGoogle();
+                          //           print(prueba2.prueba);
+                          //           Get.offAllNamed('/RegistrarC');
+                          //         });
+                          //       },
+                          //       // style: TextButton.styleFrom(
+                          //       //     primary: Colors.white,
+                          //       //     backgroundColor: Colors.blue[600]),
+                          //       label: Text("Google")),
+                          // ),
+                          // SizedBox(
+                          //   width: 20, // para dar espacio
+                          // ),
                           Padding(
                             padding: const EdgeInsets.fromLTRB(0, 15, 0, 0),
                             child: ElevatedButton.icon(
