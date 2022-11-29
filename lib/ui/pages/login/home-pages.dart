@@ -1,4 +1,3 @@
-import 'package:coworkerdriver/ui/pages/login/registrarConductor.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -55,7 +54,9 @@ class _MyHomePageState extends State<MyHomePage> {
             height: MediaQuery.of(context).size.height - 185.0,
             decoration: BoxDecoration(
               color: Colors.white,
-              borderRadius: BorderRadius.only(topLeft: Radius.circular(105.0)),
+              borderRadius: BorderRadius.only(
+                  topLeft: Radius.circular(60.0),
+                  topRight: Radius.circular(60.0)),
             ),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -70,7 +71,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     minWidth: 200.0,
                     height: 40.0,
                     onPressed: () {
-                      Get.offAllNamed('/loginConductor');
+                      Get.offAllNamed('/perfilConductor');
                     },
                     color: Colors.indigo[700],
                     child: Text('Conductor',
@@ -89,7 +90,7 @@ class _MyHomePageState extends State<MyHomePage> {
                       minWidth: 200.0,
                       height: 40.0,
                       onPressed: () {
-                        Get.offAllNamed('/loginPasajero');
+                        Get.offAllNamed('/PerfilPasajero');
                       },
                       color: Colors.indigo[700],
                       child: Text('Pasajero',

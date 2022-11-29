@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "276206315510",
+    "project_id": "coworkerdrive-f07dc",
+    "storage_bucket": "coworkerdrive-f07dc.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:276206315510:android:fca4d3bd949918bb3449d7",
+        "android_client_info": {
+          "package_name": "com.example.coworkerdriver"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "276206315510-fks398t4eo864ris0ghheonqh3g3l9oo.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCVm4zH_JmwRl4U3f1sQfd0gtXk3QC8JQo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "276206315510-fks398t4eo864ris0ghheonqh3g3l9oo.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
