@@ -1,48 +1,15 @@
 import 'package:coworkerdriver/ui/pages/maps/home_controller_maps.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:provider/provider.dart';
 
 import '../navegador/menunavConductor.dart';
 import '../navegador/menunavPasajero.dart';
 
-class HomeMApsPasajero extends StatefulWidget {
-  @override
-  State<HomeMApsPasajero> createState() => _HomeMApsPasajeroState();
-}
+class HomeMApsPasajero extends StatelessWidget {
+  const HomeMApsPasajero({Key? key}) : super(key: key);
 
-class _HomeMApsPasajeroState extends State<HomeMApsPasajero> {
   // Polyline _miRuta = new Polyline(polylineId: PolylineId(''));
-  TextEditingController controlDestino = TextEditingController();
-  String direccion = Mapa_controller().obtenerDireccionFinal;
-  Mapa_controller mapa_controller = new Mapa_controller();
-
-  //Mapa_controller mapa_controller = Get.find();
-  var miObx;
-
-  @override
-  void initState() {
-    // TODO: implement initState
-    print(
-        '-----------------------------------jj------------------------------------');
-    controlDestino.text = mapa_controller.obtenerDireccionFinal;
-
-    print(controlDestino.text);
-    //Obx(() => Text('${mapa_controller.obtenerDireccionFinal}'));
-    super.initState();
-  }
-
-
-  @override
-  void setState(VoidCallback fn) {
-    controlDestino.text = mapa_controller.obtenerDireccionFinal;
-    print(
-        '-----------------------------------------------------------------------');
-    print(controlDestino.text);
-    // TODO: implement setState
-    super.setState(fn);
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -72,18 +39,25 @@ class _HomeMApsPasajeroState extends State<HomeMApsPasajero> {
                     markers: Controller.markers,
                     trafficEnabled: true,
                     myLocationEnabled: false,
+
                     onTap: Controller.onTap,
-                    
+
+                    // Expanded(
+                    //   child: SizedBox(
+                    //     width: MediaQuery.of(context).size.width * 1,
+                    //     height: MediaQuery.of(context).size.height * 0.91,
+                    //     child: GoogleMap(
+                    //       zoomControlsEnabled: false,
+                    //       onMapCreated: _Controller.onMapCreated,
+                    //       initialCameraPosition: _initialCameraPosition,
+                    //       myLocationButtonEnabled: true,
+                    //       mapType: MapType.normal,
+                    //     ),
                   ),
-                  
-                )
-                
-                ),
-                
+                )),
           ],
         ),
-        floatingActionButtonLocation: FloatingActionButtonLocation.startFloat,
-        floatingActionButton: FloatingActionButton.extended(
+        /*floatingActionButton: FloatingActionButton.extended(
           onPressed: () {
             showModalBottomSheet<void>(
               context: context,
@@ -111,8 +85,6 @@ class _HomeMApsPasajeroState extends State<HomeMApsPasajero> {
                           ),
                           TextField(
                             enabled: true,
-                         
-                            controller: controlDestino,
                             keyboardType: TextInputType.text,
                             decoration: InputDecoration(
                               border: OutlineInputBorder(
@@ -191,7 +163,7 @@ class _HomeMApsPasajeroState extends State<HomeMApsPasajero> {
             ),
           ),
           icon: Icon(Icons.navigation),
-        ),
+        ),*/
       ),
     );
   }

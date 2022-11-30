@@ -2,11 +2,13 @@ import 'dart:async';
 
 import 'package:flutter/foundation.dart';
 import 'package:flutter/widgets.dart' show ChangeNotifier;
+import 'package:geocoding/geocoding.dart';
 import 'package:geolocator/geolocator.dart';
 
 import 'package:get/get.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
+import '../mapaPasajero/homeMapsPasajero.dart';
 import '../mapaPasajero/utils/mapSatyle.dart';
 
 class Mapa_controller extends ChangeNotifier {
@@ -16,6 +18,12 @@ class Mapa_controller extends ChangeNotifier {
   MarkerId? _marcadorSeleccionado;
   int _contadorIdMarcador = 1;
   LatLng? _posicionMarcador;
+  String pais = '';
+  String ciudad = '';
+  String direccion = '';
+  var direccionfinal = ''.obs;
+
+  String get obtenerDireccionFinal => direccionfinal.value;
 
   final _markersController = StreamController<String>.broadcast();
   Stream<String> get onMarkerTap => _markersController.stream;
@@ -32,17 +40,8 @@ class Mapa_controller extends ChangeNotifier {
     controller.setMapStyle(mapStyle);
   }
 
-  void onTap(LatLng posicion) {
-    /* final id = _markers.length.toString();
-    final markerid = MarkerId(id);
-    final marker = Marker(
-        markerId: markerid,
-        position: posicion,
-        onTap: () {
-          _markersController.sink.add(id);
-        });
-    _markers[markerid] = marker;
-    notifyListeners(); */
+  void onTap(LatLng posicion) async {
+    direccionfinal = direccionfinal;
     if (_contadorIdMarcador <= 1) {
       if (_marcadores.length == 1) return;
 
@@ -68,11 +67,39 @@ class Mapa_controller extends ChangeNotifier {
     } else {
       print('marcador menos a 1');
     }
+
+    List<Placemark> placemarks =
+        await placemarkFromCoordinates(posicion.latitude, posicion.longitude);
+
+    pais = placemarks.reversed.last.country.toString();
+    ciudad = placemarks.reversed.last.locality.toString();
+    direccion = placemarks.reversed.last.street.toString();
+    direccionfinal.value = '$pais $ciudad $direccion';
+
+    print('------------%%%%%%%%%%%------------->$pais $ciudad $direccion');
+    asignarDireccion('$pais $ciudad $direccion');
+
+
+    //probando();
+  
+
   }
 
   @override
   void dispose() {
     _markersController.close();
     super.dispose();
+  }
+
+  String probando() {
+    print('entro al metodo probrar $pais');
+    return ('$pais');
+  }
+
+  asignarDireccion(var a) {
+    print('===============================');
+
+    print(a);
+    direccionfinal.value = a;
   }
 }
