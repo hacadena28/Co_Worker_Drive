@@ -9,12 +9,11 @@ import '../navegador/menunavPasajero.dart';
 class HomeMApsPasajero extends StatelessWidget {
   const HomeMApsPasajero({Key? key}) : super(key: key);
 
- // Polyline _miRuta = new Polyline(polylineId: PolylineId(''));
+  // Polyline _miRuta = new Polyline(polylineId: PolylineId(''));
 
   @override
   Widget build(BuildContext context) {
     return ChangeNotifierProvider<Mapa_controller>(
-      
       create: (_) {
         final controller = Mapa_controller();
         controller.onMarkerTap.listen((String id) {
@@ -23,24 +22,26 @@ class HomeMApsPasajero extends StatelessWidget {
         return controller;
       },
       child: Scaffold(
+        appBar: AppBar(),
         bottomNavigationBar: DemoBottomAppBarPasajero(),
         body: Column(
           children: [
             SizedBox(
                 width: MediaQuery.of(context).size.width * 1,
-                height: MediaQuery.of(context).size.height * 0.91,
+                height: MediaQuery.of(context).size.height * 0.6,
                 child: Consumer<Mapa_controller>(
                   builder: (_, Controller, __) => GoogleMap(
                     zoomControlsEnabled: false,
                     onMapCreated: Controller.onMapCreated,
+                    myLocationEnabled: true,
                     initialCameraPosition: Controller.initialCameraPosition,
                     myLocationButtonEnabled: true,
                     mapType: MapType.normal,
                     markers: Controller.markers,
-                    myLocationEnabled: true,
-                    
+                    trafficEnabled: true,
 
                     onTap: Controller.onTap,
+                    
 
                     // Expanded(
                     //   child: SizedBox(
@@ -57,6 +58,7 @@ class HomeMApsPasajero extends StatelessWidget {
                 )),
           ],
         ),
+        floatingActionButtonLocation: FloatingActionButtonLocation.startFloat,
         floatingActionButton: FloatingActionButton.extended(
           onPressed: () {
             showModalBottomSheet<void>(
@@ -166,6 +168,5 @@ class HomeMApsPasajero extends StatelessWidget {
         ),
       ),
     );
-
   }
 }

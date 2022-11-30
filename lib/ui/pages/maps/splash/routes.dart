@@ -1,4 +1,4 @@
-import 'package:coworkerdriver/ui/pages/maps/homeMapsPasajero.dart';
+import 'package:coworkerdriver/ui/pages/mapaPasajero/homeMapsPasajero.dart';
 import 'package:coworkerdriver/ui/pages/maps/request_permission/request_permission.dart';
 import 'package:coworkerdriver/ui/pages/pasajero/homePasajero.dart';
 

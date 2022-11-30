@@ -5,7 +5,7 @@ import 'package:coworkerdriver/ui/pages/login/autfService/authService.dart';
 import 'package:coworkerdriver/ui/pages/login/presentacion.dart';
 import 'package:coworkerdriver/ui/pages/login/registrarConductor.dart';
 import 'package:coworkerdriver/ui/pages/login/registrarPasajero.dart';
-import 'package:coworkerdriver/ui/pages/maps/homeMapsPasajero.dart';
+import 'package:coworkerdriver/ui/pages/mapaPasajero/homeMapsPasajero.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get/get.dart';
