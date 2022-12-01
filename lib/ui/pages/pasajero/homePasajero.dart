@@ -6,10 +6,10 @@ class homePasajero extends StatefulWidget {
   const homePasajero({super.key});
 
   @override
-  State<homePasajero> createState() => _homeConductorState();
+  State<homePasajero> createState() => _homePasajeroState();
 }
 
-class _homeConductorState extends State<homePasajero> {
+class _homePasajeroState extends State<homePasajero> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -23,37 +23,38 @@ class _homeConductorState extends State<homePasajero> {
           Column(
             children: [
               Container(
-                height: 230,
+                height: 100,
                 decoration: const BoxDecoration(
                   // ignore: unnecessary_const
-                  borderRadius:
-                      const BorderRadius.only(bottomRight: Radius.circular(50)),
+                  borderRadius: const BorderRadius.only(
+                    bottomRight: Radius.circular(140),
+                    bottomLeft: Radius.circular(140),
+                  ),
                   color: Colors.indigo,
                 ),
                 child: Stack(
                   children: [
                     Positioned(
-                        top: 80,
-                        left: 0,
+                        top: 30,
+                        left: 130,
                         child: Container(
-                          height: 100,
-                          width: 300,
+                          height: 50,
+                          width: 150,
                           decoration: const BoxDecoration(
                               color: Colors.white,
-                              borderRadius: BorderRadius.only(
-                                topRight: Radius.circular(50),
-                                bottomRight: Radius.circular(50),
+                              borderRadius: BorderRadius.all(
+                                Radius.circular(20),
                               )),
                         )),
                     const Positioned(
-                        top: 110,
-                        left: 20,
+                        top: 35,
+                        left: 134,
                         child: Text(
                           "Mis Rutas.",
                           style: const TextStyle(
                             color: Colors.amber,
                             fontFamily: 'Montserrat',
-                            fontSize: 46,
+                            fontSize: 26,
                           ),
                         ))
                   ],
@@ -63,7 +64,7 @@ class _homeConductorState extends State<homePasajero> {
                 height: MediaQuery.of(context).size.height * 0.01,
               ),
               Container(
-                padding: const EdgeInsets.all(8),
+                padding: const EdgeInsets.all(12),
                 child: TextField(
                   //controller: controlcorreo,
                   keyboardType: TextInputType.emailAddress,
