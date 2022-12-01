@@ -1,10 +1,8 @@
 import 'package:coworkerdriver/ui/pages/maps/home_controller_maps.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:provider/provider.dart';
 
-import '../navegador/menunavConductor.dart';
 import '../navegador/menunavPasajero.dart';
 
 class HomeMApsPasajero extends StatefulWidget {
@@ -15,34 +13,6 @@ class HomeMApsPasajero extends StatefulWidget {
 class _HomeMApsPasajeroState extends State<HomeMApsPasajero> {
   // Polyline _miRuta = new Polyline(polylineId: PolylineId(''));
   TextEditingController controlDestino = TextEditingController();
-  String direccion = Mapa_controller().obtenerDireccionFinal;
-  Mapa_controller mapa_controller = new Mapa_controller();
-
-  //Mapa_controller mapa_controller = Get.find();
-  var miObx;
-
-  @override
-  void initState() {
-    // TODO: implement initState
-    print(
-        '-----------------------------------jj------------------------------------');
-    controlDestino.text = mapa_controller.obtenerDireccionFinal;
-
-    print(controlDestino.text);
-    //Obx(() => Text('${mapa_controller.obtenerDireccionFinal}'));
-    super.initState();
-  }
-
-
-  @override
-  void setState(VoidCallback fn) {
-    controlDestino.text = mapa_controller.obtenerDireccionFinal;
-    print(
-        '-----------------------------------------------------------------------');
-    print(controlDestino.text);
-    // TODO: implement setState
-    super.setState(fn);
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -51,6 +21,7 @@ class _HomeMApsPasajeroState extends State<HomeMApsPasajero> {
         final controller = Mapa_controller();
         controller.onMarkerTap.listen((String id) {
           print("IR A $id");
+          controlDestino.text = id;
         });
         return controller;
       },
@@ -64,22 +35,16 @@ class _HomeMApsPasajeroState extends State<HomeMApsPasajero> {
                 height: MediaQuery.of(context).size.height * 0.82,
                 child: Consumer<Mapa_controller>(
                   builder: (_, Controller, __) => GoogleMap(
-                    zoomControlsEnabled: false,
-                    onMapCreated: Controller.onMapCreated,
-                    initialCameraPosition: Controller.initialCameraPosition,
-                    myLocationButtonEnabled: true,
-                    mapType: MapType.normal,
-                    markers: Controller.markers,
-                    trafficEnabled: true,
-                    myLocationEnabled: false,
-                    onTap: Controller.onTap,
-                    
-                  ),
-                  
-                )
-                
-                ),
-                
+                      zoomControlsEnabled: false,
+                      onMapCreated: Controller.onMapCreated,
+                      initialCameraPosition: Controller.initialCameraPosition,
+                      myLocationButtonEnabled: true,
+                      mapType: MapType.normal,
+                      markers: Controller.markers,
+                      trafficEnabled: true,
+                      myLocationEnabled: true,
+                      onTap: Controller.onTap),
+                )),
           ],
         ),
         floatingActionButtonLocation: FloatingActionButtonLocation.startFloat,
@@ -99,7 +64,7 @@ class _HomeMApsPasajeroState extends State<HomeMApsPasajero> {
                         mainAxisAlignment: MainAxisAlignment.center,
                         mainAxisSize: MainAxisSize.max,
                         children: <Widget>[
-                          const Text('Escoge tu ruta',
+                          const Text('Escoge tu Ruta ',
                               style: TextStyle(
                                 color: Colors.indigo,
                                 fontFamily: 'Montserrat',
@@ -111,8 +76,6 @@ class _HomeMApsPasajeroState extends State<HomeMApsPasajero> {
                           ),
                           TextField(
                             enabled: true,
-                         
-                            controller: controlDestino,
                             keyboardType: TextInputType.text,
                             decoration: InputDecoration(
                               border: OutlineInputBorder(
@@ -132,6 +95,7 @@ class _HomeMApsPasajeroState extends State<HomeMApsPasajero> {
                           ),
                           TextField(
                             enabled: true,
+                            controller: controlDestino,
                             keyboardType: TextInputType.text,
                             decoration: InputDecoration(
                               border: OutlineInputBorder(

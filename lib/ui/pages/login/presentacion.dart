@@ -81,10 +81,9 @@ class _PresentacionState extends State<Presentacion> {
                         ),
                         onPressed: () {
                           Get.offAllNamed('/login');
-                         // AuthService().handleAuthState();
+                          // AuthService().handleAuthState();
                         },
                         style: TextButton.styleFrom(
-                            primary: Colors.white,
                             backgroundColor: Colors.indigo),
                         label: Text("Empezar",
                             style: TextStyle(
