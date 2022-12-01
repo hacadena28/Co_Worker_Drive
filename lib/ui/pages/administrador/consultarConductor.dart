@@ -1,19 +1,17 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:coworkerdriver/ui/pages/administrador/consultarConductor.dart';
-import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../../../domain/controller/controladorPasajero.dart';
+import '../../../domain/controller/controladorConductor.dart';
 import '../login/login.dart';
 import '../navegador/menunavAdmin.dart';
 
-class HomeAdministrador extends StatelessWidget {
+class ConsulttarConductor extends StatelessWidget {
   final db = FirebaseFirestore.instance;
 
   @override
   Widget build(BuildContext context) {
-    PasajeroController controladorArticulo = Get.put(PasajeroController());
+    ConductorController controladorArticulo = Get.put(ConductorController());
 
     controladorArticulo.consultaArticulos().then((value) => null);
 
@@ -22,7 +20,7 @@ class HomeAdministrador extends StatelessWidget {
       appBar: AppBar(
         title: Center(
           child: Text(
-            'Lista de Pasajeros',
+            'Lista de Conductores',
             style: TextStyle(
               color: Colors.amber,
               fontFamily: 'Montserrat',
@@ -66,19 +64,7 @@ class HomeAdministrador extends StatelessWidget {
                     children: [
                       ListTile(
                         iconColor: Colors.white,
-                        leading: Container(
-                          padding: const EdgeInsets.all(10),
-                          width: 100,
-                          height: 2000,
-                          child: controladorArticulo
-                                      .getArticulosGral![posicion].foto !=
-                                  ''
-                              ? Image.network(controladorArticulo
-                                  .getArticulosGral![posicion].foto)
-                              : const Icon(
-                                  Icons.photo,
-                                ),
-                        ),
+                        leading: Icon(Icons.numbers_sharp),
                         textColor: Colors.white,
                         title: Text(controladorArticulo
                             .getArticulosGral![posicion].telefono),

@@ -1,8 +1,6 @@
 import 'dart:developer';
-
 import 'package:firebase_storage/firebase_storage.dart' as fs;
 import 'package:cloud_firestore/cloud_firestore.dart';
-
 import '../../domain/modelo/pasajero.dart';
 
 class PeticionesPasajero {

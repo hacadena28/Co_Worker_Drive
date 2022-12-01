@@ -7,9 +7,10 @@ import 'package:coworkerdriver/ui/pages/login/registrarConductor.dart';
 import 'package:coworkerdriver/ui/pages/login/registrarPasajero.dart';
 import 'package:coworkerdriver/ui/pages/mapaPasajero/homeMapsPasajero.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get/get.dart';
 
+import 'administrador/consultarConductor.dart';
+import 'administrador/consultarRutas.dart';
 import 'login/home-pages.dart';
 import 'login/login.dart';
 
@@ -39,8 +40,8 @@ class MyApp extends StatelessWidget {
         '/homeAdministrador': (context) => HomeAdministrador(),
         '/HomeMApsPasajero': (context) => HomeMApsPasajero(),
         '/HomeMApsConductor': (context) => HomeMApsConductor(),
-
-     
+        '/consultarConductor': (context) => ConsulttarConductor(),
+        '/ConsultarRutas': (context) => ConsultarRutas(),
         '/validarC': (context) => AuthService().handleAuthState(),
         '/RegistrarC': (context) => AuthService().handleAuthState(),
       },
