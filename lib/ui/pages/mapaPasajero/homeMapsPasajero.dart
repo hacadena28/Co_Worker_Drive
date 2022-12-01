@@ -3,6 +3,7 @@ import 'package:coworkerdriver/ui/pages/mapsConductor/home_controller_maps.dart'
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:provider/provider.dart';
+import 'package:get/get.dart';
 
 import '../navegador/menunavPasajero.dart';
 
@@ -14,6 +15,9 @@ class HomeMApsPasajero extends StatefulWidget {
 class _HomeMApsPasajeroState extends State<HomeMApsPasajero> {
   // Polyline _miRuta = new Polyline(polylineId: PolylineId(''));
   TextEditingController controlDestino = TextEditingController();
+  TextEditingController controlOrigen = TextEditingController();
+  TextEditingController controlTarifa = TextEditingController();
+  TextEditingController controlDescripcion = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -89,6 +93,7 @@ class _HomeMApsPasajeroState extends State<HomeMApsPasajero> {
                             height: 8,
                           ),
                           TextField(
+                            controller: controlOrigen,
                             enabled: true,
                             keyboardType: TextInputType.text,
                             decoration: InputDecoration(
@@ -118,6 +123,7 @@ class _HomeMApsPasajeroState extends State<HomeMApsPasajero> {
                             height: 8,
                           ),
                           TextField(
+                            controller: controlTarifa,
                             enabled: true,
                             keyboardType: TextInputType.number,
                             decoration: InputDecoration(
@@ -132,6 +138,7 @@ class _HomeMApsPasajeroState extends State<HomeMApsPasajero> {
                             height: 8,
                           ),
                           TextField(
+                            controller: controlDescripcion,
                             enabled: true,
                             keyboardType: TextInputType.text,
                             decoration: InputDecoration(
@@ -147,7 +154,21 @@ class _HomeMApsPasajeroState extends State<HomeMApsPasajero> {
                           ),
                           ElevatedButton(
                             child: const Text('Solicitar Servicio'),
-                            onPressed: () => Navigator.pop(context),
+                            onPressed: () {
+                              if (validarCamposvasios() == true) {
+                                Get.offAllNamed('/EsperandoConductor');
+                              } else {
+                                Get.showSnackbar(const GetSnackBar(
+                                  title: "Advertencia",
+                                  message: "Por favor rellene todos los campos",
+                                  icon: Icon(Icons.warning_amber_sharp),
+                                  duration: Duration(seconds: 4),
+                                  backgroundColor:
+                                      Color.fromARGB(255, 213, 136, 130),
+                                ));
+                                navigator?.pop(context);
+                              }
+                            },
                             style: TextButton.styleFrom(
                                 primary: Colors.white,
                                 backgroundColor: Colors.green[600]),
@@ -171,5 +192,14 @@ class _HomeMApsPasajeroState extends State<HomeMApsPasajero> {
         ),
       ),
     );
+  }
+
+  bool validarCamposvasios() {
+    if (controlDestino.text.isNotEmpty &&
+        controlOrigen.text.isNotEmpty &&
+        controlTarifa.text.isNotEmpty) {
+      return true;
+    }
+    return false;
   }
 }

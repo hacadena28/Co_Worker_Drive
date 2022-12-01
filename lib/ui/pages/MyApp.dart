@@ -15,6 +15,7 @@ import 'login/home-pages.dart';
 import 'login/login.dart';
 
 import 'mapsConductor/homeMapsConductor.dart';
+import 'pasajero/EsperandoConductor.dart';
 import 'pasajero/homePasajero.dart';
 import 'pasajero/perfilPasajero.dart';
 
@@ -42,6 +43,8 @@ class MyApp extends StatelessWidget {
         '/HomeMApsConductor': (context) => HomeMApsConductor(),
         '/consultarConductor': (context) => ConsulttarConductor(),
         '/ConsultarRutas': (context) => ConsultarRutas(),
+        '/EsperandoConductor': (context) => EsperandoConductor(),
+
         '/validarC': (context) => AuthService().handleAuthState(),
         '/RegistrarC': (context) => AuthService().handleAuthState(),
       },
