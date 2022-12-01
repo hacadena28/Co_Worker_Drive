@@ -59,7 +59,7 @@ class _HomeMApsPasajeroState extends State<HomeMApsPasajero> {
                   color: Colors.indigo[100],
                   child: Center(
                     child: Padding(
-                      padding: const EdgeInsets.all(11.0),
+                      padding: const EdgeInsets.all(8),
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         mainAxisSize: MainAxisSize.max,
@@ -72,65 +72,64 @@ class _HomeMApsPasajeroState extends State<HomeMApsPasajero> {
                                 fontSize: 20.0,
                               )),
                           SizedBox(
-                            height: 30,
+                            height: 8,
                           ),
                           TextField(
                             enabled: true,
                             keyboardType: TextInputType.text,
                             decoration: InputDecoration(
-                              border: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(
-                                  15,
-                                ),
-                              ),
                               labelText: 'Origen',
                               icon: Icon(
                                 Icons.place,
-                                color: Colors.amber,
+                                color: Colors.indigo,
                               ),
                             ),
                           ),
                           SizedBox(
-                            height: 15,
+                            height: 8,
                           ),
                           TextField(
                             enabled: true,
                             controller: controlDestino,
                             keyboardType: TextInputType.text,
                             decoration: InputDecoration(
-                              border: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(
-                                  15,
-                                ),
-                              ),
                               labelText: 'Destino',
                               icon: Icon(
                                 Icons.place_outlined,
-                                color: Colors.amber,
+                                color: Colors.indigo,
                               ),
                             ),
                           ),
                           SizedBox(
-                            height: 15,
+                            height: 8,
                           ),
                           TextField(
                             enabled: true,
                             keyboardType: TextInputType.number,
                             decoration: InputDecoration(
-                              border: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(
-                                  15,
-                                ),
-                              ),
                               labelText: 'Tarifa',
                               icon: Icon(
                                 Icons.money,
-                                color: Colors.amber,
+                                color: Colors.indigo,
                               ),
                             ),
                           ),
                           SizedBox(
-                            height: 15,
+                            height: 8,
+                          ),
+                          TextField(
+                            enabled: true,
+                            keyboardType: TextInputType.text,
+                            decoration: InputDecoration(
+                              labelText: 'Descripcion',
+                              icon: Icon(
+                                Icons.description_rounded,
+                                color: Colors.indigo,
+                              ),
+                            ),
+                          ),
+                          SizedBox(
+                            height: 8,
                           ),
                           ElevatedButton(
                             child: const Text('Solicitar Servicio'),

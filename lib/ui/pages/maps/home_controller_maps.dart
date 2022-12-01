@@ -4,6 +4,7 @@ import 'package:coworkerdriver/ui/pages/pasajero/homePasajero.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/widgets.dart' show ChangeNotifier;
 import 'package:geocoding/geocoding.dart';
+import 'package:geolocator/geolocator.dart';
 
 import 'package:get/get.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
@@ -23,6 +24,8 @@ class Mapa_controller extends ChangeNotifier {
   String pais = '';
   String ciudad = '';
   String direccion = '';
+
+
 
   final initialCameraPosition = CameraPosition(
     target: LatLng(10.450254, -73.260486),
@@ -48,6 +51,7 @@ class Mapa_controller extends ChangeNotifier {
           position: posicion,
           onTap: () {
             _markersController.sink.add(probando());
+
           },
           infoWindow: InfoWindow(
             title: cadenaIdMarcador,
@@ -67,7 +71,7 @@ class Mapa_controller extends ChangeNotifier {
     ciudad = placemarks.reversed.last.locality.toString();
     direccion = placemarks.reversed.last.street.toString();
 
-    print('------------%%%%%%%%%%%------->$pais $ciudad $direccion');
+    print('---%%%%%%%%%%%------->$pais $ciudad $direccion');
     // asignarDireccion('$pais $ciudad $direccion');
 
     probando();
