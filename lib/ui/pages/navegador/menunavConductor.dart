@@ -42,7 +42,7 @@ class DemoBottomAppBar extends StatelessWidget {
               tooltip: 'Maps',
               icon: const Icon(Icons.place_outlined),
               onPressed: () {
-                Get.offAllNamed('/homeMaps');
+                Get.offAllNamed('/HomeMApsConductor');
               },
             ),
             IconButton(
@@ -50,7 +50,6 @@ class DemoBottomAppBar extends StatelessWidget {
               icon: const Icon(Icons.motorcycle),
               onPressed: () {
                 Get.offAllNamed('/homeConductor');
-
               },
             ),
           ],

@@ -63,6 +63,7 @@ class _PerfilPasajero2State extends State<PerfilPasajero2> {
         bottomNavigationBar: DemoBottomAppBarPasajero(),
         //  drawer: Drawer(),
         appBar: AppBar(
+          
           title: Center(
             child: Text(
               'Datos Personales',

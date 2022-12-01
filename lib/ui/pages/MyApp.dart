@@ -12,9 +12,8 @@ import 'package:get/get.dart';
 
 import 'login/home-pages.dart';
 import 'login/login.dart';
-import 'mapaPasajero/acceso_Gps_page.dart';
-import 'mapaPasajero/loading_Gps_page.dart';
-import 'mapaPasajero/mapa_page.dart';
+
+import 'mapsConductor/homeMapsConductor.dart';
 import 'pasajero/homePasajero.dart';
 import 'pasajero/perfilPasajero.dart';
 
@@ -39,8 +38,9 @@ class MyApp extends StatelessWidget {
         '/presentacion': (context) => Presentacion(),
         '/homeAdministrador': (context) => HomeAdministrador(),
         '/HomeMApsPasajero': (context) => HomeMApsPasajero(),
-        '/LoadingGps': (context) => LoadingGps(),
-        '/AccesoGps': (context) => AccesoGps(),
+        '/HomeMApsConductor': (context) => HomeMApsConductor(),
+
+     
         '/validarC': (context) => AuthService().handleAuthState(),
         '/RegistrarC': (context) => AuthService().handleAuthState(),
       },

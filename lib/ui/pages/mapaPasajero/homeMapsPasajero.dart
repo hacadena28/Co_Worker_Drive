@@ -1,4 +1,5 @@
-import 'package:coworkerdriver/ui/pages/maps/home_controller_maps.dart';
+import 'package:badges/badges.dart';
+import 'package:coworkerdriver/ui/pages/mapsConductor/home_controller_maps.dart';
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:provider/provider.dart';
@@ -26,7 +27,20 @@ class _HomeMApsPasajeroState extends State<HomeMApsPasajero> {
         return controller;
       },
       child: Scaffold(
-        appBar: AppBar(),
+        appBar: AppBar(actions: [
+          Stack(
+            children: [
+              Badge(
+                badgeContent: Text('3'),
+                padding: EdgeInsets.all(10),
+                badgeColor: Colors.redAccent,
+                animationType: BadgeAnimationType.slide,
+                position: BadgePosition.topStart(),
+                child: Icon(Icons.notifications, size: 40),
+              ),
+            ],
+          ),
+        ]),
         bottomNavigationBar: DemoBottomAppBarPasajero(),
         body: Column(
           children: [
