@@ -39,9 +39,6 @@ class PeticionesPasajero {
         log(doc.data().toString());
         lista.add(Pasajero.desdeDoc(doc.data()));
       }
-      print("listaaaaaaaa gralll");
-      print(lista);
-      print("listaaaaaaaa gralll final");
     });
 
     return lista;

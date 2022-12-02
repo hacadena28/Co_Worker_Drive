@@ -31,18 +31,19 @@ class DemoBottomAppBarPasajero extends StatelessWidget {
                   top: 8.0, right: 5.0, left: 5.0, bottom: 2),
               child: IconButton(
                 tooltip: 'perfil',
-                icon: const Icon(Icons.person_rounded),
+                icon: const Icon(Icons.place_outlined),
                 onPressed: () {
-                  Get.offAllNamed('/PerfilPasajero');
+                  Get.offAllNamed('/HomeMApsPasajero');
                 },
               ),
             ),
             if (centerLocations.contains(fabLocation)) const Spacer(),
             IconButton(
               tooltip: 'Maps',
-              icon: const Icon(Icons.place_outlined),
+              icon: const Icon(Icons.person_rounded),
               onPressed: () {
-                Get.offAllNamed('/HomeMApsPasajero');
+                Get.offAllNamed('/PerfilPasajero');
+
                 //Get.offAllNamed('/AccesoGps');
               },
             ),

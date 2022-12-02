@@ -30,7 +30,6 @@ class _PerfilPasajeroState extends State<PerfilPasajero> {
   List<Pasajero> listaFinal = [];
   late Pasajero _pasajeroFinal = Pasajero(
       nombres: "",
-      apellidos: "",
       sexo: "",
       telefono: "",
       correo: "",
@@ -47,6 +46,7 @@ class _PerfilPasajeroState extends State<PerfilPasajero> {
   final sexo = ["Masculino", "Femenino", "Otros"];
   String? selectSexo;
   var _image = null;
+  var fotoPerfil = "";
 
   @override
   void initState() {
@@ -66,6 +66,7 @@ class _PerfilPasajeroState extends State<PerfilPasajero> {
           pasajeroFinal = pasajeroFinal;
           print(pasajeroFinal);
           llenar();
+          fotoPerfil = controlnombres.text.substring(0, 1);
         }
         ;
       }
@@ -176,14 +177,10 @@ class _PerfilPasajeroState extends State<PerfilPasajero> {
                       Center(
                         child: GestureDetector(
                           child: CircleAvatar(
-                            radius: 90,
-                            // aqui tengo la foto de mi usuario de google
-
-                            backgroundImage: AssetImage(
-                              "assets/ella.png",
-                            ),
-                            //     FirebaseAuth.instance.currentUser!.photoURL!),
-                          ),
+                              radius: 65,
+                              child: Text(fotoPerfil,
+                                  style: const TextStyle(fontSize: 40))),
+                          //     FirebaseAuth.instance.currentUser!.photoURL!),
                         ),
                       ),
                       SizedBox(

@@ -302,7 +302,6 @@ class _RegistrarPasajeroState extends State<RegistrarPasajero> {
                                       'telefono': controltelefono.text,
                                       'correo': controlcorreo.text,
                                       'clave': controlclave.text,
-                                      'foto': "",
                                     };
                                     controlf
                                         .registraEmail(controlcorreo.text,

@@ -177,7 +177,8 @@ class _LoginState extends State<Login> with WidgetsBindingObserver {
                                       .then((value) {
                                     if (controlf.emailf != 'Sin Registro') {
                                       setState(() {
-                                        Get.offAllNamed('/PerfilPasajero');
+                                        Get.offAllNamed('/HomeMApsPasajero');
+
                                         controlf
                                             .controlarAcceso(controluser.text);
                                       });

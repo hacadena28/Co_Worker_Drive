@@ -1,7 +1,9 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:coworkerdriver/domain/controller/controladorAuth.dart';
 import 'package:coworkerdriver/domain/controller/controladorPasajero.dart';
 import 'package:coworkerdriver/domain/modelo/pasajero.dart';
 import 'package:coworkerdriver/ui/pages/login/autfService/authService.dart';
+import 'package:coworkerdriver/ui/pages/pasajero/perfilPasajero.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -20,46 +22,84 @@ class PerfilConductor extends StatefulWidget {
   State<PerfilConductor> createState() => _PerfilConductorState();
 }
 
+Controllerauthf controlf = Get.find();
+
 class _PerfilConductorState extends State<PerfilConductor> {
   TextEditingController controlnombres = TextEditingController();
   TextEditingController controltelefono = TextEditingController();
   TextEditingController controlcorreo = TextEditingController();
   TextEditingController controlSexo = TextEditingController();
   TextEditingController controlplacamoto = TextEditingController();
-  late Pasajero listaFinal;
+  List<Pasajero> listaFinal = [];
+  late Pasajero _pasajeroFinal = Pasajero(
+      nombres: "",
+      sexo: "",
+      telefono: "",
+      correo: "",
+      clave: "",
+      foto: "",
+      placa: "");
+
+  Pasajero get pasajeroFinal => _pasajeroFinal;
+
+  set pasajeroFinal(Pasajero pasajeroFinal) {
+    _pasajeroFinal = pasajeroFinal;
+  }
+
   final sexo = ["Masculino", "Femenino", "Otros"];
   String? selectSexo;
   var _image = null;
+  var fotoPerfil = "";
 
   @override
   void initState() {
     PasajeroController pasajeroController = Get.put(PasajeroController());
 
     pasajeroController.consultaArticulos().then((value) => null);
+    PerfilPasajero();
 
-    PerfilConductor();
     try {
-      listaFinal = pasajeroController.getArticulosGral![0];
-      print("Lista cargada de firebase");
-      print(listaFinal);
-      llenar();
+      for (int i = 0; i <= pasajeroController.getArticulosGral!.length; i++) {
+        pasajeroFinal = pasajeroController.getArticulosGral![i];
+        print(controlf.email);
+        print("validando................. correso");
+        print(pasajeroFinal.correo);
+        print(controlf.emailf);
+        if (pasajeroFinal.correo == controlf.email) {
+          pasajeroFinal = pasajeroFinal;
+          print(pasajeroFinal);
+          llenar();
+          fotoPerfil = controlnombres.text.substring(0, 1);
+        }
+        ;
+      }
     } catch (e) {
+      print(pasajeroFinal.correo);
+      print(controlf.emailf);
       print("Lista no cargada de firebase");
+
       print(e);
     }
-  }
 
-  set controlf(String controlf) {}
+    // try {
+    //   pasajeroFinal = pasajeroController.getArticulosGral![0];
+    //   print("Lista cargada de firebase");
+    //   print(pasajeroFinal);
+    //   llenar();
+    // } catch (e) {
+    //   print("Lista no cargada de firebase");
+    //   print(e);
+    // }
+  }
 
   llenar() {
     print("Llenando");
     try {
       var catalogo = <String, dynamic>{
-        'nombres': controlnombres.text = listaFinal.nombres,
-        'correo': controlcorreo.text = listaFinal.correo,
-        'telefono': controltelefono.text = listaFinal.telefono,
-        'sexo': controlSexo.text = listaFinal.sexo,
-        'placa': controlplacamoto.text = listaFinal.placa,
+        'nombres': controlnombres.text = pasajeroFinal.nombres,
+        'correo': controlcorreo.text = pasajeroFinal.correo,
+        'telefono': controltelefono.text = pasajeroFinal.telefono,
+        'sexo': controlSexo.text = pasajeroFinal.sexo,
         'foto': "",
       };
     } catch (e) {
@@ -140,14 +180,9 @@ class _PerfilConductorState extends State<PerfilConductor> {
                       Center(
                         child: GestureDetector(
                           child: CircleAvatar(
-                            radius: 90,
-                            // aqui tengo la foto de mi usuario de google
-
-                            backgroundImage: AssetImage(
-                              "assets/el.png",
-                            ),
-                            //     FirebaseAuth.instance.currentUser!.photoURL!),
-                          ),
+                              radius: 65,
+                              child: Text(fotoPerfil,
+                                  style: const TextStyle(fontSize: 40))),
                         ),
                       ),
                       SizedBox(

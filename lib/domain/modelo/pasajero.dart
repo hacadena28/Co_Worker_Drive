@@ -1,6 +1,5 @@
 class Pasajero {
   var nombres;
-  var apellidos;
   var sexo;
   var telefono;
   var correo;
@@ -11,7 +10,6 @@ class Pasajero {
 
   Pasajero(
       {required this.nombres,
-      required this.apellidos,
       required this.sexo,
       required this.telefono,
       required this.correo,
@@ -23,7 +21,6 @@ class Pasajero {
   factory Pasajero.desdeDoc(Map<String, dynamic> data) {
     return Pasajero(
       nombres: data['nombres'] ?? '',
-      apellidos: data['apellidos'] ?? '',
       sexo: data['sexo'] ?? '',
       telefono: data['telefono'] ?? '',
       correo: data['correo'] ?? '',
@@ -35,7 +32,6 @@ class Pasajero {
 
   Map<String, dynamic> toJson() => {
         "nombres": nombres,
-        "apellidos": apellidos,
         "sexo": sexo,
         "telefono": telefono,
         "correo": correo,

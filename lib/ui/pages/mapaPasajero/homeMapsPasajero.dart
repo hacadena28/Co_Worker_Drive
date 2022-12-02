@@ -1,4 +1,5 @@
 import 'package:badges/badges.dart';
+import 'package:coworkerdriver/data/services/peticionesFirebaseRuta.dart';
 import 'package:coworkerdriver/ui/pages/mapsConductor/home_controller_maps.dart';
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
@@ -24,10 +25,18 @@ class _HomeMApsPasajeroState extends State<HomeMApsPasajero> {
     return ChangeNotifierProvider<Mapa_controller>(
       create: (_) {
         final controller = Mapa_controller();
-        controller.onMarkerTap.listen((String id) {
-          print("IR A $id");
-          controlDestino.text = id;
-        });
+        controller.onMarkerTap.listen(
+          (String id) {
+            print("IR A $id");
+            controlDestino.text = id;
+          },
+        );
+        controller.onMarkerTap2.listen(
+          (String id2) {
+            print("IR A $id2");
+            controlOrigen.text = id2;
+          },
+        );
         return controller;
       },
       child: Scaffold(
@@ -156,7 +165,16 @@ class _HomeMApsPasajeroState extends State<HomeMApsPasajero> {
                             child: const Text('Solicitar Servicio'),
                             onPressed: () {
                               if (validarCamposvasios() == true) {
-                                Get.offAllNamed('/EsperandoConductor');
+                                //Get.offAllNamed('/EsperandoConductor');
+                                var catalogo = <String, dynamic>{
+                                  'origen': controlOrigen.text,
+                                  'destiono': controlDestino.text,
+                                  'tarifa': controlTarifa.text,
+                                  'descripcion': controlDescripcion.text,
+                                  'estado': "Pendiente",
+                                };
+
+                                PeticionesRuta.crearRuta(catalogo);
                               } else {
                                 Get.showSnackbar(const GetSnackBar(
                                   title: "Advertencia",
