@@ -1,13 +1,17 @@
 import 'package:badges/badges.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:coworkerdriver/ui/pages/mapsConductor/home_controller_maps.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:provider/provider.dart';
 
+import '../../../domain/controller/controladorRuta.dart';
 import '../navegador/menunavConductor.dart';
 import '../navegador/menunavPasajero.dart';
 
 class HomeMApsConductor extends StatefulWidget {
+  final db = FirebaseFirestore.instance;
   @override
   State<HomeMApsConductor> createState() => _HomeMApsConductorState();
 }
@@ -18,6 +22,8 @@ class _HomeMApsConductorState extends State<HomeMApsConductor> {
 
   @override
   Widget build(BuildContext context) {
+    RutaController controladorRuta = Get.put(RutaController());
+    controladorRuta.consultaRutas().then((value) => null);
     return ChangeNotifierProvider<Mapa_controller>(
       create: (_) {
         final controller = Mapa_controller();
